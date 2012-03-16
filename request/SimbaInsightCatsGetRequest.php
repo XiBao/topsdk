@@ -1,0 +1,60 @@
+<?php
+/**
+ * TOP API: taobao.simba.insight.cats.get request
+ * 
+ * @author auto create
+ * @since 1.0, 2011-12-02 10:10:50
+ */
+class SimbaInsightCatsGetRequest
+{
+	/** 
+	 * 查询类目id数组，最大长度200
+	 **/
+	private $categoryIds;
+	
+	/** 
+	 * 主人昵称
+	 **/
+	private $nick;
+	
+	private $apiParas = array();
+	
+	public function setCategoryIds($categoryIds)
+	{
+		$this->categoryIds = $categoryIds;
+		$this->apiParas["category_ids"] = $categoryIds;
+	}
+
+	public function getCategoryIds()
+	{
+		return $this->categoryIds;
+	}
+
+	public function setNick($nick)
+	{
+		$this->nick = $nick;
+		$this->apiParas["nick"] = $nick;
+	}
+
+	public function getNick()
+	{
+		return $this->nick;
+	}
+
+	public function getApiMethodName()
+	{
+		return "taobao.simba.insight.cats.get";
+	}
+	
+	public function getApiParas()
+	{
+		return $this->apiParas;
+	}
+	
+	public function check()
+	{
+		
+		RequestCheckUtil::checkNotNull($this->categoryIds,"categoryIds");
+		RequestCheckUtil::checkMaxListSize($this->categoryIds,200,"categoryIds");
+	}
+}
