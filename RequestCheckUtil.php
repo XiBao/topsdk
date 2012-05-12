@@ -21,8 +21,9 @@ class RequestCheckUtil
 	 * 检验字段fieldName的值value 的长度
 	 *
 	 **/
-	public static function checkMaxLength($value,$maxLength,$fieldName){		
-		if(!self::checkEmpty($value) && strlen($value) > $maxLength){
+	public static function checkMaxLength($value,$maxLength,$fieldName){
+	    $str = mb_convert_encoding($value, 'CP936', 'UTF-8');
+		if(!self::checkEmpty($str) && strlen($str) > $maxLength){
 			throw new Exception("client-check-error:Invalid Arguments:the length of " .$fieldName . " can not be larger than " . $maxLength . "." , 41);
 		}
 	}
