@@ -111,6 +111,18 @@ class TopClient
 		str_replace("\n","",$responseTxt)
 		);
 		$logger->log($logData);*/
+		$localIp = isset($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
+		$logData = array(
+    		$apiName,
+    		$this->appkey,
+    		$localIp,
+    		PHP_OS,
+    		$this->sdkVersion,
+    		$requestUrl,
+    		$errorCode,
+    		str_replace("\n","",$responseTxt)
+		);
+		Kohana::$log->add(Log::ERROR, json_encode($logData));
 	}
 
 	public function execute($request, $session = null)
@@ -206,7 +218,8 @@ class TopClient
 			//	date("Y-m-d H:i:s"),
 			//	$resp
 			//));
-			print $resp;
+			$this->logCommunicationError($sysParams["method"],$requestUrl, $respObject->code, $resp);
+			//print $resp;
 		}
 		return $respObject;
 	}
