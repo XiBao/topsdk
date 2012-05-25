@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class HotelAddRequest
 {
@@ -84,6 +84,11 @@ domestic为false时，必须传定义的海外国家编码值。参见：http://
 parking：停车场，airportShuttle：机场接送，rentCar：租车，meetingRoom：会议室，businessCenter：商务中心，swimmingPool：游泳池，fitnessClub：健身中心，laundry：洗衣服务，morningCall：叫早服务，bankCard：接受银行卡，creditCard：接受信用卡，chineseRestaurant：中餐厅，westernRestaurant：西餐厅，cafe：咖啡厅，bar：酒吧，ktv：KTV。
 	 **/
 	private $service;
+	
+	/** 
+	 * 接入卖家数据主键
+	 **/
+	private $siteParam;
 	
 	/** 
 	 * 楼层数。长度不能超过4。
@@ -262,6 +267,17 @@ parking：停车场，airportShuttle：机场接送，rentCar：租车，meeting
 		return $this->service;
 	}
 
+	public function setSiteParam($siteParam)
+	{
+		$this->siteParam = $siteParam;
+		$this->apiParas["site_param"] = $siteParam;
+	}
+
+	public function getSiteParam()
+	{
+		return $this->siteParam;
+	}
+
 	public function setStoreys($storeys)
 	{
 		$this->storeys = $storeys;
@@ -322,6 +338,7 @@ parking：停车场，airportShuttle：机场接送，rentCar：租车，meeting
 		RequestCheckUtil::checkMinValue($this->province,0,"province");
 		RequestCheckUtil::checkMaxValue($this->rooms,9999,"rooms");
 		RequestCheckUtil::checkMinValue($this->rooms,0,"rooms");
+		RequestCheckUtil::checkMaxLength($this->siteParam,100,"siteParam");
 		RequestCheckUtil::checkMaxValue($this->storeys,9999,"storeys");
 		RequestCheckUtil::checkMinValue($this->storeys,0,"storeys");
 		RequestCheckUtil::checkMaxLength($this->tel,32,"tel");

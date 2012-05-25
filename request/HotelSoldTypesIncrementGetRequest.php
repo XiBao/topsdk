@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.sold.types.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class HotelSoldTypesIncrementGetRequest
 {

@@ -3,7 +3,7 @@
  * TOP API: taobao.traderates.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class TraderatesGetRequest
 {
@@ -23,7 +23,7 @@ class TraderatesGetRequest
 	private $pageNo;
 	
 	/** 
-	 * 每页条数。取值范围:大于零的整数; 默认值:40;最大值:200
+	 * 每页获取条数。默认值40，最小值1，最大值150。相同的查询时间段条件下，最大只能获取总共1500条评价记录。
 	 **/
 	private $pageSize;
 	
@@ -38,7 +38,7 @@ class TraderatesGetRequest
 	private $result;
 	
 	/** 
-	 * 评价者角色。可选值:seller(卖家),buyer(买家)
+	 * 评价者角色即评价的发起方。可选值:seller(卖家),buyer(买家)。 当 give buyer 以买家身份给卖家的评价； 当 get seller 以买家身份得到卖家给的评价； 当 give seller 以卖家身份给买家的评价； 当 get buyer 以卖家身份得到买家给的评价。
 	 **/
 	private $role;
 	
@@ -51,6 +51,11 @@ class TraderatesGetRequest
 	 * 交易订单id，可以是父订单id号，也可以是子订单id号
 	 **/
 	private $tid;
+	
+	/** 
+	 * 是否启用has_next的分页方式，如果指定true,则返回的结果中不包含总记录数，但是会新增一个是否存在下一页的的字段，通过此种方式获取评价信息，效率在原有的基础上有80%的提升。
+	 **/
+	private $useHasNext;
 	
 	private $apiParas = array();
 	
@@ -153,6 +158,17 @@ class TraderatesGetRequest
 		return $this->tid;
 	}
 
+	public function setUseHasNext($useHasNext)
+	{
+		$this->useHasNext = $useHasNext;
+		$this->apiParas["use_has_next"] = $useHasNext;
+	}
+
+	public function getUseHasNext()
+	{
+		return $this->useHasNext;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.traderates.get";
@@ -167,6 +183,8 @@ class TraderatesGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
+		RequestCheckUtil::checkMaxValue($this->pageSize,150,"pageSize");
+		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 		RequestCheckUtil::checkNotNull($this->rateType,"rateType");
 		RequestCheckUtil::checkNotNull($this->role,"role");
 	}

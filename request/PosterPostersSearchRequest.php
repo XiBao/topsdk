@@ -3,7 +3,7 @@
  * TOP API: taobao.poster.posters.search request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class PosterPostersSearchRequest
 {
@@ -33,7 +33,10 @@ class PosterPostersSearchRequest
 	private $pageNo;
 	
 	/** 
-	 * 每页显示画报数 小于10或者大于20，默认设置为10
+	 * 每页显示画报数
+<br>注：
+<br>1.当输入的值小于10或者大于20，会按照默认值10返回
+<br>2.最大支持20条返回
 	 **/
 	private $pageSize;
 	

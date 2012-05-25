@@ -3,7 +3,7 @@
  * TOP API: taobao.traderate.list.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class TraderateListAddRequest
 {
@@ -16,11 +16,6 @@ class TraderateListAddRequest
 	 * 评价内容,最大长度: 500个汉字 .注意：当评价结果为good时就不用输入评价内容.评价内容为neutral/bad的时候需要输入评价内容
 	 **/
 	private $content;
-	
-	/** 
-	 * 子订单ID
-	 **/
-	private $oid;
 	
 	/** 
 	 * 评价结果。可选值:good(好评),neutral(中评),bad(差评)
@@ -59,17 +54,6 @@ class TraderateListAddRequest
 	public function getContent()
 	{
 		return $this->content;
-	}
-
-	public function setOid($oid)
-	{
-		$this->oid = $oid;
-		$this->apiParas["oid"] = $oid;
-	}
-
-	public function getOid()
-	{
-		return $this->oid;
 	}
 
 	public function setResult($result)

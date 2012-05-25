@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.catsanalysis.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class SimbaInsightCatsanalysisGetRequest
 {
@@ -18,7 +18,11 @@ class SimbaInsightCatsanalysisGetRequest
 	private $nick;
 	
 	/** 
-	 * 结果过滤。AREA：返回地域占比；SOURCE：返回来源占比；HPRICE：返回竞价分布。stu可由,组合
+	 * 结果过滤。
+AREA：返回地域占比；
+SOURCE：返回来源占比；
+HPRICE：返回竞价分布。
+stu只能是AREA、SOURCE或HPRICE中的一个
 	 **/
 	private $stu;
 	

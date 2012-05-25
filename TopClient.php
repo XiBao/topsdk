@@ -22,7 +22,7 @@ class TopClient
 
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "top-sdk-php-20111202";
+	protected $sdkVersion = "top-sdk-php-20120524";
 
 	protected function generateSign($params)
 	{
@@ -48,7 +48,12 @@ class TopClient
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_FAILONERROR, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		
+		//https 请求
+		if(strlen($url) > 5 && strtolower(substr($url,0,5)) == "https" ) {
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		}
+
 		if (is_array($postFields) && 0 < count($postFields))
 		{
 			$postBodyString = "";

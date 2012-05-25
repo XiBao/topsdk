@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.room.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class HotelRoomAddRequest
 {
@@ -79,7 +79,7 @@ A：全额支付，B：手续费，C：订金，D：手续费/间夜
 	/** 
 	 * 房态信息。可以传今天开始90天内的房态信息。日期必须连续。JSON格式传递。
 date：代表房态日期，格式为YYYY-MM-DD，
-price：代表当天房价，0～99999900，存储的单位是分，不能带角分
+price：代表当天房价，0～99999999，存储的单位是分，
 num：代表当天可售间数，0～999。
 如：
 [{"date":2011-01-28,"price":10000, "num":10},{"date":2011-01-29,"price":12000,"num":10}]
@@ -94,6 +94,11 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 {"bar":false,"catv":false,"ddd":false,"idd":false,"pubtoilet":false,"toilet":false}
 	 **/
 	private $service;
+	
+	/** 
+	 * 接入卖家数据主键
+	 **/
+	private $siteParam;
 	
 	/** 
 	 * 床宽。可选值：A,B,C,D,E,F,G,H。分别代表：A：1米及以下，B：1.1米，C：1.2米，D：1.35米，E：1.5米，F：1.8米，G：2米，H：2.2米及以上
@@ -277,6 +282,17 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		return $this->service;
 	}
 
+	public function setSiteParam($siteParam)
+	{
+		$this->siteParam = $siteParam;
+		$this->apiParas["site_param"] = $siteParam;
+	}
+
+	public function getSiteParam()
+	{
+		return $this->siteParam;
+	}
+
 	public function setSize($size)
 	{
 		$this->size = $size;
@@ -342,6 +358,7 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		RequestCheckUtil::checkMaxLength($this->paymentType,1,"paymentType");
 		RequestCheckUtil::checkNotNull($this->rid,"rid");
 		RequestCheckUtil::checkNotNull($this->roomQuotas,"roomQuotas");
+		RequestCheckUtil::checkMaxLength($this->siteParam,100,"siteParam");
 		RequestCheckUtil::checkMaxLength($this->size,1,"size");
 		RequestCheckUtil::checkMaxLength($this->storey,8,"storey");
 		RequestCheckUtil::checkNotNull($this->title,"title");

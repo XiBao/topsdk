@@ -3,7 +3,7 @@
  * TOP API: taobao.delivery.template.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class DeliveryTemplateGetRequest
 {
@@ -30,6 +30,11 @@ query_ems:查询EMS运费信息
 	 **/
 	private $templateIds;
 	
+	/** 
+	 * 在没有登录的情况下根据淘宝用户昵称查询指定的模板
+	 **/
+	private $userNick;
+	
 	private $apiParas = array();
 	
 	public function setFields($fields)
@@ -52,6 +57,17 @@ query_ems:查询EMS运费信息
 	public function getTemplateIds()
 	{
 		return $this->templateIds;
+	}
+
+	public function setUserNick($userNick)
+	{
+		$this->userNick = $userNick;
+		$this->apiParas["user_nick"] = $userNick;
+	}
+
+	public function getUserNick()
+	{
+		return $this->userNick;
 	}
 
 	public function getApiMethodName()

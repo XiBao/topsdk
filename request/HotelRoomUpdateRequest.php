@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.room.update request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class HotelRoomUpdateRequest
 {
@@ -75,7 +75,7 @@ A：全额支付，B：手续费，C：订金，D：手续费/间夜
 	/** 
 	 * 房态信息。可以传今天开始90天内的房态信息。日期必须连续。JSON格式传递。
 date：代表房态日期，格式为YYYY-MM-DD，
-price：代表当天房价，0～99999900，存储的单位是分，不能带角分
+price：代表当天房价，0～99999999，存储的单位是分,
 num：代表当天可售间数，0～999。
 如：
 [{"date":2011-01-28,"price":10000, "num":10},{"date":2011-01-29,"price":12000,"num":10}]

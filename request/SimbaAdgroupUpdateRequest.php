@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.update request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class SimbaAdgroupUpdateRequest
 {
@@ -119,11 +119,7 @@ class SimbaAdgroupUpdateRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->adgroupId,"adgroupId");
-		RequestCheckUtil::checkNotNull($this->defaultPrice,"defaultPrice");
 		RequestCheckUtil::checkMinValue($this->defaultPrice,5,"defaultPrice");
-		RequestCheckUtil::checkNotNull($this->nonsearchMaxPrice,"nonsearchMaxPrice");
 		RequestCheckUtil::checkMinValue($this->nonsearchMaxPrice,5,"nonsearchMaxPrice");
-		RequestCheckUtil::checkNotNull($this->onlineStatus,"onlineStatus");
-		RequestCheckUtil::checkNotNull($this->useNonsearchDefaultPrice,"useNonsearchDefaultPrice");
 	}
 }

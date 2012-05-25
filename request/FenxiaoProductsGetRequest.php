@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.products.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class FenxiaoProductsGetRequest
 {
@@ -23,6 +23,11 @@ yes:需要授权
 no:不需要授权
 	 **/
 	private $isAuthz;
+	
+	/** 
+	 * 可根据导入的商品ID列表查询，优先级次于产品ID、sku_numbers，高于其他分页查询条件。最大限制20，用逗号分割，例如：“1001,1002,1003,1004,1005”
+	 **/
+	private $itemIds;
 	
 	/** 
 	 * 商家编码
@@ -97,6 +102,17 @@ no:不需要授权
 	public function getIsAuthz()
 	{
 		return $this->isAuthz;
+	}
+
+	public function setItemIds($itemIds)
+	{
+		$this->itemIds = $itemIds;
+		$this->apiParas["item_ids"] = $itemIds;
+	}
+
+	public function getItemIds()
+	{
+		return $this->itemIds;
 	}
 
 	public function setOuterId($outerId)
@@ -200,5 +216,7 @@ no:不需要授权
 	public function check()
 	{
 		
+		RequestCheckUtil::checkMaxListSize($this->itemIds,20,"itemIds");
+		RequestCheckUtil::checkMaxListSize($this->pids,30,"pids");
 	}
 }

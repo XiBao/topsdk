@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class CrmMembersIncrementGetRequest
 {
@@ -13,7 +13,7 @@ class CrmMembersIncrementGetRequest
 	private $currentPage;
 	
 	/** 
-	 * 最迟修改日期，如果不填写此字段，默认为当前时间
+	 * 对应买家 最后一次 确认收货或者关闭交易的时间，如果不填写此字段，默认为当前时间
 	 **/
 	private $endModify;
 	
@@ -28,7 +28,7 @@ class CrmMembersIncrementGetRequest
 	private $pageSize;
 	
 	/** 
-	 * 最早修改日期
+	 * 对应买家 最后一次 确认收货或者关闭交易的时间
 	 **/
 	private $startModify;
 	
@@ -103,6 +103,7 @@ class CrmMembersIncrementGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->grade,4,"grade");
 		RequestCheckUtil::checkMinValue($this->grade,1,"grade");

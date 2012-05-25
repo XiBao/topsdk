@@ -3,12 +3,12 @@
  * TOP API: taobao.wangwang.eservice.receivenum.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class WangwangEserviceReceivenumGetRequest
 {
 	/** 
-	 * 查询接待人数的结束日期
+	 * 查询接待人数的结束日期 时间精确到日 时分秒可以直接传00:00:00
 	 **/
 	private $endDate;
 	
@@ -18,7 +18,7 @@ class WangwangEserviceReceivenumGetRequest
 	private $serviceStaffId;
 	
 	/** 
-	 * 查询接待人数的开始日期
+	 * 查询接待人数的开始日期 时间精确到日 时分秒可直接传 00:00:00
 	 **/
 	private $startDate;
 	

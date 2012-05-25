@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class ItemAddRequest
 {
@@ -117,7 +117,7 @@ fee_card(话费软件代充)
 	private $isLightningConsignment;
 	
 	/** 
-	 * 是否在淘宝上显示
+	 * 是否在淘宝上显示（如果传FALSE，则在淘宝主站无法显示该商品）
 	 **/
 	private $isTaobao;
 	
@@ -152,7 +152,7 @@ fee_card(话费软件代充)
 	private $num;
 	
 	/** 
-	 * 商家编码，该字段的最大长度是512个字节
+	 * 商品外部编码，该字段的最大长度是512个字节
 	 **/
 	private $outerId;
 	
@@ -167,7 +167,7 @@ fee_card(话费软件代充)
 	private $postFee;
 	
 	/** 
-	 * 宝贝所属的运费模板ID。取值范围：整数且必须是该卖家的运费模板的ID（可通过taobao.postages.get获得当前会话用户的所有邮费模板）
+	 * 宝贝所属的运费模板ID。取值范围：整数且必须是该卖家的运费模板的ID（可通过taobao.delivery.template.get获得当前会话用户的所有邮费模板）
 	 **/
 	private $postageId;
 	
@@ -213,7 +213,8 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	private $skuPrices;
 	
 	/** 
-	 * 更新的Sku的属性串，调用taobao.itemprops.get获取类目属性，如果属性是销售属性，再用taobao.itempropvalues.get取得vid。格式:pid:vid;pid:vid,多个sku之间用逗号分隔。该字段内的销售属性也需要在props字段填写。sku的销售属性需要一同选取，如:颜色，尺寸。如果新增商品包含了sku，则此字段一定要传入。这个字段的长度要控制在512个字节以内
+	 * 更新的Sku的属性串，调用taobao.itemprops.get获取类目属性，如果属性是销售属性，再用taobao.itempropvalues.get取得vid。格式:pid:vid;pid:vid,多个sku之间用逗号分隔。该字段内的销售属性（自定义的除外）也需要在props字段填写。sku的销售属性需要一同选取，如:颜色，尺寸。如果新增商品包含了sku，则此字段一定要传入。这个字段的长度要控制在512个字节以内。
+如果有自定义销售属性，则格式为pid:vid;pid2:vid2;$pText:vText , 其中$pText:vText为自定义属性。限制：其中$pText的’$’前缀不能少，且pText和vText文本中不可以存在冒号:和分号;以及逗号，
 	 **/
 	private $skuProperties;
 	

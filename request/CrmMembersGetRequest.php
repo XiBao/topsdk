@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class CrmMembersGetRequest
 {
@@ -18,7 +18,8 @@ class CrmMembersGetRequest
 	private $currentPage;
 	
 	/** 
-	 * 会员等级，1：普通客户，2：高级会员，3：VIP会员， 4：至尊VIP会员
+	 * 会员等级，0：返回所有会员1：普通客户，2：高级会员，3：VIP会员， 4：至尊VIP会员
+(如果要查交易关闭的会员  请选择taobao.crm.members.search接口的 relation_source=2)
 	 **/
 	private $grade;
 	
@@ -184,6 +185,7 @@ class CrmMembersGetRequest
 		
 		RequestCheckUtil::checkMaxLength($this->buyerNick,32,"buyerNick");
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->grade,4,"grade");
 		RequestCheckUtil::checkMinValue($this->grade,1,"grade");
