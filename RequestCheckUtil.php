@@ -22,11 +22,7 @@ class RequestCheckUtil
 	 *
 	 **/
 	public static function checkMaxLength($value,$maxLength,$fieldName){
-<<<<<<< HEAD
-	    $str = mb_convert_encoding($value, 'CP936', 'UTF-8'); 
-=======
 	    $str = mb_convert_encoding($value, 'CP936', 'UTF-8');
->>>>>>> 484208f816b5417b84d485115dc30ca2b18fd81b
 		if(!self::checkEmpty($str) && strlen($str) > $maxLength){
 			throw new Exception("client-check-error:Invalid Arguments:the length of " .$fieldName . " can not be larger than " . $maxLength . "." , 41);
 		}
