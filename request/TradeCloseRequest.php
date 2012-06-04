@@ -3,12 +3,19 @@
  * TOP API: taobao.trade.close request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class TradeCloseRequest
 {
 	/** 
 	 * 交易关闭原因。
+可以选择的理由有：
+1、买家不想买了
+2、信息填写错误，重新拍
+3、卖家缺货
+4、同城见面交易
+5、其他原因
+注：尽量不要传入自定义的关闭理由
 	 **/
 	private $closeReason;
 	

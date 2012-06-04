@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class FenxiaoProductAddRequest
 {
@@ -69,6 +69,11 @@ no:不需要授权
 默认是需要授权
 	 **/
 	private $isAuthz;
+	
+	/** 
+	 * 导入的商品ID
+	 **/
+	private $itemId;
 	
 	/** 
 	 * 产品名称，长度不超过60个字节。
@@ -317,6 +322,17 @@ no:不需要授权
 	public function getIsAuthz()
 	{
 		return $this->isAuthz;
+	}
+
+	public function setItemId($itemId)
+	{
+		$this->itemId = $itemId;
+		$this->apiParas["item_id"] = $itemId;
+	}
+
+	public function getItemId()
+	{
+		return $this->itemId;
 	}
 
 	public function setName($name)

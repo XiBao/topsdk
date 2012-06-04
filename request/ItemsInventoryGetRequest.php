@@ -3,7 +3,7 @@
  * TOP API: taobao.items.inventory.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class ItemsInventoryGetRequest
 {
@@ -63,7 +63,7 @@ modified,delist_time,postage_id,seller_cids,outer_id；字段之间用“,”分
 	private $orderBy;
 	
 	/** 
-	 * 页码。取值范围:大于零小于等于101的整数;默认值为1，即返回第一页数据。用此接口获取数据，当翻页获取的条数（page_no*page_size）超过10万条,为了保护后台搜索引擎，接口将报错。请大家尽可能的细化自己的搜索条件，例如根据修改时间分段获取商品
+	 * 页码。取值范围:大于零小于等于101的整数;默认值为1，即返回第一页数据。当页码超过101页时系统就会报错，故请大家在用此接口获取数据时尽可能的细化自己的搜索条件，例如根据修改时间分段获取商品。
 	 **/
 	private $pageNo;
 	

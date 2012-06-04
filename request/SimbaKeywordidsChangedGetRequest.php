@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keywordids.changed.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class SimbaKeywordidsChangedGetRequest
 {
@@ -87,7 +87,7 @@ class SimbaKeywordidsChangedGetRequest
 	{
 		
 		RequestCheckUtil::checkMinValue($this->pageNo,1,"pageNo");
-		RequestCheckUtil::checkMaxValue($this->pageSize,200,"pageSize");
+		RequestCheckUtil::checkMaxValue($this->pageSize,1000,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 		RequestCheckUtil::checkNotNull($this->startTime,"startTime");
 	}

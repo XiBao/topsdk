@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class FenxiaoProductUpdateRequest
 {
@@ -110,7 +110,7 @@ no:不需要授权
 	private $postageOrdinary;
 	
 	/** 
-	 * 运费类型，可选值：seller（供应商承担运费）、buyer（分销商承担运费），默认seller。
+	 * 运费类型，可选值：seller（供应商承担运费）、buyer（分销商承担运费）。
 	 **/
 	private $postageType;
 	

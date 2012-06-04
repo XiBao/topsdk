@@ -3,7 +3,7 @@
  * TOP API: taobao.products.search request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class ProductsSearchRequest
 {
@@ -34,7 +34,7 @@ class ProductsSearchRequest
 	private $props;
 	
 	/** 
-	 * 搜索的关键词是用来搜索产品的title以及关键属性值的名称.如:"优衣库 1234",这种用来表示查询优衣库这个品牌下的货号为1234的产品;　注:q,cid和props至少传入一个
+	 * 搜索的关键词是用来搜索产品的title.　注:q,cid和props至少传入一个
 	 **/
 	private $q;
 	

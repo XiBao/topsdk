@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.type.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class HotelTypeAddRequest
 {
@@ -16,6 +16,11 @@ class HotelTypeAddRequest
 	 * 房型名称。长度不能超过30
 	 **/
 	private $name;
+	
+	/** 
+	 * 接入卖家数据主键
+	 **/
+	private $siteParam;
 	
 	private $apiParas = array();
 	
@@ -41,6 +46,17 @@ class HotelTypeAddRequest
 		return $this->name;
 	}
 
+	public function setSiteParam($siteParam)
+	{
+		$this->siteParam = $siteParam;
+		$this->apiParas["site_param"] = $siteParam;
+	}
+
+	public function getSiteParam()
+	{
+		return $this->siteParam;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.hotel.type.add";
@@ -58,5 +74,6 @@ class HotelTypeAddRequest
 		RequestCheckUtil::checkMinValue($this->hid,0,"hid");
 		RequestCheckUtil::checkNotNull($this->name,"name");
 		RequestCheckUtil::checkMaxLength($this->name,30,"name");
+		RequestCheckUtil::checkMaxLength($this->siteParam,100,"siteParam");
 	}
 }

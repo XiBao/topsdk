@@ -6,11 +6,7 @@
  * @since 1.0, 2011-12-02 10:10:50
  */
 class SimbaKeywordsQscoreGetRequest
-<<<<<<< HEAD
-{
-=======
 { 
->>>>>>> 484208f816b5417b84d485115dc30ca2b18fd81b
 	/** 
 	 * 推广组Id
 	 **/

@@ -3,14 +3,20 @@
  * TOP API: taobao.itemcats.authorize.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class ItemcatsAuthorizeGetRequest
 {
 	/** 
 	 * 需要返回的字段。目前支持有：
 brand.vid, brand.name, 
-item_cat.cid, item_cat.name, item_cat.status,item_cat.sort_order,item_cat.parent_cid,item_cat.is_parent
+item_cat.cid, item_cat.name, item_cat.status,item_cat.sort_order,item_cat.parent_cid,item_cat.is_parent,
+xinpin_item_cat.cid, 
+xinpin_item_cat.name, 
+xinpin_item_cat.status,
+xinpin_item_cat.sort_order,
+xinpin_item_cat.parent_cid,
+xinpin_item_cat.is_parent
 	 **/
 	private $fields;
 	

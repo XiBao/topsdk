@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.groups.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class CrmGroupsGetRequest
 {
@@ -55,6 +55,7 @@ class CrmGroupsGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");

@@ -3,7 +3,7 @@
  * TOP API: taobao.items.search request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class ItemsSearchRequest
 {
@@ -42,7 +42,7 @@ false：非自动发货
 	private $endVolume;
 	
 	/** 
-	 * 需返回的商品结构字段列表。可选值为Item中的以下字段：num_iid,title,nick,pic_url,cid,price,type,delist_time,post_fee；多个字段之间用“,” 分隔。如：iid,title。新增字段location（卖家地址，可以分别获取location.city,location.state）；score(卖家信用等级数),volume(最近成交量)
+	 * 需返回的商品结构字段列表。可选值为Item中的以下字段：num_iid,title,nick,pic_url,cid,price,type,delist_time,post_fee；多个字段之间用“,” 分隔。如：num_iid,title。新增字段location（卖家地址，可以分别获取location.city,location.state）；score(卖家信用等级数),volume(最近成交量)
 新增字段：has_discount, num, is_prepay, promoted_service, ww_status, list_time
 	 **/
 	private $fields;
@@ -118,7 +118,7 @@ false：非自动发货
 	private $pageSize;
 	
 	/** 
-	 * 免运费（不设置包含所有邮费状态，设置为true结果只有卖家包邮的商品）不能单独使用，要和其他条件一起用才行。
+	 * 免运费（不设置或设置为false为包含所有邮费状态，设置为true结果只有卖家包邮的商品）不能单独使用，要和其他条件一起用才行。
 	 **/
 	private $postFree;
 	

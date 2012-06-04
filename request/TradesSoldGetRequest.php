@@ -3,7 +3,7 @@
  * TOP API: taobao.trades.sold.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class TradesSoldGetRequest
 {
@@ -18,9 +18,14 @@ class TradesSoldGetRequest
 	private $endCreated;
 	
 	/** 
+	 * 可选值有ershou(表示二手市场的订单）,service（商城服务子订单）
+	 **/
+	private $extType;
+	
+	/** 
 	 * 需要返回的字段。目前支持有：<br>
 1. Trade中可以指定返回的fields:<br>
-seller_nick, buyer_nick, title, type, created,  tid, seller_rate, buyer_rate, status, payment, discount_fee, adjust_fee, post_fee, total_fee, pay_time, end_time, modified, consign_time, buyer_obtain_point_fee, point_fee, real_point_fee, received_payment, commission_fee, pic_path, num_iid, num, price, cod_fee, cod_status, shipping_type, receiver_name, receiver_state, receiver_city, receiver_district, receiver_address, receiver_zip, receiver_mobile, receiver_phone，seller_flag <br>
+seller_nick, buyer_nick, title, type, created,  tid, seller_rate, buyer_rate, status, payment, discount_fee, adjust_fee, post_fee, total_fee, pay_time, end_time, modified, consign_time, buyer_obtain_point_fee, point_fee, real_point_fee, received_payment, commission_fee, pic_path, num_iid, num, price, cod_fee, cod_status, shipping_type, receiver_name, receiver_state, receiver_city, receiver_district, receiver_address, receiver_zip, receiver_mobile, receiver_phone,seller_flag,alipay_id,alipay_no,is_lgtype,is_force_wlb,is_brand_sale,buyer_area,has_buyer_message <br>
 2. Order中可以指定返回fields：orders.title, orders.pic_path, orders.price, orders.num, orders.num_iid, orders.sku_id, orders.refund_status, orders.status, orders.oid, orders.total_fee, orders.payment, orders.discount_fee, orders.adjust_fee, orders.sku_properties_name, orders.item_meal_name, orders.buyer_rate, orders.seller_rate, orders.outer_iid, orders.outer_sku_id, orders.refund_id, orders.seller_type <br>
 3. fields：orders（返回2中Order的所有内容）
 	 **/
@@ -92,8 +97,17 @@ b2c_cod(大商家货到付款)
 hotel_trade(酒店类型交易)
 super_market_trade(商超交易)
 super_market_cod_trade(商超货到付款交易)
+taohua(淘花网交易类型）
+waimai(外卖交易类型）
+nopaid（即时到帐/趣味猜交易类型）
+注：guarantee_trade是一个组合查询条件，并不是一种交易类型，获取批量或单个订单中不会返回此种类型的订单。
 	 **/
 	private $type;
+	
+	/** 
+	 * 是否启用has_next的分页方式，如果指定true,则返回的结果中不包含总记录数，但是会新增一个是否存在下一页的的字段，通过此种方式获取增量交易，接口调用成功率在原有的基础上有所提升。
+	 **/
+	private $useHasNext;
 	
 	private $apiParas = array();
 	
@@ -117,6 +131,17 @@ super_market_cod_trade(商超货到付款交易)
 	public function getEndCreated()
 	{
 		return $this->endCreated;
+	}
+
+	public function setExtType($extType)
+	{
+		$this->extType = $extType;
+		$this->apiParas["ext_type"] = $extType;
+	}
+
+	public function getExtType()
+	{
+		return $this->extType;
 	}
 
 	public function setFields($fields)
@@ -205,6 +230,17 @@ super_market_cod_trade(商超货到付款交易)
 	public function getType()
 	{
 		return $this->type;
+	}
+
+	public function setUseHasNext($useHasNext)
+	{
+		$this->useHasNext = $useHasNext;
+		$this->apiParas["use_has_next"] = $useHasNext;
+	}
+
+	public function getUseHasNext()
+	{
+		return $this->useHasNext;
 	}
 
 	public function getApiMethodName()

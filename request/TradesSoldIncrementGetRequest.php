@@ -3,7 +3,7 @@
  * TOP API: taobao.trades.sold.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class TradesSoldIncrementGetRequest
 {
@@ -13,8 +13,13 @@ class TradesSoldIncrementGetRequest
 	private $endModified;
 	
 	/** 
+	 * 可选值有ershou(二手市场的订单）,service（商城服务子订单）作为扩展类型筛选只能做单个ext_type查询，不能全部查询所有的ext_type类型
+	 **/
+	private $extType;
+	
+	/** 
 	 * 需要返回的字段。目前支持有：
-1.Trade中可以指定返回的fields:seller_nick, buyer_nick, title, type, created, tid, seller_rate, buyer_rate, status, payment, discount_fee, adjust_fee, post_fee, total_fee, pay_time, end_time, modified, consign_time, buyer_obtain_point_fee, point_fee, real_point_fee, received_payment, commission_fee, pic_path, num_iid, num, price, cod_fee, cod_status, shipping_type, receiver_name, receiver_state, receiver_city, receiver_district, receiver_address, receiver_zip, receiver_mobile, receiver_phone 
+1.Trade中可以指定返回的fields:seller_nick, buyer_nick, title, type, created, tid, seller_rate, buyer_rate, status, payment, discount_fee, adjust_fee, post_fee, total_fee, pay_time, end_time, modified, consign_time, buyer_obtain_point_fee, point_fee, real_point_fee, received_payment, commission_fee, pic_path, num_iid, num, price, cod_fee, cod_status, shipping_type, receiver_name, receiver_state, receiver_city, receiver_district, receiver_address, receiver_zip, receiver_mobile, receiver_phone,alipay_id,alipay_no,is_lgtype,is_force_wlb,is_brand_sale,has_buyer_message
 2.Order中可以指定返回fields：
 orders.title, orders.pic_path, orders.price, orders.num, orders.num_iid, orders.sku_id, orders.refund_status, orders.status, orders.oid, orders.total_fee, orders.payment, orders.discount_fee, orders.adjust_fee, orders.sku_properties_name, orders.item_meal_name, orders.buyer_rate, orders.seller_rate, orders.outer_iid, orders.outer_sku_id, orders.refund_id, orders.seller_type 
 3.fields：orders（返回Order的所有内容）
@@ -47,8 +52,29 @@ orders.title, orders.pic_path, orders.price, orders.num, orders.num_iid, orders.
 	private $tag;
 	
 	/** 
-	 * 交易类型列表，同时查询多种交易类型可用逗号分隔。默认同时查询guarantee_trade, auto_delivery, ec, cod的4种交易类型的数据 。可选值： fixed(一口价) auction(拍卖) guarantee_trade(一口价、拍卖) independent_simple_trade(旺店入门版交易) independent_shop_trade(旺店标准版交易) auto_delivery(自动发货) ec(直冲) cod(货到付款) fenxiao(分销) game_equipment(游戏装备) shopex_trade(ShopEX交易) netcn_trade(万网交易) external_trade(统一外部交易) instant_trade (即时到账), b2c_cod(大商家货到付款), hotel_trade(酒店类型交易),super_market_trade(商超交易),
+	 * 交易类型列表，同时查询多种交易类型可用逗号分隔。默认同时查询guarantee_trade, auto_delivery, ec, cod的4种交易类型的数据 。
+可选值：
+fixed(一口价)
+auction(拍卖)
+guarantee_trade(一口价、拍卖)
+independent_simple_trade(旺店入门版交易)
+independent_shop_trade(旺店标准版交易)
+auto_delivery(自动发货)
+ec(直冲) cod(货到付款)
+fenxiao(分销)
+game_equipment(游戏装备)
+shopex_trade(ShopEX交易)
+netcn_trade(万网交易)
+external_trade(统一外部交易)
+instant_trade (即时到账)
+b2c_cod(大商家货到付款)
+hotel_trade(酒店类型交易)
+super_market_trade(商超交易),
 super_market_cod_trade(商超货到付款交易)
+taohua(桃花网交易类型）
+waimai(外卖交易类型）
+nopaid（即时到帐/趣味猜交易类型）
+注：guarantee_trade是一个组合查询条件，并不是一种交易类型，获取批量或单个订单中不会返回此种类型的订单。
 	 **/
 	private $type;
 	
@@ -68,6 +94,17 @@ super_market_cod_trade(商超货到付款交易)
 	public function getEndModified()
 	{
 		return $this->endModified;
+	}
+
+	public function setExtType($extType)
+	{
+		$this->extType = $extType;
+		$this->apiParas["ext_type"] = $extType;
+	}
+
+	public function getExtType()
+	{
+		return $this->extType;
 	}
 
 	public function setFields($fields)

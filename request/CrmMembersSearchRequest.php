@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.search request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class CrmMembersSearchRequest
 {
@@ -377,6 +377,7 @@ class CrmMembersSearchRequest
 		
 		RequestCheckUtil::checkMaxLength($this->buyerNick,32,"buyerNick");
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->grade,4,"grade");
 		RequestCheckUtil::checkMinValue($this->grade,1,"grade");

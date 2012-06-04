@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keywords.add request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-05-24 17:27:51
  */
 class SimbaKeywordsAddRequest
 {
@@ -13,8 +13,11 @@ class SimbaKeywordsAddRequest
 	private $adgroupId;
 	
 	/** 
-	 * 关键词和出价字符串数组，最多200个；
-每个字符串由word+”^^”+price组成；关键词出价单位为分，不能小于5，不能大于日限额; price为0则设置为使用默认出价； 关键词不能包含字符”^^”和 ”,”
+	 * 关键词，出价字符串和匹配方式字符串数组，最多200个;每个字符串：word+  ”^^”+price+”^^”+matchscope,
+Price是整数，以“分”为单位，不能小于5，不能大于日限额; 
+price为0则设置为使用默认出价；
+matchscope只能是1,2,4（1代表精确匹配，2代表子串匹配，4代表广泛匹配）可不传。
+关键词不能包含字符”^^”和 ”,”
 	 **/
 	private $keywordPrices;
 	
