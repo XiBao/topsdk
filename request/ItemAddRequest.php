@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class ItemAddRequest
 {
@@ -54,6 +54,76 @@ fee_card(话费软件代充)
 	 * 快递费用。取值范围:0.01-999.00;精确到2位小数;单位:元。如:15.07，表示:15元7分
 	 **/
 	private $expressFee;
+	
+	/** 
+	 * 厂家联系方式
+	 **/
+	private $foodSecurityContact;
+	
+	/** 
+	 * 产品标准号
+	 **/
+	private $foodSecurityDesignCode;
+	
+	/** 
+	 * 厂名
+	 **/
+	private $foodSecurityFactory;
+	
+	/** 
+	 * 厂址
+	 **/
+	private $foodSecurityFactorySite;
+	
+	/** 
+	 * 食品添加剂
+	 **/
+	private $foodSecurityFoodAdditive;
+	
+	/** 
+	 * 配料表
+	 **/
+	private $foodSecurityMix;
+	
+	/** 
+	 * 保质期
+	 **/
+	private $foodSecurityPeriod;
+	
+	/** 
+	 * 储藏方法
+	 **/
+	private $foodSecurityPlanStorage;
+	
+	/** 
+	 * 生产许可证号
+	 **/
+	private $foodSecurityPrdLicenseNo;
+	
+	/** 
+	 * 生产结束日期,格式必须为yyyy-MM-dd
+	 **/
+	private $foodSecurityProductDateEnd;
+	
+	/** 
+	 * 生产开始日期，格式必须为yyyy-MM-dd
+	 **/
+	private $foodSecurityProductDateStart;
+	
+	/** 
+	 * 进货结束日期，要在生产日期之后，格式必须为yyyy-MM-dd
+	 **/
+	private $foodSecurityStockDateEnd;
+	
+	/** 
+	 * 进货开始日期，要在生产日期之后，格式必须为yyyy-MM-dd
+	 **/
+	private $foodSecurityStockDateStart;
+	
+	/** 
+	 * 供货商
+	 **/
+	private $foodSecuritySupplier;
 	
 	/** 
 	 * 运费承担方式。可选值:seller（卖家承担）,buyer(买家承担);默认值:seller。卖家承担不用设置邮费和postage_id.买家承担的时候，必填邮费和postage_id 
@@ -355,6 +425,160 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getExpressFee()
 	{
 		return $this->expressFee;
+	}
+
+	public function setFoodSecurityContact($foodSecurityContact)
+	{
+		$this->foodSecurityContact = $foodSecurityContact;
+		$this->apiParas["food_security.contact"] = $foodSecurityContact;
+	}
+
+	public function getFoodSecurityContact()
+	{
+		return $this->foodSecurityContact;
+	}
+
+	public function setFoodSecurityDesignCode($foodSecurityDesignCode)
+	{
+		$this->foodSecurityDesignCode = $foodSecurityDesignCode;
+		$this->apiParas["food_security.design_code"] = $foodSecurityDesignCode;
+	}
+
+	public function getFoodSecurityDesignCode()
+	{
+		return $this->foodSecurityDesignCode;
+	}
+
+	public function setFoodSecurityFactory($foodSecurityFactory)
+	{
+		$this->foodSecurityFactory = $foodSecurityFactory;
+		$this->apiParas["food_security.factory"] = $foodSecurityFactory;
+	}
+
+	public function getFoodSecurityFactory()
+	{
+		return $this->foodSecurityFactory;
+	}
+
+	public function setFoodSecurityFactorySite($foodSecurityFactorySite)
+	{
+		$this->foodSecurityFactorySite = $foodSecurityFactorySite;
+		$this->apiParas["food_security.factory_site"] = $foodSecurityFactorySite;
+	}
+
+	public function getFoodSecurityFactorySite()
+	{
+		return $this->foodSecurityFactorySite;
+	}
+
+	public function setFoodSecurityFoodAdditive($foodSecurityFoodAdditive)
+	{
+		$this->foodSecurityFoodAdditive = $foodSecurityFoodAdditive;
+		$this->apiParas["food_security.food_additive"] = $foodSecurityFoodAdditive;
+	}
+
+	public function getFoodSecurityFoodAdditive()
+	{
+		return $this->foodSecurityFoodAdditive;
+	}
+
+	public function setFoodSecurityMix($foodSecurityMix)
+	{
+		$this->foodSecurityMix = $foodSecurityMix;
+		$this->apiParas["food_security.mix"] = $foodSecurityMix;
+	}
+
+	public function getFoodSecurityMix()
+	{
+		return $this->foodSecurityMix;
+	}
+
+	public function setFoodSecurityPeriod($foodSecurityPeriod)
+	{
+		$this->foodSecurityPeriod = $foodSecurityPeriod;
+		$this->apiParas["food_security.period"] = $foodSecurityPeriod;
+	}
+
+	public function getFoodSecurityPeriod()
+	{
+		return $this->foodSecurityPeriod;
+	}
+
+	public function setFoodSecurityPlanStorage($foodSecurityPlanStorage)
+	{
+		$this->foodSecurityPlanStorage = $foodSecurityPlanStorage;
+		$this->apiParas["food_security.plan_storage"] = $foodSecurityPlanStorage;
+	}
+
+	public function getFoodSecurityPlanStorage()
+	{
+		return $this->foodSecurityPlanStorage;
+	}
+
+	public function setFoodSecurityPrdLicenseNo($foodSecurityPrdLicenseNo)
+	{
+		$this->foodSecurityPrdLicenseNo = $foodSecurityPrdLicenseNo;
+		$this->apiParas["food_security.prd_license_no"] = $foodSecurityPrdLicenseNo;
+	}
+
+	public function getFoodSecurityPrdLicenseNo()
+	{
+		return $this->foodSecurityPrdLicenseNo;
+	}
+
+	public function setFoodSecurityProductDateEnd($foodSecurityProductDateEnd)
+	{
+		$this->foodSecurityProductDateEnd = $foodSecurityProductDateEnd;
+		$this->apiParas["food_security.product_date_end"] = $foodSecurityProductDateEnd;
+	}
+
+	public function getFoodSecurityProductDateEnd()
+	{
+		return $this->foodSecurityProductDateEnd;
+	}
+
+	public function setFoodSecurityProductDateStart($foodSecurityProductDateStart)
+	{
+		$this->foodSecurityProductDateStart = $foodSecurityProductDateStart;
+		$this->apiParas["food_security.product_date_start"] = $foodSecurityProductDateStart;
+	}
+
+	public function getFoodSecurityProductDateStart()
+	{
+		return $this->foodSecurityProductDateStart;
+	}
+
+	public function setFoodSecurityStockDateEnd($foodSecurityStockDateEnd)
+	{
+		$this->foodSecurityStockDateEnd = $foodSecurityStockDateEnd;
+		$this->apiParas["food_security.stock_date_end"] = $foodSecurityStockDateEnd;
+	}
+
+	public function getFoodSecurityStockDateEnd()
+	{
+		return $this->foodSecurityStockDateEnd;
+	}
+
+	public function setFoodSecurityStockDateStart($foodSecurityStockDateStart)
+	{
+		$this->foodSecurityStockDateStart = $foodSecurityStockDateStart;
+		$this->apiParas["food_security.stock_date_start"] = $foodSecurityStockDateStart;
+	}
+
+	public function getFoodSecurityStockDateStart()
+	{
+		return $this->foodSecurityStockDateStart;
+	}
+
+	public function setFoodSecuritySupplier($foodSecuritySupplier)
+	{
+		$this->foodSecuritySupplier = $foodSecuritySupplier;
+		$this->apiParas["food_security.supplier"] = $foodSecuritySupplier;
+	}
+
+	public function getFoodSecuritySupplier()
+	{
+		return $this->foodSecuritySupplier;
 	}
 
 	public function setFreightPayer($freightPayer)

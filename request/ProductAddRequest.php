@@ -3,7 +3,7 @@
  * TOP API: taobao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class ProductAddRequest
 {
@@ -18,7 +18,7 @@ class ProductAddRequest
 	private $cid;
 	
 	/** 
-	 * 用户自定义属性,结构：pid1:value1;pid2:value2，如果有型号，系列,货号等用: 隔开 例如：“20000:优衣库:型号:001:632501:1234”，表示“品牌:优衣库:型号:001:货号:1234”
+	 * 用户自定义属性,结构：pid1:value1;pid2:value2，如果有型号，系列等子属性用: 隔开 例如：“20000:优衣库:型号:001;632501:1234”，表示“品牌:优衣库:型号:001;货号:1234”
 	 **/
 	private $customerProps;
 	

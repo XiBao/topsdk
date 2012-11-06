@@ -3,23 +3,22 @@
  * TOP API: taobao.topats.itemcats.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class TopatsItemcatsGetRequest
 {
 	/** 
-	 * 商品所属类目ID列表，用半角分号(;)分隔 例如:(18957;19562)。最多可传10个一级类目cid，如果是其他级类目cid，直接忽略
+	 * 一级类目ID列表（非一级类目将会被忽略），用半角逗号(,)分隔，例如:"16,19562"，一次最多可以获取10个类目的增量数据。注：传入0代表获取所有类目的数据。
 	 **/
 	private $cids;
 	
 	/** 
-	 * 输出格式以csv 格式输出基础类目数据或者以json方式输出类目树
+	 * 类目数据输出格式，可选值为：csv, json。
 	 **/
 	private $outputFormat;
 	
 	/** 
-	 * 下载此类目的卖家类型。
-不传默认值视为C卖家
+	 * 卖家类型，可选值：C, B。不传默认值视为C卖家。
 	 **/
 	private $sellerType;
 	

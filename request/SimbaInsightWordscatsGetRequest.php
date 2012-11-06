@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.wordscats.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class SimbaInsightWordscatsGetRequest
 {

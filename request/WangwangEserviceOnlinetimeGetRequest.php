@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.eservice.onlinetime.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-10-18 16:40:40
  */
 class WangwangEserviceOnlinetimeGetRequest
 {
@@ -73,5 +73,10 @@ class WangwangEserviceOnlinetimeGetRequest
 		RequestCheckUtil::checkNotNull($this->endDate,"endDate");
 		RequestCheckUtil::checkNotNull($this->serviceStaffId,"serviceStaffId");
 		RequestCheckUtil::checkNotNull($this->startDate,"startDate");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

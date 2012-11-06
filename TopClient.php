@@ -22,7 +22,7 @@ class TopClient
 
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "top-sdk-php-20120524";
+	protected $sdkVersion = "top-sdk-php-20120730";
 
 	protected function generateSign($params)
 	{
@@ -38,7 +38,6 @@ class TopClient
 		}
 		unset($k, $v);
 		$stringToBeSigned .= $this->secretKey;
-
 		return strtoupper(md5($stringToBeSigned));
 	}
 

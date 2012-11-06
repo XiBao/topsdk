@@ -3,19 +3,14 @@
  * TOP API: taobao.simba.keywords.qscore.get request
  * 
  * @author auto create
- * @since 1.0, 2011-12-02 10:10:50
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class SimbaKeywordsQscoreGetRequest
-{ 
+{
 	/** 
 	 * 推广组Id
 	 **/
 	private $adgroupId;
-	
-	/** 
-	 * 关键词Id数组，最多200个；
-	 **/
-	private $keywordIds;
 	
 	/** 
 	 * 主人昵称
@@ -33,17 +28,6 @@ class SimbaKeywordsQscoreGetRequest
 	public function getAdgroupId()
 	{
 		return $this->adgroupId;
-	}
-
-	public function setKeywordIds($keywordIds)
-	{
-		$this->keywordIds = $keywordIds;
-		$this->apiParas["keyword_ids"] = $keywordIds;
-	}
-
-	public function getKeywordIds()
-	{
-		return $this->keywordIds;
 	}
 
 	public function setNick($nick)
@@ -70,6 +54,6 @@ class SimbaKeywordsQscoreGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkMaxListSize($this->keywordIds,200,"keywordIds");
+		RequestCheckUtil::checkNotNull($this->adgroupId,"adgroupId");
 	}
 }

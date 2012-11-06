@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.eservice.receivenum.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-10-18 16:40:40
  */
 class WangwangEserviceReceivenumGetRequest
 {
@@ -74,5 +74,10 @@ class WangwangEserviceReceivenumGetRequest
 		RequestCheckUtil::checkNotNull($this->serviceStaffId,"serviceStaffId");
 		RequestCheckUtil::checkMaxLength($this->serviceStaffId,1900,"serviceStaffId");
 		RequestCheckUtil::checkNotNull($this->startDate,"startDate");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

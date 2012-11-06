@@ -3,7 +3,7 @@
  * TOP API: taobao.delivery.template.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class DeliveryTemplateAddRequest
 {
@@ -13,17 +13,35 @@ class DeliveryTemplateAddRequest
 	private $assumer;
 	
 	/** 
+	 * 卖家发货地址区域ID
+<br/><br/><font color=blue>可以不填，如果没有填写取卖家默认发货地址的区域ID，如果需要输入必须用taobao.areas.get接口获取.或者参考：http://www.stats.gov.cn/tjbz/xzqhdm/t20080215_402462675.htm 
+</font>
+
+<br/><br/><font color=red>注意：填入该值时必须取您的发货地址最小区域级别ID，比如您的发货地址是：某省XX市xx区（县）时需要填入区(县)的ID，当然有些地方没有区或县可以直接填市级别的ID</font>
+	 **/
+	private $consignAreaId;
+	
+	/** 
 	 * 运费模板的名称，长度不能超过50个字节
 	 **/
 	private $name;
 	
 	/** 
-	 * 增费：输入0.00-999.99（最多包含两位小数）<br/><font color=blue>增费可以为0</font><br/><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
+	 * 增费：输入0.00-999.99（最多包含两位小数）
+
+<br/><br/><font color=blue>增费必须小于等于首费，但是当首费为0时增费可以大于首费</font>
+
+
+<br/><br/><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
 	 **/
 	private $templateAddFees;
 	
 	/** 
-	 * 增费标准：当valuation(记价方式)为0时输入1-9999范围内的整数<br><font color=blue>增费标准目前只能为1</font>
+	 * 增费标准：当valuation(记价方式)为0时输入1-9999范围内的整数<br/><br/><font color=red>当valuation(记价方式)为1时输入0.1-9999.9范围内的小数只能包含以为小数（单位为千克）<br/><br/><font color=blue>当valuation(记价方式)为3时输入0.1-999.9范围内的数值，数值只能包含一位小数（单位为 立方米）
+<br/>
+<br/>
+<br/>
+
 <br><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
 	 **/
 	private $templateAddStandards;
@@ -38,36 +56,54 @@ class DeliveryTemplateAddRequest
 template_start_standards(首费标准)、template_start_fees(首费)、
 template_add_standards(增费标准)、
 template_add_fees(增费)必须与template_types分号数量相同。如果为需要为多个地区指定相同运费则地区之间用“|”隔开即可。</font>
+<font color=red>如果卖家没有传入发货地址则默认地址库的发货地址</font>
 	 **/
 	private $templateDests;
 	
 	/** 
-	 * 首费：输入0.01-999.99（最多包含两位小数）
-<br/><font color=blue> 首费不能为0</font><br><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
+	 * 首费：输入0.00-999.99（最多包含两位小数）
+<br/><br><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
 	 **/
 	private $templateStartFees;
 	
 	/** 
-	 * 首费标准：当valuation(记价方式)为0时输入1-9999范围内的整数<br><font color=blue>首费标准目前只能为1</br>
+	 * 首费标准：当valuation(记价方式)为0时输入1-9999范围内的整数<br/><br/><font color=red>当valuation(记价方式)为1时输入0.1-9999.9范围内的小数只能包含以为小数（单位为千克）<br/><br/><font color=blue>当valuation(记价方式)为3时输入0.1-999.9范围内的数值，数值只能包含一位小数（单位为 立方米）
+<br/>
+<br/>
+<br/>
+
+
+
+
 <br><font color=red>输入的格式分号个数和template_types数量一致，逗号个数必须与template_dests以分号隔开之后一一对应的数量一致</font>
 	 **/
 	private $templateStartStandards;
 	
 	/** 
-	 * 运费方式:平邮 (post),快递公司(express),EMS (ems),货到付款(cod)结构:value1;value2;value3;value4 
+	 * 运费方式:平邮 (post),快递公司(express),EMS (ems),货到付款(cod),物流宝保障速递(wlb),快递保障速递(bzsd),家装物流(furniture)结构:value1;value2;value3;value4 
 如: post;express;ems;cod 
+<br/><br/>
 <br/><font color=red>
 注意:在添加多个运费方式时,字符串中使用 ";" 分号区分
 。template_dests(指定地区)
 template_start_standards(首费标准)、template_start_fees(首费)、template_add_standards(增费标准)、template_add_fees(增费)必须与template_types的分号数量相同. </font>
-<br>
-<font color=blue>普通用户：post,ems,express三种运费方式必须填写一个，不能填写cod。
-货到付款用户：如果填写了cod运费方式，则post,ems,express三种运费方式也必须填写一个，如果没有填写cod则填写的运费方式中必须存在express</font>
+<br><br/><br/>
+
+<font color=blue>
+注意：<br/>
+1、post,ems,express三种运费方式必须填写一个<br/>
+2、只有订购了货到付款用户可以填cod;只有家装物流用户可以填写furniture
+只有订购了保障速递的用户可以填写bzsd,只有物流宝用户可以填写wlb<br/>
+3、如果是货到付款用户当没有填写cod运送方式的时候运费模板会默认继承express的费用为cod的费用<br/>
+4、如果是保障速递户当没有填写bzsd运送方式的时候运费模板会默认继承express的费用为bzsd的费用<br/>
+5、由于3和4的原因所以当是货到付款用户或保障速递用户时如果没填写对应的运送方式express是必须填写的
+</font>
 	 **/
 	private $templateTypes;
 	
 	/** 
-	 * 可选值：0<br>说明：<br>0:表示按宝贝件数计算运费
+	 * 可选值：0<br>说明：<br>0:表示按宝贝件数计算运费 <br>1:表示按宝贝重量计算运费
+ <br>3:表示按宝贝体积计算运费
 	 **/
 	private $valuation;
 	
@@ -82,6 +118,17 @@ template_start_standards(首费标准)、template_start_fees(首费)、template_
 	public function getAssumer()
 	{
 		return $this->assumer;
+	}
+
+	public function setConsignAreaId($consignAreaId)
+	{
+		$this->consignAreaId = $consignAreaId;
+		$this->apiParas["consign_area_id"] = $consignAreaId;
+	}
+
+	public function getConsignAreaId()
+	{
+		return $this->consignAreaId;
 	}
 
 	public function setName($name)

@@ -3,7 +3,7 @@
  * TOP API: taobao.item.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class ItemGetRequest
 {
@@ -16,6 +16,11 @@ class ItemGetRequest
 	 * 商品数字ID
 	 **/
 	private $numIid;
+	
+	/** 
+	 * 商品数字ID(带有跟踪效果)
+	 **/
+	private $trackIid;
 	
 	private $apiParas = array();
 	
@@ -41,6 +46,17 @@ class ItemGetRequest
 		return $this->numIid;
 	}
 
+	public function setTrackIid($trackIid)
+	{
+		$this->trackIid = $trackIid;
+		$this->apiParas["track_iid"] = $trackIid;
+	}
+
+	public function getTrackIid()
+	{
+		return $this->trackIid;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.item.get";
@@ -55,7 +71,6 @@ class ItemGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
-		RequestCheckUtil::checkNotNull($this->numIid,"numIid");
 		RequestCheckUtil::checkMinValue($this->numIid,1,"numIid");
 	}
 }

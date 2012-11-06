@@ -3,12 +3,12 @@
  * TOP API: taobao.sellercenter.user.permissions.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class SellercenterUserPermissionsGetRequest
 {
 	/** 
-	 * 用户标识
+	 * 用户标识，次入参必须为子账号比如zhangsan:cool。如果只输入主账号zhangsan，将报错。
 	 **/
 	private $nick;
 	

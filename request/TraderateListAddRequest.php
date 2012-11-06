@@ -3,12 +3,12 @@
  * TOP API: taobao.traderate.list.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-07-30 16:33:53
  */
 class TraderateListAddRequest
 {
 	/** 
-	 * 是否匿名，卖家评不能匿名。可选值:true(匿名),false(非匿名)。 注意：输入非可选值将会自动转为false；
+	 * 是否匿名，卖家评不能匿名。可选值:true(匿名),false(非匿名)。 注意：如果买家匿名购买，那么买家的评价默认匿名
 	 **/
 	private $anony;
 	
