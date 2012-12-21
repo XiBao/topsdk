@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.type.name.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelTypeNameGetRequest
 {
@@ -57,5 +57,10 @@ class HotelTypeNameGetRequest
 		RequestCheckUtil::checkNotNull($this->hid,"hid");
 		RequestCheckUtil::checkNotNull($this->name,"name");
 		RequestCheckUtil::checkMaxLength($this->name,60,"name");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

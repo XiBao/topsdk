@@ -3,7 +3,7 @@
  * TOP API: taobao.refund.refuse request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class RefundRefuseRequest
 {
@@ -107,5 +107,10 @@ class RefundRefuseRequest
 		RequestCheckUtil::checkNotNull($this->refuseMessage,"refuseMessage");
 		RequestCheckUtil::checkMaxLength($this->refuseMessage,200,"refuseMessage");
 		RequestCheckUtil::checkNotNull($this->tid,"tid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

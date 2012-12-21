@@ -3,7 +3,7 @@
  * TOP API: taobao.products.search request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ProductsSearchRequest
 {
@@ -154,5 +154,10 @@ class ProductsSearchRequest
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
 		RequestCheckUtil::checkMaxLength($this->status,20,"status");
 		RequestCheckUtil::checkMinValue($this->verticalMarket,0,"verticalMarket");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

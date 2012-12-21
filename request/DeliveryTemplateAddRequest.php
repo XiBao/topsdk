@@ -3,7 +3,7 @@
  * TOP API: taobao.delivery.template.add request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class DeliveryTemplateAddRequest
 {
@@ -80,7 +80,7 @@ template_add_fees(增费)必须与template_types分号数量相同。如果为�
 	private $templateStartStandards;
 	
 	/** 
-	 * 运费方式:平邮 (post),快递公司(express),EMS (ems),货到付款(cod),物流宝保障速递(wlb),快递保障速递(bzsd),家装物流(furniture)结构:value1;value2;value3;value4 
+	 * 运费方式:平邮 (post),快递公司(express),EMS (ems),货到付款(cod),物流宝保障速递(wlb),家装物流(furniture)结构:value1;value2;value3;value4 
 如: post;express;ems;cod 
 <br/><br/>
 <br/><font color=red>
@@ -242,5 +242,10 @@ template_start_standards(首费标准)、template_start_fees(首费)、template_
 		RequestCheckUtil::checkNotNull($this->templateStartStandards,"templateStartStandards");
 		RequestCheckUtil::checkNotNull($this->templateTypes,"templateTypes");
 		RequestCheckUtil::checkNotNull($this->valuation,"valuation");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

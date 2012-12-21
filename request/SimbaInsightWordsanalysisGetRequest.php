@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.wordsanalysis.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightWordsanalysisGetRequest
 {
@@ -77,5 +77,10 @@ stu只能是AREA、SOURCE或HPRICE中的一个
 		RequestCheckUtil::checkNotNull($this->stu,"stu");
 		RequestCheckUtil::checkNotNull($this->words,"words");
 		RequestCheckUtil::checkMaxListSize($this->words,200,"words");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

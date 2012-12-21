@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.catmatch.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaAdgroupCatmatchUpdateRequest
 {
@@ -124,5 +124,10 @@ class SimbaAdgroupCatmatchUpdateRequest
 		RequestCheckUtil::checkMinValue($this->maxPrice,5,"maxPrice");
 		RequestCheckUtil::checkNotNull($this->onlineStatus,"onlineStatus");
 		RequestCheckUtil::checkNotNull($this->useDefaultPrice,"useDefaultPrice");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

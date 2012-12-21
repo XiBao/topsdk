@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.catsanalysis.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightCatsanalysisGetRequest
 {
@@ -77,5 +77,10 @@ stu只能是AREA、SOURCE或HPRICE中的一个
 		RequestCheckUtil::checkNotNull($this->categoryIds,"categoryIds");
 		RequestCheckUtil::checkMaxListSize($this->categoryIds,200,"categoryIds");
 		RequestCheckUtil::checkNotNull($this->stu,"stu");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

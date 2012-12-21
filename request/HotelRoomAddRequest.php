@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.room.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelRoomAddRequest
 {
@@ -56,8 +56,13 @@ A：无早，B：单早，C：双早，D：三早，E：多早
 	private $hid;
 	
 	/** 
-	 * 支付类型。可选值：A,B,C,D。分别代表：
-A：全额支付，B：手续费，C：订金，D：手续费/间夜
+	 * 为到店支付卖家特殊使用，代表多种支付类型的房态。room_quotas可选，如果有值，也会处理。
+	 **/
+	private $multiRoomQuotas;
+	
+	/** 
+	 * 支付类型。可选值：A,B,C,D,E。分别代表：
+A：全额支付，B：手续费，C：订金，D：手续费/间夜，E：前台面付
 	 **/
 	private $paymentType;
 	
@@ -70,6 +75,11 @@ A：全额支付，B：手续费，C：订金，D：手续费/间夜
 	 * 商品主图需要关联的图片空间的相对url。这个url所对应的图片必须要属于当前用户。pic_path和image只需要传入一个,如果两个都传，默认选择pic_path
 	 **/
 	private $picPath;
+	
+	/** 
+	 * 价格类型。可选值：A,B。分别代表：A：参考预订价，B实时预订价 。未选该参数默认为参考预订价。选择实时预订价的情况下，支付类型必须选择为A(全额支付)
+	 **/
+	private $priceType;
 	
 	/** 
 	 * 房型id。必须为数字。
@@ -216,6 +226,17 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		return $this->hid;
 	}
 
+	public function setMultiRoomQuotas($multiRoomQuotas)
+	{
+		$this->multiRoomQuotas = $multiRoomQuotas;
+		$this->apiParas["multi_room_quotas"] = $multiRoomQuotas;
+	}
+
+	public function getMultiRoomQuotas()
+	{
+		return $this->multiRoomQuotas;
+	}
+
 	public function setPaymentType($paymentType)
 	{
 		$this->paymentType = $paymentType;
@@ -247,6 +268,17 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 	public function getPicPath()
 	{
 		return $this->picPath;
+	}
+
+	public function setPriceType($priceType)
+	{
+		$this->priceType = $priceType;
+		$this->apiParas["price_type"] = $priceType;
+	}
+
+	public function getPriceType()
+	{
+		return $this->priceType;
 	}
 
 	public function setRid($rid)
@@ -356,12 +388,17 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		RequestCheckUtil::checkNotNull($this->hid,"hid");
 		RequestCheckUtil::checkNotNull($this->paymentType,"paymentType");
 		RequestCheckUtil::checkMaxLength($this->paymentType,1,"paymentType");
+		RequestCheckUtil::checkMaxLength($this->priceType,1,"priceType");
 		RequestCheckUtil::checkNotNull($this->rid,"rid");
-		RequestCheckUtil::checkNotNull($this->roomQuotas,"roomQuotas");
 		RequestCheckUtil::checkMaxLength($this->siteParam,100,"siteParam");
 		RequestCheckUtil::checkMaxLength($this->size,1,"size");
 		RequestCheckUtil::checkMaxLength($this->storey,8,"storey");
 		RequestCheckUtil::checkNotNull($this->title,"title");
-		RequestCheckUtil::checkMaxLength($this->title,60,"title");
+		RequestCheckUtil::checkMaxLength($this->title,90,"title");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

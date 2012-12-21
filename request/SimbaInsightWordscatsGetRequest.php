@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.wordscats.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightWordscatsGetRequest
 {
@@ -74,5 +74,10 @@ class SimbaInsightWordscatsGetRequest
 		RequestCheckUtil::checkNotNull($this->filter,"filter");
 		RequestCheckUtil::checkNotNull($this->wordCategories,"wordCategories");
 		RequestCheckUtil::checkMaxListSize($this->wordCategories,200,"wordCategories");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keywords.delete request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaKeywordsDeleteRequest
 {
@@ -13,7 +13,7 @@ class SimbaKeywordsDeleteRequest
 	private $campaignId;
 	
 	/** 
-	 * 关键词Id数组，最多200个
+	 * 关键词Id数组，最多100个
 	 **/
 	private $keywordIds;
 	
@@ -72,6 +72,11 @@ class SimbaKeywordsDeleteRequest
 		
 		RequestCheckUtil::checkNotNull($this->campaignId,"campaignId");
 		RequestCheckUtil::checkNotNull($this->keywordIds,"keywordIds");
-		RequestCheckUtil::checkMaxListSize($this->keywordIds,200,"keywordIds");
+		RequestCheckUtil::checkMaxListSize($this->keywordIds,100,"keywordIds");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

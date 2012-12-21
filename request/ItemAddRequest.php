@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ItemAddRequest
 {
@@ -132,6 +132,15 @@ fee_card(话费软件代充)
 	private $freightPayer;
 	
 	/** 
+	 * 针对全球购卖家的库存类型业务，
+有两种库存类型：现货和代购
+参数值为1时代表现货，值为2时代表代购
+如果传值为这两个值之外的值，会报错;
+如果不是全球购卖家，这两个值即使设置也不会处理
+	 **/
+	private $globalStockType;
+	
+	/** 
 	 * 支持会员打折。可选值:true,false;默认值:false(不打折)
 	 **/
 	private $hasDiscount;
@@ -197,6 +206,20 @@ fee_card(话费软件代充)
 	private $isXinpin;
 	
 	/** 
+	 * 表示商品的体积，如果需要使用按体积计费的运费模板，一定要设置这个值。该值的单位为立方米（m3），如果是其他单位，请转换成成立方米。
+该值支持两种格式的设置：格式1：bulk:3,单位为立方米(m3),表示直接设置为商品的体积。格式2：length:10;breadth:10;height:10，单位为米（m）。体积和长宽高都支持小数类型。
+在传入体积或长宽高时候，不能带单位。体积的单位默认为立方米（m3），长宽高的单位默认为米(m)
+该值支持两种格式的设置：格式1：bulk:3,单位为立方米(m3),表示直接设置为商品的体积。格式2：length:10;breadth:10;height:10，单位为米（m）
+	 **/
+	private $itemSize;
+	
+	/** 
+	 * 商品的重量，用于按重量计费的运费模板。注意：单位为kg。
+只能传入数值类型（包含小数），不能带单位，单位默认为kg。
+	 **/
+	private $itemWeight;
+	
+	/** 
 	 * 商品文字的字符集。繁体传入"zh_HK"，简体传入"zh_CN"，不传默认为简体
 	 **/
 	private $lang;
@@ -205,6 +228,41 @@ fee_card(话费软件代充)
 	 * 定时上架时间。(时间格式：yyyy-MM-dd HH:mm:ss)
 	 **/
 	private $listTime;
+	
+	/** 
+	 * 发布电子凭证宝贝时候表示是否使用邮寄 0: 代表不使用邮寄； 1：代表使用邮寄；如果不设置这个值，代表不使用邮寄
+	 **/
+	private $localityLifeChooseLogis;
+	
+	/** 
+	 * 本地生活电子交易凭证业务，目前此字段只涉及到的信息为有效期;
+如果有效期为起止日期类型，此值为2012-08-06,2012-08-16
+如果有效期为【购买成功日 至】类型则格式为2012-08-16
+如果有效期为天数类型则格式为15
+	 **/
+	private $localityLifeExpirydate;
+	
+	/** 
+	 * 码商信息，格式为 码商id:nick
+	 **/
+	private $localityLifeMerchant;
+	
+	/** 
+	 * 网点ID
+	 **/
+	private $localityLifeNetworkId;
+	
+	/** 
+	 * 退款比例，
+百分比%前的数字,1-100的正整数值
+	 **/
+	private $localityLifeRefundRatio;
+	
+	/** 
+	 * 核销打款 
+1代表核销打款 0代表非核销打款
+	 **/
+	private $localityLifeVerification;
 	
 	/** 
 	 * 所在地城市。如杭州 。可以通过http://dl.open.taobao.com/sdk/商品城市列表.rar查询
@@ -260,6 +318,16 @@ fee_card(话费软件代充)
 	 * 商品属性列表。格式:pid:vid;pid:vid。属性的pid调用taobao.itemprops.get取得，属性值的vid用taobao.itempropvalues.get取得vid。 如果该类目下面没有属性，可以不用填写。如果有属性，必选属性必填，其他非必选属性可以选择不填写.属性不能超过35对。所有属性加起来包括分割符不能超过549字节，单个属性没有限制。 如果有属性是可输入的话，则用字段input_str填入属性的值
 	 **/
 	private $props;
+	
+	/** 
+	 * 景区门票在选择订金支付时候，需要交的预订费。传入的值是1到20之间的数值，小数点后最多可以保留两位（多余的部分将做四舍五入的处理）。这个数值表示的是预订费的比例，最终的预订费为 scenic_ticket_book_cost乘一口价除以100
+	 **/
+	private $scenicTicketBookCost;
+	
+	/** 
+	 * 景区门票类宝贝发布时候，当卖家签订了支付宝代扣协议时候，需要选择支付方式：全额支付和订金支付。当scenic_ticket_pay_way为1时表示全额支付，为2时表示订金支付
+	 **/
+	private $scenicTicketPayWay;
 	
 	/** 
 	 * 是否承诺退换货服务!虚拟商品无须设置此项!
@@ -592,6 +660,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		return $this->freightPayer;
 	}
 
+	public function setGlobalStockType($globalStockType)
+	{
+		$this->globalStockType = $globalStockType;
+		$this->apiParas["global_stock_type"] = $globalStockType;
+	}
+
+	public function getGlobalStockType()
+	{
+		return $this->globalStockType;
+	}
+
 	public function setHasDiscount($hasDiscount)
 	{
 		$this->hasDiscount = $hasDiscount;
@@ -735,6 +814,28 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		return $this->isXinpin;
 	}
 
+	public function setItemSize($itemSize)
+	{
+		$this->itemSize = $itemSize;
+		$this->apiParas["item_size"] = $itemSize;
+	}
+
+	public function getItemSize()
+	{
+		return $this->itemSize;
+	}
+
+	public function setItemWeight($itemWeight)
+	{
+		$this->itemWeight = $itemWeight;
+		$this->apiParas["item_weight"] = $itemWeight;
+	}
+
+	public function getItemWeight()
+	{
+		return $this->itemWeight;
+	}
+
 	public function setLang($lang)
 	{
 		$this->lang = $lang;
@@ -755,6 +856,72 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getListTime()
 	{
 		return $this->listTime;
+	}
+
+	public function setLocalityLifeChooseLogis($localityLifeChooseLogis)
+	{
+		$this->localityLifeChooseLogis = $localityLifeChooseLogis;
+		$this->apiParas["locality_life.choose_logis"] = $localityLifeChooseLogis;
+	}
+
+	public function getLocalityLifeChooseLogis()
+	{
+		return $this->localityLifeChooseLogis;
+	}
+
+	public function setLocalityLifeExpirydate($localityLifeExpirydate)
+	{
+		$this->localityLifeExpirydate = $localityLifeExpirydate;
+		$this->apiParas["locality_life.expirydate"] = $localityLifeExpirydate;
+	}
+
+	public function getLocalityLifeExpirydate()
+	{
+		return $this->localityLifeExpirydate;
+	}
+
+	public function setLocalityLifeMerchant($localityLifeMerchant)
+	{
+		$this->localityLifeMerchant = $localityLifeMerchant;
+		$this->apiParas["locality_life.merchant"] = $localityLifeMerchant;
+	}
+
+	public function getLocalityLifeMerchant()
+	{
+		return $this->localityLifeMerchant;
+	}
+
+	public function setLocalityLifeNetworkId($localityLifeNetworkId)
+	{
+		$this->localityLifeNetworkId = $localityLifeNetworkId;
+		$this->apiParas["locality_life.network_id"] = $localityLifeNetworkId;
+	}
+
+	public function getLocalityLifeNetworkId()
+	{
+		return $this->localityLifeNetworkId;
+	}
+
+	public function setLocalityLifeRefundRatio($localityLifeRefundRatio)
+	{
+		$this->localityLifeRefundRatio = $localityLifeRefundRatio;
+		$this->apiParas["locality_life.refund_ratio"] = $localityLifeRefundRatio;
+	}
+
+	public function getLocalityLifeRefundRatio()
+	{
+		return $this->localityLifeRefundRatio;
+	}
+
+	public function setLocalityLifeVerification($localityLifeVerification)
+	{
+		$this->localityLifeVerification = $localityLifeVerification;
+		$this->apiParas["locality_life.verification"] = $localityLifeVerification;
+	}
+
+	public function getLocalityLifeVerification()
+	{
+		return $this->localityLifeVerification;
 	}
 
 	public function setLocationCity($locationCity)
@@ -876,6 +1043,28 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getProps()
 	{
 		return $this->props;
+	}
+
+	public function setScenicTicketBookCost($scenicTicketBookCost)
+	{
+		$this->scenicTicketBookCost = $scenicTicketBookCost;
+		$this->apiParas["scenic_ticket_book_cost"] = $scenicTicketBookCost;
+	}
+
+	public function getScenicTicketBookCost()
+	{
+		return $this->scenicTicketBookCost;
+	}
+
+	public function setScenicTicketPayWay($scenicTicketPayWay)
+	{
+		$this->scenicTicketPayWay = $scenicTicketPayWay;
+		$this->apiParas["scenic_ticket_pay_way"] = $scenicTicketPayWay;
+	}
+
+	public function getScenicTicketPayWay()
+	{
+		return $this->scenicTicketPayWay;
 	}
 
 	public function setSellPromise($sellPromise)
@@ -1039,5 +1228,10 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		RequestCheckUtil::checkNotNull($this->title,"title");
 		RequestCheckUtil::checkMaxLength($this->title,60,"title");
 		RequestCheckUtil::checkNotNull($this->type,"type");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.orders.detail.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class LogisticsOrdersDetailGetRequest
 {
@@ -216,5 +216,10 @@ class LogisticsOrdersDetailGetRequest
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

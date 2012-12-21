@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.sku.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class FenxiaoProductSkuAddRequest
 {
@@ -38,7 +38,7 @@ class FenxiaoProductSkuAddRequest
 	private $skuNumber;
 	
 	/** 
-	 * 市场价，最大值1000000000
+	 * 采购基准价，最大值1000000000
 	 **/
 	private $standardPrice;
 	
@@ -139,5 +139,10 @@ class FenxiaoProductSkuAddRequest
 		RequestCheckUtil::checkMaxValue($this->quantity,1000000,"quantity");
 		RequestCheckUtil::checkMinValue($this->quantity,0,"quantity");
 		RequestCheckUtil::checkNotNull($this->standardPrice,"standardPrice");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keyword.keywordforecast.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaKeywordKeywordforecastGetRequest
 {
@@ -72,5 +72,10 @@ class SimbaKeywordKeywordforecastGetRequest
 		
 		RequestCheckUtil::checkNotNull($this->bidwordPrice,"bidwordPrice");
 		RequestCheckUtil::checkNotNull($this->keywordId,"keywordId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

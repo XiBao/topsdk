@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelAddRequest
 {
@@ -13,7 +13,7 @@ class HotelAddRequest
 	private $address;
 	
 	/** 
-	 * 城市编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时默认为0
+	 * 城市编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时，输入对应国家的海外城市编码，可调用海外城市查询接口获取
 	 **/
 	private $city;
 	
@@ -342,5 +342,10 @@ parking：停车场，airportShuttle：机场接送，rentCar：租车，meeting
 		RequestCheckUtil::checkMaxValue($this->storeys,9999,"storeys");
 		RequestCheckUtil::checkMinValue($this->storeys,0,"storeys");
 		RequestCheckUtil::checkMaxLength($this->tel,32,"tel");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

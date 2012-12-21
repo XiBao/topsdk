@@ -3,7 +3,7 @@
  * TOP API: taobao.picture.upload request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class PictureUploadRequest
 {
@@ -89,5 +89,10 @@ class PictureUploadRequest
 		RequestCheckUtil::checkNotNull($this->imageInputTitle,"imageInputTitle");
 		RequestCheckUtil::checkNotNull($this->img,"img");
 		RequestCheckUtil::checkNotNull($this->pictureCategoryId,"pictureCategoryId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.itemcats.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ItemcatsIncrementGetRequest
 {
@@ -18,9 +18,9 @@ class ItemcatsIncrementGetRequest
 	private $days;
 	
 	/** 
-	 * 卖家类型，可选值：C, B。不传默认值视为C卖家。
+	 * 获取类目的类型：1代表集市、2代表天猫
 	 **/
-	private $sellerType;
+	private $type;
 	
 	private $apiParas = array();
 	
@@ -46,15 +46,15 @@ class ItemcatsIncrementGetRequest
 		return $this->days;
 	}
 
-	public function setSellerType($sellerType)
+	public function setType($type)
 	{
-		$this->sellerType = $sellerType;
-		$this->apiParas["seller_type"] = $sellerType;
+		$this->type = $type;
+		$this->apiParas["type"] = $type;
 	}
 
-	public function getSellerType()
+	public function getType()
 	{
-		return $this->sellerType;
+		return $this->type;
 	}
 
 	public function getApiMethodName()
@@ -74,5 +74,12 @@ class ItemcatsIncrementGetRequest
 		RequestCheckUtil::checkMaxListSize($this->cids,1000,"cids");
 		RequestCheckUtil::checkMaxValue($this->days,7,"days");
 		RequestCheckUtil::checkMinValue($this->days,1,"days");
+		RequestCheckUtil::checkMaxValue($this->type,2,"type");
+		RequestCheckUtil::checkMinValue($this->type,1,"type");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

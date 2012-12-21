@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.eservice.onlinetime.get request
  * 
  * @author auto create
- * @since 1.0, 2012-10-18 16:40:40
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class WangwangEserviceOnlinetimeGetRequest
 {

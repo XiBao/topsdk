@@ -3,7 +3,7 @@
  * TOP API: taobao.items.list.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ItemsListGetRequest
 {
@@ -71,5 +71,10 @@ class ItemsListGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

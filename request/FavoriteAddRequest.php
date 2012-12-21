@@ -3,7 +3,7 @@
  * TOP API: taobao.favorite.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class FavoriteAddRequest
 {
@@ -73,5 +73,10 @@ class FavoriteAddRequest
 		RequestCheckUtil::checkNotNull($this->collectType,"collectType");
 		RequestCheckUtil::checkNotNull($this->itemNumid,"itemNumid");
 		RequestCheckUtil::checkMinValue($this->itemNumid,1,"itemNumid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

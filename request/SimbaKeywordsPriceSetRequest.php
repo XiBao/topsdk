@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keywords.price.set request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaKeywordsPriceSetRequest
 {
@@ -13,7 +13,7 @@ class SimbaKeywordsPriceSetRequest
 	private $adgroupId;
 	
 	/** 
-	 * 关键词Id出价字符串和匹配方式字符串数组，最多200个;
+	 * 关键词Id出价字符串和匹配方式字符串数组，最多100个;
 每个字符串：keywordId+  ”^^”+price+”^^”+matchscope；
 Price是整数，以“分”为单位，不能小于5，不能大于日限额; 如果该词为无展现词，出价需要大于原来出价，才会生效。
 price为0则设置为使用默认出价；
@@ -76,6 +76,11 @@ matchscope只能是1,2,4 (1代表精确匹配，2代表子串匹配，4代表广
 	{
 		
 		RequestCheckUtil::checkNotNull($this->keywordidPrices,"keywordidPrices");
-		RequestCheckUtil::checkMaxListSize($this->keywordidPrices,200,"keywordidPrices");
+		RequestCheckUtil::checkMaxListSize($this->keywordidPrices,100,"keywordidPrices");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.delivery.template.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class DeliveryTemplateUpdateRequest
 {
@@ -192,5 +192,10 @@ template_add_fees(增费)必须与template_types分号数量相同。如果为�
 		RequestCheckUtil::checkNotNull($this->templateStartFees,"templateStartFees");
 		RequestCheckUtil::checkNotNull($this->templateStartStandards,"templateStartStandards");
 		RequestCheckUtil::checkNotNull($this->templateTypes,"templateTypes");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

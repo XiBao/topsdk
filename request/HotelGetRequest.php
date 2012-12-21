@@ -3,10 +3,15 @@
  * TOP API: taobao.hotel.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelGetRequest
 {
+	/** 
+	 * true表示查询酒店审核状态，false表示查询已审核通过酒店详细信息
+	 **/
+	private $checkAudit;
+	
 	/** 
 	 * 要查询的酒店id。必须为数字
 	 **/
@@ -19,6 +24,17 @@ class HotelGetRequest
 	
 	private $apiParas = array();
 	
+	public function setCheckAudit($checkAudit)
+	{
+		$this->checkAudit = $checkAudit;
+		$this->apiParas["check_audit"] = $checkAudit;
+	}
+
+	public function getCheckAudit()
+	{
+		return $this->checkAudit;
+	}
+
 	public function setHid($hid)
 	{
 		$this->hid = $hid;
@@ -55,5 +71,10 @@ class HotelGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->hid,"hid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

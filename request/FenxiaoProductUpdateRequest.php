@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class FenxiaoProductUpdateRequest
 {
@@ -181,12 +181,12 @@ no:不需要授权
 	private $skuQuantitys;
 	
 	/** 
-	 * sku市场价，单位元，例："10.50,11.00,20.50"，字段必须和上面的sku_ids或sku_properties保持一致。
+	 * sku采购基准价，单位元，例："10.50,11.00,20.50"，字段必须和上面的sku_ids或sku_properties保持一致。
 	 **/
 	private $skuStandardPrices;
 	
 	/** 
-	 * 标准价格，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
+	 * 采购基准价，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
 	 **/
 	private $standardPrice;
 	
@@ -618,5 +618,10 @@ no:不需要授权
 	{
 		
 		RequestCheckUtil::checkNotNull($this->pid,"pid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

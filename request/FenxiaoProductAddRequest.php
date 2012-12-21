@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class FenxiaoProductAddRequest
 {
@@ -176,7 +176,7 @@ no:不需要授权
 	private $skuQuantitys;
 	
 	/** 
-	 * sku的市场价。如果多个，用逗号分隔，并与其他sku信息保持相同顺序
+	 * sku的采购基准价。如果多个，用逗号分隔，并与其他sku信息保持相同顺序
 	 **/
 	private $skuStandardPrices;
 	
@@ -615,5 +615,10 @@ no:不需要授权
 		RequestCheckUtil::checkNotNull($this->retailPriceHigh,"retailPriceHigh");
 		RequestCheckUtil::checkNotNull($this->retailPriceLow,"retailPriceLow");
 		RequestCheckUtil::checkNotNull($this->standardPrice,"standardPrice");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

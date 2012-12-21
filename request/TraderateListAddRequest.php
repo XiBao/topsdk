@@ -3,7 +3,7 @@
  * TOP API: taobao.traderate.list.add request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class TraderateListAddRequest
 {
@@ -105,5 +105,10 @@ class TraderateListAddRequest
 		RequestCheckUtil::checkNotNull($this->result,"result");
 		RequestCheckUtil::checkNotNull($this->role,"role");
 		RequestCheckUtil::checkNotNull($this->tid,"tid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

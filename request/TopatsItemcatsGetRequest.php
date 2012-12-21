@@ -3,24 +3,24 @@
  * TOP API: taobao.topats.itemcats.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class TopatsItemcatsGetRequest
 {
 	/** 
-	 * 一级类目ID列表（非一级类目将会被忽略），用半角逗号(,)分隔，例如:"16,19562"，一次最多可以获取10个类目的增量数据。注：传入0代表获取所有类目的数据。
+	 * 一级类目ID列表（非一级类目将会被忽略），用半角逗号(,)分隔，例如:"16,19562"，一次最多可以获取10个类目的增量数据。<span style="color:red">注：传入0代表获取所有类目的数据,默认获取所有类目数据</span>
 	 **/
 	private $cids;
 	
 	/** 
-	 * 类目数据输出格式，可选值为：csv, json。
+	 * 类目数据输出格式，可选值为：csv, json（默认csv格式返回）
 	 **/
 	private $outputFormat;
 	
 	/** 
-	 * 卖家类型，可选值：C, B。不传默认值视为C卖家。
+	 * 获取类目的类型：1代表集市、2代表天猫
 	 **/
-	private $sellerType;
+	private $type;
 	
 	private $apiParas = array();
 	
@@ -46,15 +46,15 @@ class TopatsItemcatsGetRequest
 		return $this->outputFormat;
 	}
 
-	public function setSellerType($sellerType)
+	public function setType($type)
 	{
-		$this->sellerType = $sellerType;
-		$this->apiParas["seller_type"] = $sellerType;
+		$this->type = $type;
+		$this->apiParas["type"] = $type;
 	}
 
-	public function getSellerType()
+	public function getType()
 	{
-		return $this->sellerType;
+		return $this->type;
 	}
 
 	public function getApiMethodName()
@@ -70,7 +70,12 @@ class TopatsItemcatsGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->cids,"cids");
-		RequestCheckUtil::checkNotNull($this->outputFormat,"outputFormat");
+		RequestCheckUtil::checkMaxValue($this->type,2,"type");
+		RequestCheckUtil::checkMinValue($this->type,1,"type");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

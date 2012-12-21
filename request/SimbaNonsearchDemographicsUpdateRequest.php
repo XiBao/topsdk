@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.nonsearch.demographics.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaNonsearchDemographicsUpdateRequest
 {
@@ -73,5 +73,10 @@ incrementalPrice是整数，以“分”为单位，不能小于1，不能大于
 		
 		RequestCheckUtil::checkNotNull($this->campaignId,"campaignId");
 		RequestCheckUtil::checkNotNull($this->demographicIdPriceJson,"demographicIdPriceJson");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.sold.orders.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelSoldOrdersIncrementGetRequest
 {
@@ -153,5 +153,10 @@ class HotelSoldOrdersIncrementGetRequest
 		RequestCheckUtil::checkNotNull($this->endModified,"endModified");
 		RequestCheckUtil::checkNotNull($this->startModified,"startModified");
 		RequestCheckUtil::checkMaxLength($this->status,1,"status");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

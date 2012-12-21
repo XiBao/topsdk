@@ -3,7 +3,7 @@
  * TOP API: taobao.promotion.coupondetail.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class PromotionCoupondetailGetRequest
 {
@@ -16,6 +16,11 @@ class PromotionCoupondetailGetRequest
 	 * 优惠券的id
 	 **/
 	private $couponId;
+	
+	/** 
+	 * 优惠券截至时间 如果截至日期不输入的话，查询当前日期向前15天的数据，否则，查询输入的截至日期向前15天的数据。
+	 **/
+	private $endTime;
 	
 	/** 
 	 * 查询的页号，结果集是分页返回的，每页20条
@@ -54,6 +59,17 @@ class PromotionCoupondetailGetRequest
 	public function getCouponId()
 	{
 		return $this->couponId;
+	}
+
+	public function setEndTime($endTime)
+	{
+		$this->endTime = $endTime;
+		$this->apiParas["end_time"] = $endTime;
+	}
+
+	public function getEndTime()
+	{
+		return $this->endTime;
 	}
 
 	public function setPageNo($pageNo)
@@ -104,5 +120,10 @@ class PromotionCoupondetailGetRequest
 		
 		RequestCheckUtil::checkNotNull($this->couponId,"couponId");
 		RequestCheckUtil::checkMaxValue($this->pageSize,20,"pageSize");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

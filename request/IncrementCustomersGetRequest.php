@@ -3,7 +3,7 @@
  * TOP API: taobao.increment.customers.get request
  * 
  * @author auto create
- * @since 1.0, 2012-11-27 14:27:20
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class IncrementCustomersGetRequest
 {

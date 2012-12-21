@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.onlineitems.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaAdgroupOnlineitemsGetRequest
 {
@@ -23,7 +23,7 @@ class SimbaAdgroupOnlineitemsGetRequest
 	private $orderField;
 	
 	/** 
-	 * 页码，从1开始
+	 * 页码，从1开始,最大50。最大只能获取1W个宝贝
 	 **/
 	private $pageNo;
 	
@@ -102,5 +102,12 @@ class SimbaAdgroupOnlineitemsGetRequest
 	public function check()
 	{
 		
+		RequestCheckUtil::checkMaxValue($this->pageNo,50,"pageNo");
+		RequestCheckUtil::checkMaxValue($this->pageSize,200,"pageSize");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

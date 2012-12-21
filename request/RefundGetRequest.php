@@ -3,7 +3,7 @@
  * TOP API: taobao.refund.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class RefundGetRequest
 {
@@ -58,5 +58,10 @@ class RefundGetRequest
 		RequestCheckUtil::checkNotNull($this->refundId,"refundId");
 		RequestCheckUtil::checkMaxValue($this->refundId,9223372036854775807,"refundId");
 		RequestCheckUtil::checkMinValue($this->refundId,1,"refundId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

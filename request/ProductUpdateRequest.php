@@ -3,7 +3,7 @@
  * TOP API: taobao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ProductUpdateRequest
 {
@@ -41,6 +41,11 @@ class ProductUpdateRequest
 	 * 外部产品ID
 	 **/
 	private $outerId;
+	
+	/** 
+	 * 保证清单。
+	 **/
+	private $packingList;
 	
 	/** 
 	 * 产品市场价.精确到2位小数;单位为元.如:200.07
@@ -136,6 +141,17 @@ class ProductUpdateRequest
 		return $this->outerId;
 	}
 
+	public function setPackingList($packingList)
+	{
+		$this->packingList = $packingList;
+		$this->apiParas["packing_list"] = $packingList;
+	}
+
+	public function getPackingList()
+	{
+		return $this->packingList;
+	}
+
 	public function setPrice($price)
 	{
 		$this->price = $price;
@@ -183,5 +199,10 @@ class ProductUpdateRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->productId,"productId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

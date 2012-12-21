@@ -3,7 +3,7 @@
  * TOP API: taobao.topats.simba.campkeywordbase.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class TopatsSimbaCampkeywordbaseGetRequest
 {
@@ -106,5 +106,10 @@ class TopatsSimbaCampkeywordbaseGetRequest
 		RequestCheckUtil::checkNotNull($this->searchType,"searchType");
 		RequestCheckUtil::checkNotNull($this->source,"source");
 		RequestCheckUtil::checkNotNull($this->timeSlot,"timeSlot");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

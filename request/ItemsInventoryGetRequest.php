@@ -3,7 +3,7 @@
  * TOP API: taobao.items.inventory.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ItemsInventoryGetRequest
 {
@@ -248,5 +248,10 @@ modified,delist_time,postage_id,seller_cids,outer_id；字段之间用“,”分
 		RequestCheckUtil::checkMinValue($this->cid,0,"cid");
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
 		RequestCheckUtil::checkMaxListSize($this->sellerCids,32,"sellerCids");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.offline.send request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class LogisticsOfflineSendRequest
 {
@@ -13,24 +13,24 @@ class LogisticsOfflineSendRequest
 	private $cancelId;
 	
 	/** 
-	 * 物流公司代码.如"POST"就代表中国邮政,"ZJS"就代表宅急送.调用 taobao.logistics.companies.get 获取。非淘宝官方物流合作公司，填写“其他”。
+	 * 物流公司代码.如"POST"就代表中国邮政,"ZJS"就代表宅急送.调用 taobao.logistics.companies.get 获取。非淘宝官方物流合作公司，填写具体的物流公司名称，如“顺丰”。
 	 **/
 	private $companyCode;
 	
 	/** 
 	 * feature参数格式<br>
-范例: mobileCode=tid1:手机串号1,手机串号2|tid2:手机串号3;machineCode=tid3:3C机器号A,3C机器号B<br>
-mobileCode无忧购的KEY,machineCode为3C的KEY,多个key之间用”;”分隔<br>
-“tid1:手机串号1,手机串号2|tid2:手机串号3”为mobileCode对应的value。
+范例: identCode=tid1:识别码1,识别码2|tid2:识别码3;machineCode=tid3:3C机器号A,3C机器号B<br>
+identCode为识别码的KEY,machineCode为3C的KEY,多个key之间用”;”分隔<br>
+“tid1:识别码1,识别码2|tid2:识别码3”为identCode对应的value。
 "|"不同商品间的分隔符。<br>
-例A商品和B商品都属于无忧购商品，之间就用"|"分开。<br>
+例1商品和2商品，之间就用"|"分开。<br>
 TID就是商品代表的子订单号，对应taobao.trade.fullinfo.get 接口获得的oid字段。(通过OID可以唯一定位到当前商品上)<br>
 ":"TID和具体传入参数间的分隔符。冒号前表示TID,之后代表该商品的参数属性。<br>
 "," 属性间分隔符。（对应商品数量，当存在一个商品的数量超过1个时，用逗号分开）。<br>
 具体:当订单中A商品的数量为2个，其中手机串号分别为"12345","67890"。<br>
-参数格式：mobileCode=TIDA:12345,67890。
+参数格式：identCode=TIDA:12345,67890。
 TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订单A宝贝的数量为2，值分别为"12345","67890"。<br>
-当存在"|"时，就说明订单中存在多个无忧购的商品，商品间用"|"分隔了开来。|"之后的内容含义同上。
+当存在"|"时，就说明订单中存在多个商品，商品间用"|"分隔了开来。|"之后的内容含义同上。
 	 **/
 	private $feature;
 	
@@ -133,5 +133,10 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 		RequestCheckUtil::checkNotNull($this->companyCode,"companyCode");
 		RequestCheckUtil::checkNotNull($this->outSid,"outSid");
 		RequestCheckUtil::checkNotNull($this->tid,"tid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

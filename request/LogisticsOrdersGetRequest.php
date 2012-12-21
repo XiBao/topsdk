@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.orders.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class LogisticsOrdersGetRequest
 {
@@ -18,8 +18,8 @@ class LogisticsOrdersGetRequest
 	private $endCreated;
 	
 	/** 
-	 * 需返回的字段列表.可选值:Shipping 物流数据结构中的以下字段: 
-tid,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_title,receiver_name, created,modified,status,type,freight_payer,seller_confirm,company_name；多个字段之间用","分隔。如tid,seller_nick,buyer_nick,delivery_start。
+	 * 需返回的字段列表.可选值:Shipping 物流数据结构中的以下字段: <br>
+tid,order_code,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_title,receiver_name, created,modified,status,type,freight_payer,seller_confirm,company_name；<br>多个字段之间用","分隔。如tid,seller_nick,buyer_nick,delivery_start。
 	 **/
 	private $fields;
 	
@@ -217,5 +217,10 @@ tid,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_title,recei
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

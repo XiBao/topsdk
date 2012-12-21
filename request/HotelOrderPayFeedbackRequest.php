@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.order.pay.feedback request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelOrderPayFeedbackRequest
 {
@@ -126,5 +126,10 @@ F:失败
 		RequestCheckUtil::checkNotNull($this->result,"result");
 		RequestCheckUtil::checkNotNull($this->sessionId,"sessionId");
 		RequestCheckUtil::checkMinValue($this->sessionId,0,"sessionId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

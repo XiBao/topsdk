@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.orderstore.push request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class LogisticsOrderstorePushRequest
 {
@@ -108,5 +108,10 @@ class LogisticsOrderstorePushRequest
 		RequestCheckUtil::checkMaxLength($this->operatorContact,20,"operatorContact");
 		RequestCheckUtil::checkMaxLength($this->operatorName,20,"operatorName");
 		RequestCheckUtil::checkNotNull($this->tradeId,"tradeId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

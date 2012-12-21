@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.catsbase.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightCatsbaseGetRequest
 {
@@ -90,5 +90,10 @@ class SimbaInsightCatsbaseGetRequest
 		RequestCheckUtil::checkMaxListSize($this->categoryIds,200,"categoryIds");
 		RequestCheckUtil::checkNotNull($this->filter,"filter");
 		RequestCheckUtil::checkNotNull($this->time,"time");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

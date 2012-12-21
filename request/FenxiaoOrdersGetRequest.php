@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.orders.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class FenxiaoOrdersGetRequest
 {
@@ -11,6 +11,20 @@ class FenxiaoOrdersGetRequest
 	 * 结束时间 格式 yyyy-MM-dd HH:mm:ss.支持到秒的查询。若不传时分秒，默认为0时0分0秒。若purchase_order_id没传，则此参数必传。
 	 **/
 	private $endCreated;
+	
+	/** 
+	 * 多个字段用","分隔。
+
+fields
+如果为空：返回所有采购单对象(purchase_orders)字段。
+如果不为空：返回指定采购单对象(purchase_orders)字段。
+
+例1：
+sub_purchase_orders.tc_order_id 表示只返回tc_order_id 
+例2：
+sub_purchase_orders表示只返回子采购单列表
+	 **/
+	private $fields;
 	
 	/** 
 	 * 页码。（大于0的整数。默认为1）
@@ -33,23 +47,7 @@ class FenxiaoOrdersGetRequest
 	private $startCreated;
 	
 	/** 
-	 * 交易状态，不传默认查询所有采购单。根据身份选择自身状态。可选值:<br>
-
- *供应商：<br>
-WAIT_SELLER_SEND_GOODS(等待发货)<br>
-WAIT_SELLER_CONFIRM_PAY(待确认收款)<br>
-WAIT_BUYER_PAY(等待付款)<br>
-WAIT_BUYER_CONFIRM_GOODS(已发货)<br>
-TRADE_REFUNDING(退款中)<br>
-TRADE_FINISHED(采购成功)<br>
-TRADE_CLOSED(已关闭)。<br>
-       *分销商：<br>
-WAIT_BUYER_PAY(等待付款)<br>
-WAIT_BUYER_CONFIRM_GOODS(待收货确认)<br>
-TRADE_FOR_PAY(已付款)<br>
-TRADE_REFUNDING(退款中)<br>
-TRADE_FINISHED(采购成功)<br>
-TRADE_CLOSED(已关闭)。
+	 * 交易状态，不传默认查询所有采购单根据身份选择自身状态可选值:<br> *供应商：<br> WAIT_SELLER_SEND_GOODS(等待发货)<br> WAIT_SELLER_CONFIRM_PAY(待确认收款)<br> WAIT_BUYER_PAY(等待付款)<br> WAIT_BUYER_CONFIRM_GOODS(已发货)<br> TRADE_REFUNDING(退款中)<br> TRADE_FINISHED(采购成功)<br> TRADE_CLOSED(已关闭)<br> *分销商：<br> WAIT_BUYER_PAY(等待付款)<br> WAIT_BUYER_CONFIRM_GOODS(待收货确认)<br> TRADE_FOR_PAY(已付款)<br> TRADE_REFUNDING(退款中)<br> TRADE_FINISHED(采购成功)<br> TRADE_CLOSED(已关闭)<br>
 	 **/
 	private $status;
 	
@@ -69,6 +67,17 @@ TRADE_CLOSED(已关闭)。
 	public function getEndCreated()
 	{
 		return $this->endCreated;
+	}
+
+	public function setFields($fields)
+	{
+		$this->fields = $fields;
+		$this->apiParas["fields"] = $fields;
+	}
+
+	public function getFields()
+	{
+		return $this->fields;
 	}
 
 	public function setPageNo($pageNo)
@@ -150,5 +159,10 @@ TRADE_CLOSED(已关闭)。
 	public function check()
 	{
 		
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

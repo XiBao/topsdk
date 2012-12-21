@@ -3,14 +3,19 @@
  * TOP API: taobao.hotel.room.get request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelRoomGetRequest
 {
 	/** 
-	 * 酒店房间商品gid。必须为数字。
+	 * 酒店房间商品gid。必须为数字。gid和item_id至少要传一个。
 	 **/
 	private $gid;
+	
+	/** 
+	 * 酒店房间商品item_id。必须为数字。item_id和gid至少要传一个。
+	 **/
+	private $itemId;
 	
 	/** 
 	 * 是否需要返回该商品的酒店信息。可选值：true，false。
@@ -43,6 +48,17 @@ class HotelRoomGetRequest
 	public function getGid()
 	{
 		return $this->gid;
+	}
+
+	public function setItemId($itemId)
+	{
+		$this->itemId = $itemId;
+		$this->apiParas["item_id"] = $itemId;
+	}
+
+	public function getItemId()
+	{
+		return $this->itemId;
 	}
 
 	public function setNeedHotel($needHotel)
@@ -102,6 +118,10 @@ class HotelRoomGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->gid,"gid");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

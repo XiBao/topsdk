@@ -3,7 +3,7 @@
  * TOP API: taobao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ProductAddRequest
 {
@@ -51,6 +51,13 @@ class ProductAddRequest
 	 * 外部产品ID
 	 **/
 	private $outerId;
+	
+	/** 
+	 * 包装清单。注意，在管控类目下，包装清单不能为空，同时保证清单的格式为：
+名称:数字;名称:数字;
+其中，名称不能违禁、不能超过60字符，数字不能超过999
+	 **/
+	private $packingList;
 	
 	/** 
 	 * 产品市场价.精确到2位小数;单位为元.如：200.07
@@ -173,6 +180,17 @@ class ProductAddRequest
 		return $this->outerId;
 	}
 
+	public function setPackingList($packingList)
+	{
+		$this->packingList = $packingList;
+		$this->apiParas["packing_list"] = $packingList;
+	}
+
+	public function getPackingList()
+	{
+		return $this->packingList;
+	}
+
 	public function setPrice($price)
 	{
 		$this->price = $price;
@@ -235,5 +253,10 @@ class ProductAddRequest
 		RequestCheckUtil::checkNotNull($this->image,"image");
 		RequestCheckUtil::checkNotNull($this->name,"name");
 		RequestCheckUtil::checkNotNull($this->price,"price");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

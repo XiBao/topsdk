@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.catsrelatedword.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightCatsrelatedwordGetRequest
 {
@@ -75,5 +75,10 @@ class SimbaInsightCatsrelatedwordGetRequest
 		RequestCheckUtil::checkMinValue($this->resultNum,1,"resultNum");
 		RequestCheckUtil::checkNotNull($this->words,"words");
 		RequestCheckUtil::checkMaxListSize($this->words,200,"words");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

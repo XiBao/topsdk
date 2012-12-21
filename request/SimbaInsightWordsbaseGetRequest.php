@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.wordsbase.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaInsightWordsbaseGetRequest
 {
@@ -90,5 +90,10 @@ class SimbaInsightWordsbaseGetRequest
 		RequestCheckUtil::checkNotNull($this->time,"time");
 		RequestCheckUtil::checkNotNull($this->words,"words");
 		RequestCheckUtil::checkMaxListSize($this->words,170,"words");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

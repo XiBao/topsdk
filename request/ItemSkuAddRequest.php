@@ -3,7 +3,7 @@
  * TOP API: taobao.item.sku.add request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class ItemSkuAddRequest
 {
@@ -42,6 +42,11 @@ class ItemSkuAddRequest
 	 * Sku的库存数量。sku的总数量应该小于等于商品总数量(Item的NUM)。取值范围:大于零的整数
 	 **/
 	private $quantity;
+	
+	/** 
+	 * 产品的规格信息
+	 **/
+	private $specId;
 	
 	private $apiParas = array();
 	
@@ -122,6 +127,17 @@ class ItemSkuAddRequest
 		return $this->quantity;
 	}
 
+	public function setSpecId($specId)
+	{
+		$this->specId = $specId;
+		$this->apiParas["spec_id"] = $specId;
+	}
+
+	public function getSpecId()
+	{
+		return $this->specId;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.item.sku.add";
@@ -141,5 +157,10 @@ class ItemSkuAddRequest
 		RequestCheckUtil::checkNotNull($this->properties,"properties");
 		RequestCheckUtil::checkNotNull($this->quantity,"quantity");
 		RequestCheckUtil::checkMinValue($this->quantity,0,"quantity");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

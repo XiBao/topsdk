@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.rpt.adgroupkeywordbase.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaRptAdgroupkeywordbaseGetRequest
 {
@@ -18,7 +18,7 @@ class SimbaRptAdgroupkeywordbaseGetRequest
 	private $campaignId;
 	
 	/** 
-	 * 结束时间
+	 * 结束时间，格式yyyy-mm-dd
 	 **/
 	private $endTime;
 	
@@ -48,7 +48,7 @@ class SimbaRptAdgroupkeywordbaseGetRequest
 	private $source;
 	
 	/** 
-	 * 开始时间
+	 * 开始时间，格式yyyy-mm-dd
 	 **/
 	private $startTime;
 	
@@ -190,5 +190,10 @@ class SimbaRptAdgroupkeywordbaseGetRequest
 		RequestCheckUtil::checkNotNull($this->searchType,"searchType");
 		RequestCheckUtil::checkNotNull($this->startTime,"startTime");
 		RequestCheckUtil::checkNotNull($this->subwayToken,"subwayToken");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

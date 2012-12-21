@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.room.img.upload request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class HotelRoomImgUploadRequest
 {
@@ -74,5 +74,10 @@ class HotelRoomImgUploadRequest
 		
 		RequestCheckUtil::checkNotNull($this->gid,"gid");
 		RequestCheckUtil::checkNotNull($this->pic,"pic");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

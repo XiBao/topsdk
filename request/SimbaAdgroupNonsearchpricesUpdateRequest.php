@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.nonsearchprices.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2012-12-20 16:37:10
  */
 class SimbaAdgroupNonsearchpricesUpdateRequest
 {
@@ -74,5 +74,10 @@ adgroupId,isNonsearchDefaultPrice不能为空。nonsearchMaxPrice是整数，以
 		
 		RequestCheckUtil::checkNotNull($this->adgroupidPriceJson,"adgroupidPriceJson");
 		RequestCheckUtil::checkNotNull($this->campaignId,"campaignId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }
