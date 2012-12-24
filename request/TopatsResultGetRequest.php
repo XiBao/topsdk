@@ -3,7 +3,7 @@
  * TOP API: taobao.topats.result.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2012-12-24 12:33:33
  */
 class TopatsResultGetRequest
 {
