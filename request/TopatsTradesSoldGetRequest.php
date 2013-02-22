@@ -3,12 +3,12 @@
  * TOP API: taobao.topats.trades.sold.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class TopatsTradesSoldGetRequest
 {
 	/** 
-	 * 订单创建结束时间，格式yyyyMMdd，取值范围：前3个月内~昨天，其中start_time<=end_time，如20120531相当于取订单创建时间到2012-05-31 23:59:59为止的订单。注：如果start_time和end_time相同，表示取一天的订单数据。<span style="color:red">强烈建议超大卖家（直充类，金冠类）把三个月订单拆分成3次来获取，否则单个任务会消耗很长时间。<span>
+	 * 订单创建结束时间，格式yyyyMMdd，取值范围：前90天内~昨天，其中start_time<=end_time，如20120531相当于取订单创建时间到2012-05-31 23:59:59为止的订单。注：如果start_time和end_time相同，表示取一天的订单数据。<span style="color:red">强烈建议超大卖家（直充类，金冠类）把三个月订单拆分成3次来获取，否则单个任务会消耗很长时间。<span>
 	 **/
 	private $endTime;
 	
@@ -23,7 +23,7 @@ class TopatsTradesSoldGetRequest
 	private $isAcookie;
 	
 	/** 
-	 * 订单创建开始时间，格式yyyyMMdd，取值范围：前3个月内~昨天。如：20120501相当于取订单创建时间从2012-05-01 00:00:00开始的订单。
+	 * 订单创建开始时间，格式yyyyMMdd，取值范围：前90天内~昨天。如：20120501相当于取订单创建时间从2012-05-01 00:00:00开始的订单。
 	 **/
 	private $startTime;
 	

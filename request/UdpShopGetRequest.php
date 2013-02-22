@@ -3,7 +3,7 @@
  * TOP API: taobao.udp.shop.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class UdpShopGetRequest
 {

@@ -3,7 +3,7 @@
  * TOP API: taobao.fuwu.sale.link.gen request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class FuwuSaleLinkGenRequest
 {
@@ -13,7 +13,7 @@ class FuwuSaleLinkGenRequest
 	private $nick;
 	
 	/** 
-	 * 从服务商后台，营销链接功能中生成的参数串
+	 * 从服务商后台，营销链接功能中生成的参数串直接复制使用。不要修改，否则抛错。
 	 **/
 	private $paramStr;
 	

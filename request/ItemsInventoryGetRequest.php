@@ -3,20 +3,21 @@
  * TOP API: taobao.items.inventory.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class ItemsInventoryGetRequest
 {
 	/** 
 	 * 分类字段。可选值:
 
-regular_shelved(定时上架)
-never_on_shelf(从未上架)
-sold_out(全部卖完)
-off_shelf(我下架的)
-for_shelved(等待所有上架)
-violation_off_shelf(违规下架的)
-默认查询的是for_shelved(等待所有上架)这个状态的商品
+regular_shelved(定时上架)<br>
+never_on_shelf(从未上架)<br>
+sold_out(全部卖完)<br>
+off_shelf(我下架的)<br>
+for_shelved(等待所有上架)<br>
+violation_off_shelf(违规下架的)<br>
+默认查询的是for_shelved(等待所有上架)这个状态的商品<br>
+<font color='red'>注：for_shelved(等待所有上架)=regular_shelved(定时上架)+never_on_shelf(从未上架)+off_shelf(我下架的)</font>
 	 **/
 	private $banner;
 	

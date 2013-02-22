@@ -3,7 +3,7 @@
  * TOP API: taobao.refunds.receive.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class RefundsReceiveGetRequest
 {
@@ -65,6 +65,11 @@ netcn_trade(万网交易)
 external_trade(统一外部交易)
 	 **/
 	private $type;
+	
+	/** 
+	 * 是否启用has_next的分页方式，如果指定true,则返回的结果中不包含总记录数，但是会新增一个是否存在下一页的的字段，通过此种方式获取增量退款，接口调用成功率在原有的基础上有所提升。
+	 **/
+	private $useHasNext;
 	
 	private $apiParas = array();
 	
@@ -154,6 +159,17 @@ external_trade(统一外部交易)
 	public function getType()
 	{
 		return $this->type;
+	}
+
+	public function setUseHasNext($useHasNext)
+	{
+		$this->useHasNext = $useHasNext;
+		$this->apiParas["use_has_next"] = $useHasNext;
+	}
+
+	public function getUseHasNext()
+	{
+		return $this->useHasNext;
 	}
 
 	public function getApiMethodName()

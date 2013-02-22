@@ -3,7 +3,7 @@
  * TOP API: taobao.categoryrecommend.items.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-24 12:33:33
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class CategoryrecommendItemsGetRequest
 {

@@ -3,7 +3,7 @@
  * TOP API: taobao.increment.customer.permit request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class IncrementCustomerPermitRequest
 {
@@ -14,8 +14,7 @@ class IncrementCustomerPermitRequest
 	private $status;
 	
 	/** 
-	 * 应用为用户开通的主动通知的消息主题（或消息类别），该主题必须是应用订阅的主题。如果应用未订阅该主题，则系统会自动过滤掉该主题。各个主题间用";"分隔。
-如果不填写，会默认开通应用所订阅的所有消息。
+	 * 应用为用户开通的主动通知的消息主题（或消息类别），该主题必须是应用订阅的主题。如果应用未订阅该主题，则系统会自动过滤掉该主题。各个主题间用";"分隔。 如果不填写，会采用应用所订阅的消息，下次应用消息修改时此用户的消息会自动修改。 如果填写了消息类型，在应用修改增加消息类型时，用户的消息类型是不会随着增加相应类型，除非通过重新permit增加。
 	 **/
 	private $topics;
 	

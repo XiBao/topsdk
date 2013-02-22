@@ -3,7 +3,7 @@
  * TOP API: taobao.item.update request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class ItemUpdateRequest
 {
@@ -46,7 +46,7 @@ fee_card(话费软件代充)
 	private $desc;
 	
 	/** 
-	 * 支持宝贝信息的删除,如需删除对应的食品安全信息中的储藏方法、保质期， 则应该设置此参数的值为：food_security.plan_storage,food_security.period; 各个参数的名称之间用【,】分割, 如果对应的参数有设置过值，即使在这个列表中，也不会被删除; 目前支持此功能的宝贝信息如下：食品安全信息所有字段、电子交易凭证字段（locality_life，locality_life.verification，locality_life.refund_ratio，locality_life.network_id ）
+	 * 支持宝贝信息的删除,如需删除对应的食品安全信息中的储藏方法、保质期， 则应该设置此参数的值为：food_security.plan_storage,food_security.period; 各个参数的名称之间用【,】分割, 如果对应的参数有设置过值，即使在这个列表中，也不会被删除; 目前支持此功能的宝贝信息如下：食品安全信息所有字段、电子交易凭证字段（locality_life，locality_life.verification，locality_life.refund_ratio，locality_life.network_id ，locality_life.onsale_auto_refund_ratio）
 	 **/
 	private $emptyFields;
 	
@@ -262,6 +262,11 @@ fee_card(话费软件代充)
 	 * 网点ID,在参数empty_fields里设置locality_life.network_id可删除网点ID
 	 **/
 	private $localityLifeNetworkId;
+	
+	/** 
+	 * 电子凭证售中自动退款比例，百分比%前的数字，介于1-100之间的整数
+	 **/
+	private $localityLifeOnsaleAutoRefundRatio;
 	
 	/** 
 	 * 退款比例，百分比%前的数字,1-100的正整数值; 在参数empty_fields里设置locality_life.refund_ratio可删除退款比例
@@ -928,6 +933,17 @@ fee_card(话费软件代充)
 	public function getLocalityLifeNetworkId()
 	{
 		return $this->localityLifeNetworkId;
+	}
+
+	public function setLocalityLifeOnsaleAutoRefundRatio($localityLifeOnsaleAutoRefundRatio)
+	{
+		$this->localityLifeOnsaleAutoRefundRatio = $localityLifeOnsaleAutoRefundRatio;
+		$this->apiParas["locality_life.onsale_auto_refund_ratio"] = $localityLifeOnsaleAutoRefundRatio;
+	}
+
+	public function getLocalityLifeOnsaleAutoRefundRatio()
+	{
+		return $this->localityLifeOnsaleAutoRefundRatio;
 	}
 
 	public function setLocalityLifeRefundRatio($localityLifeRefundRatio)

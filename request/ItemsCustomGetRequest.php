@@ -3,7 +3,7 @@
  * TOP API: taobao.items.custom.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class ItemsCustomGetRequest
 {
@@ -13,7 +13,7 @@ class ItemsCustomGetRequest
 	private $fields;
 	
 	/** 
-	 * 商品的外部商品ID
+	 * 商品的外部商品ID，支持批量，最多不超过40个。
 	 **/
 	private $outerId;
 	

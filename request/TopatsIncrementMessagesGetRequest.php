@@ -3,7 +3,7 @@
  * TOP API: taobao.topats.increment.messages.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class TopatsIncrementMessagesGetRequest
 {
@@ -13,7 +13,7 @@ class TopatsIncrementMessagesGetRequest
 	private $end;
 	
 	/** 
-	 * 消息开始时间，格式：yyyy-MM-dd HH:mm:ss，其中start >= 昨天零点
+	 * 消息开始时间，格式：yyyy-MM-dd HH:mm:ss，其中start >= 前天零点
 	 **/
 	private $start;
 	

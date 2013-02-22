@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class ItemAddRequest
 {
@@ -251,6 +251,11 @@ fee_card(话费软件代充)
 	 * 网点ID
 	 **/
 	private $localityLifeNetworkId;
+	
+	/** 
+	 * 电子凭证售中自动退款比例，百分比%前的数字，介于1-100之间的整数
+	 **/
+	private $localityLifeOnsaleAutoRefundRatio;
 	
 	/** 
 	 * 退款比例，
@@ -900,6 +905,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getLocalityLifeNetworkId()
 	{
 		return $this->localityLifeNetworkId;
+	}
+
+	public function setLocalityLifeOnsaleAutoRefundRatio($localityLifeOnsaleAutoRefundRatio)
+	{
+		$this->localityLifeOnsaleAutoRefundRatio = $localityLifeOnsaleAutoRefundRatio;
+		$this->apiParas["locality_life.onsale_auto_refund_ratio"] = $localityLifeOnsaleAutoRefundRatio;
+	}
+
+	public function getLocalityLifeOnsaleAutoRefundRatio()
+	{
+		return $this->localityLifeOnsaleAutoRefundRatio;
 	}
 
 	public function setLocalityLifeRefundRatio($localityLifeRefundRatio)

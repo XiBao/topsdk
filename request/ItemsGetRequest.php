@@ -3,7 +3,7 @@
  * TOP API: taobao.items.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-02-22 16:36:25
  */
 class ItemsGetRequest
 {
@@ -481,5 +481,10 @@ class ItemsGetRequest
 		RequestCheckUtil::checkMinValue($this->startPrice,0,"startPrice");
 		RequestCheckUtil::checkMinValue($this->startScore,0,"startScore");
 		RequestCheckUtil::checkMinValue($this->startVolume,0,"startVolume");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }
