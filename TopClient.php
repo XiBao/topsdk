@@ -31,7 +31,7 @@ class TopClient
 		$stringToBeSigned = $this->secretKey;
 		foreach ($params as $k => $v)
 		{
-			if("@" != substr($v, 0, 1))
+			if("@" != substr($v, 0, 1) || !is_file($v))
 			{
 				$stringToBeSigned .= "$k$v";
 			}
