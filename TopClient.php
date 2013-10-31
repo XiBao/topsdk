@@ -210,7 +210,7 @@ class TopClient
 		{
 			$this->logCommunicationError($sysParams["method"],$requestUrl,"HTTP_RESPONSE_NOT_WELL_FORMED",$resp);
 			$result->code = 0;
-			$result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED";
+			$result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED:".$resp;
 			return $result;
 		}
 
