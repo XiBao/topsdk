@@ -3,12 +3,14 @@
  * TOP API: taobao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ProductAddRequest
 {
 	/** 
-	 * 非关键属性结构:pid:vid;pid:vid.非关键属性不包含关键属性、销售属性、用户自定义属性、商品属性;调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font>
+	 * 非关键属性结构:pid:vid;pid:vid.<br>
+非关键属性<font color=red>不包含</font>关键属性、销售属性、用户自定义属性、商品属性;
+<br>调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font>
 	 **/
 	private $binds;
 	
@@ -19,13 +21,19 @@ class ProductAddRequest
 	
 	/** 
 	 * 用户自定义属性,结构：pid1:value1;pid2:value2，如果有型号，系列等子属性用: 隔开 例如：“20000:优衣库:型号:001;632501:1234”，表示“品牌:优衣库:型号:001;货号:1234”
+<br><font color=red>注：包含所有自定义属性的传入</font>
 	 **/
 	private $customerProps;
 	
 	/** 
-	 * 产品描述.最大25000个字节
+	 * 产品描述.最大不超过25000个字符
 	 **/
 	private $desc;
+	
+	/** 
+	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.
+	 **/
+	private $extraInfo;
 	
 	/** 
 	 * 产品主图片.最大1M,目前仅支持GIF,JPG.
@@ -38,12 +46,18 @@ class ProductAddRequest
 	private $major;
 	
 	/** 
+	 * 市场ID，1为新增C2C市场的产品信息， 2为新增B2C市场的产品信息。
+不填写此值则C用户新增B2C市场的产品信息，B用户新增B2C市场的产品信息。
+	 **/
+	private $marketId;
+	
+	/** 
 	 * 上市时间。目前只支持鞋城类目传入此参数
 	 **/
 	private $marketTime;
 	
 	/** 
-	 * 产品名称,最大60个字节.
+	 * 产品名称,最大30个字符.
 	 **/
 	private $name;
 	
@@ -78,6 +92,11 @@ class ProductAddRequest
 	 * 销售属性结构:pid:vid;pid:vid.调用taobao.itemprops.get获取is_sale_prop＝true的pid,调用taobao.itempropvalues.get获取vid.
 	 **/
 	private $saleProps;
+	
+	/** 
+	 * 商品卖点描述，长度限制为20个汉字
+	 **/
+	private $sellPt;
 	
 	private $apiParas = array();
 	
@@ -125,6 +144,17 @@ class ProductAddRequest
 		return $this->desc;
 	}
 
+	public function setExtraInfo($extraInfo)
+	{
+		$this->extraInfo = $extraInfo;
+		$this->apiParas["extra_info"] = $extraInfo;
+	}
+
+	public function getExtraInfo()
+	{
+		return $this->extraInfo;
+	}
+
 	public function setImage($image)
 	{
 		$this->image = $image;
@@ -145,6 +175,17 @@ class ProductAddRequest
 	public function getMajor()
 	{
 		return $this->major;
+	}
+
+	public function setMarketId($marketId)
+	{
+		$this->marketId = $marketId;
+		$this->apiParas["market_id"] = $marketId;
+	}
+
+	public function getMarketId()
+	{
+		return $this->marketId;
 	}
 
 	public function setMarketTime($marketTime)
@@ -235,6 +276,17 @@ class ProductAddRequest
 		return $this->saleProps;
 	}
 
+	public function setSellPt($sellPt)
+	{
+		$this->sellPt = $sellPt;
+		$this->apiParas["sell_pt"] = $sellPt;
+	}
+
+	public function getSellPt()
+	{
+		return $this->sellPt;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.product.add";
@@ -250,9 +302,8 @@ class ProductAddRequest
 		
 		RequestCheckUtil::checkMaxLength($this->binds,512,"binds");
 		RequestCheckUtil::checkNotNull($this->cid,"cid");
+		RequestCheckUtil::checkMaxLength($this->extraInfo,25000,"extraInfo");
 		RequestCheckUtil::checkNotNull($this->image,"image");
-		RequestCheckUtil::checkNotNull($this->name,"name");
-		RequestCheckUtil::checkNotNull($this->price,"price");
 	}
 	
 	public function putOtherTextParam($key, $value) {

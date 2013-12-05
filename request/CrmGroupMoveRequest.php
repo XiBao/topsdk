@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.group.move request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CrmGroupMoveRequest
 {
@@ -58,5 +58,10 @@ class CrmGroupMoveRequest
 		RequestCheckUtil::checkMinValue($this->fromGroupId,1,"fromGroupId");
 		RequestCheckUtil::checkNotNull($this->toGroupId,"toGroupId");
 		RequestCheckUtil::checkMinValue($this->toGroupId,1,"toGroupId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

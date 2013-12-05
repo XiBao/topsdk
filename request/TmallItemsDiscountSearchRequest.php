@@ -3,12 +3,12 @@
  * TOP API: tmall.items.discount.search request
  * 
  * @author auto create
- * @since 1.0, 2012-12-24 12:33:33
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class TmallItemsDiscountSearchRequest
 {
 	/** 
-	 * 商品标签。天猫精品库：8578；品牌特卖商品库：3458；天猫原创商品库：4801
+	 * 商品标签。品牌特卖商品库：3458；天猫原创商品库：4801,不再支持 天猫精品库：8578；
 	 **/
 	private $auctionTag;
 	

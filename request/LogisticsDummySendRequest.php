@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.dummy.send request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class LogisticsDummySendRequest
 {
@@ -25,6 +25,11 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	private $feature;
 	
 	/** 
+	 * 商家的IP地址
+	 **/
+	private $sellerIp;
+	
+	/** 
 	 * 淘宝交易ID
 	 **/
 	private $tid;
@@ -40,6 +45,17 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	public function getFeature()
 	{
 		return $this->feature;
+	}
+
+	public function setSellerIp($sellerIp)
+	{
+		$this->sellerIp = $sellerIp;
+		$this->apiParas["seller_ip"] = $sellerIp;
+	}
+
+	public function getSellerIp()
+	{
+		return $this->sellerIp;
 	}
 
 	public function setTid($tid)

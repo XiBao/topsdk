@@ -3,7 +3,7 @@
  * TOP API: taobao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ProductUpdateRequest
 {
@@ -13,9 +13,14 @@ class ProductUpdateRequest
 	private $binds;
 	
 	/** 
-	 * 产品描述.最大25000个字节
+	 * 产品描述.最大不超过25000个字符
 	 **/
 	private $desc;
+	
+	/** 
+	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.
+	 **/
+	private $extraInfo;
 	
 	/** 
 	 * 产品主图.最大500K,目前仅支持GIF,JPG
@@ -28,7 +33,13 @@ class ProductUpdateRequest
 	private $major;
 	
 	/** 
-	 * 产品名称.最大60个字节
+	 * 市场ID，1为更新C2C市场的产品信息， 2为更新B2C市场的产品信息。
+不填写此值则C用户更新B2C市场的产品信息，B用户更新B2C市场的产品信息。
+	 **/
+	private $marketId;
+	
+	/** 
+	 * 产品名称.最大不超过30个字符
 	 **/
 	private $name;
 	
@@ -62,6 +73,11 @@ class ProductUpdateRequest
 	 **/
 	private $saleProps;
 	
+	/** 
+	 * 产品卖点描述，最长40个字节
+	 **/
+	private $sellPt;
+	
 	private $apiParas = array();
 	
 	public function setBinds($binds)
@@ -86,6 +102,17 @@ class ProductUpdateRequest
 		return $this->desc;
 	}
 
+	public function setExtraInfo($extraInfo)
+	{
+		$this->extraInfo = $extraInfo;
+		$this->apiParas["extra_info"] = $extraInfo;
+	}
+
+	public function getExtraInfo()
+	{
+		return $this->extraInfo;
+	}
+
 	public function setImage($image)
 	{
 		$this->image = $image;
@@ -106,6 +133,17 @@ class ProductUpdateRequest
 	public function getMajor()
 	{
 		return $this->major;
+	}
+
+	public function setMarketId($marketId)
+	{
+		$this->marketId = $marketId;
+		$this->apiParas["market_id"] = $marketId;
+	}
+
+	public function getMarketId()
+	{
+		return $this->marketId;
 	}
 
 	public function setName($name)
@@ -185,6 +223,17 @@ class ProductUpdateRequest
 		return $this->saleProps;
 	}
 
+	public function setSellPt($sellPt)
+	{
+		$this->sellPt = $sellPt;
+		$this->apiParas["sell_pt"] = $sellPt;
+	}
+
+	public function getSellPt()
+	{
+		return $this->sellPt;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.product.update";
@@ -198,6 +247,7 @@ class ProductUpdateRequest
 	public function check()
 	{
 		
+		RequestCheckUtil::checkMaxLength($this->extraInfo,25000,"extraInfo");
 		RequestCheckUtil::checkNotNull($this->productId,"productId");
 	}
 	

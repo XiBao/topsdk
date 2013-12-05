@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.order.confirm.paid request
  * 
  * @author auto create
- * @since 1.0, 2012-05-24 17:27:51
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoOrderConfirmPaidRequest
 {
@@ -55,5 +55,10 @@ class FenxiaoOrderConfirmPaidRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->purchaseOrderId,"purchaseOrderId");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

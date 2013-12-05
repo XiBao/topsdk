@@ -3,7 +3,7 @@
  * TOP API: taobao.promotion.coupondetail.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class PromotionCoupondetailGetRequest
 {
@@ -18,12 +18,23 @@ class PromotionCoupondetailGetRequest
 	private $couponId;
 	
 	/** 
-	 * 优惠券截至时间 如果截至日期不输入的话，查询当前日期向前15天的数据，否则，查询输入的截至日期向前15天的数据。
+	 * 查N天内的数据，N<=15
+	 **/
+	private $days;
+	
+	/** 
+	 * 传入优惠券截止时间，即失效时间。查询输入日期向前1天的数据；不传则查询当前日期向前1天的数据。比如查询明天才失效的优惠卷，要传入明天之后1天内的日期，才能查询到该优惠卷。
 	 **/
 	private $endTime;
 	
 	/** 
-	 * 查询的页号，结果集是分页返回的，每页20条
+	 * 这是一个扩展字段 供版本升级用
+当前如果新版本的话 可以传入new字符串
+	 **/
+	private $extendParams;
+	
+	/** 
+	 * 查询的页号，结果集是分页返回的，每页20-100条
 	 **/
 	private $pageNo;
 	
@@ -61,6 +72,17 @@ class PromotionCoupondetailGetRequest
 		return $this->couponId;
 	}
 
+	public function setDays($days)
+	{
+		$this->days = $days;
+		$this->apiParas["days"] = $days;
+	}
+
+	public function getDays()
+	{
+		return $this->days;
+	}
+
 	public function setEndTime($endTime)
 	{
 		$this->endTime = $endTime;
@@ -70,6 +92,17 @@ class PromotionCoupondetailGetRequest
 	public function getEndTime()
 	{
 		return $this->endTime;
+	}
+
+	public function setExtendParams($extendParams)
+	{
+		$this->extendParams = $extendParams;
+		$this->apiParas["extend_params"] = $extendParams;
+	}
+
+	public function getExtendParams()
+	{
+		return $this->extendParams;
 	}
 
 	public function setPageNo($pageNo)
@@ -119,7 +152,9 @@ class PromotionCoupondetailGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->couponId,"couponId");
-		RequestCheckUtil::checkMaxValue($this->pageSize,20,"pageSize");
+		RequestCheckUtil::checkMaxValue($this->days,15,"days");
+		RequestCheckUtil::checkMaxValue($this->pageNo,50,"pageNo");
+		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 	}
 	
 	public function putOtherTextParam($key, $value) {

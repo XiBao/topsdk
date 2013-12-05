@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoProductUpdateRequest
 {
@@ -189,6 +189,11 @@ no:不需要授权
 	 * 采购基准价，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
 	 **/
 	private $standardPrice;
+	
+	/** 
+	 * 零售基准价，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
+	 **/
+	private $standardRetailPrice;
 	
 	/** 
 	 * 发布状态，可选值：up（上架）、down（下架）、delete（删除），输入非法字符则忽略。
@@ -591,6 +596,17 @@ no:不需要授权
 	public function getStandardPrice()
 	{
 		return $this->standardPrice;
+	}
+
+	public function setStandardRetailPrice($standardRetailPrice)
+	{
+		$this->standardRetailPrice = $standardRetailPrice;
+		$this->apiParas["standard_retail_price"] = $standardRetailPrice;
+	}
+
+	public function getStandardRetailPrice()
+	{
+		return $this->standardRetailPrice;
 	}
 
 	public function setStatus($status)

@@ -3,12 +3,12 @@
  * TOP API: taobao.topats.itemcats.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class TopatsItemcatsGetRequest
 {
 	/** 
-	 * 一级类目ID列表（非一级类目将会被忽略），用半角逗号(,)分隔，例如:"16,19562"，一次最多可以获取10个类目的增量数据。<span style="color:red">注：传入0代表获取所有类目的数据,默认获取所有类目数据</span>
+	 * 一级类目ID列表（非一级类目将会被忽略），用半角分号(;)分隔，例如:"16;19562"，一次最多可以获取10个类目的增量数据。<span style="color:red">注：传入0代表获取所有类目的数据,默认获取所有类目数据</span>
 	 **/
 	private $cids;
 	

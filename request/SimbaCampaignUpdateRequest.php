@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.campaign.update request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class SimbaCampaignUpdateRequest
 {
@@ -23,7 +23,7 @@ class SimbaCampaignUpdateRequest
 	private $onlineStatus;
 	
 	/** 
-	 * 推广计划名称，不能多余20个字符，不能和客户其他推广计划同名。
+	 * 推广计划名称，不能多余40个字符，不能和客户其他推广计划同名。
 	 **/
 	private $title;
 	
@@ -89,7 +89,7 @@ class SimbaCampaignUpdateRequest
 		RequestCheckUtil::checkNotNull($this->campaignId,"campaignId");
 		RequestCheckUtil::checkNotNull($this->onlineStatus,"onlineStatus");
 		RequestCheckUtil::checkNotNull($this->title,"title");
-		RequestCheckUtil::checkMaxLength($this->title,20,"title");
+		RequestCheckUtil::checkMaxLength($this->title,40,"title");
 	}
 	
 	public function putOtherTextParam($key, $value) {

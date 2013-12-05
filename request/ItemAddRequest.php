@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ItemAddRequest
 {
@@ -31,6 +31,25 @@ fee_card(话费软件代充)
 	private $autoFill;
 	
 	/** 
+	 * 商品基础色，数据格式为：pid:vid:rvid1,rvid2,rvid3;pid:vid:rvid1;
+基础色只支持以下14种颜色：28335//绿色
+28338//蓝色
+90554//桔色
+28324//黄色
+28341//黑色
+28320//白色
+28326//红色
+28329//紫色
+3232480//粉红色
+107121//透明
+132069//褐色
+28332//浅灰色
+3232478//深灰色
+130164//花色
+	 **/
+	private $changeProp;
+	
+	/** 
 	 * 叶子类目id
 	 **/
 	private $cid;
@@ -44,6 +63,11 @@ fee_card(话费软件代充)
 	 * 宝贝描述。字数要大于5个字符，小于25000个字符，受违禁词控制
 	 **/
 	private $desc;
+	
+	/** 
+	 * 商品描述模块化，模块列表，具体数据结构参见Item_Desc_Module。详细的使用方法可参考下面FAQ中说明。
+	 **/
+	private $descModules;
 	
 	/** 
 	 * ems费用。取值范围:0.01-999.00;精确到2位小数;单位:元。如:25.07，表示:25元7分
@@ -79,6 +103,11 @@ fee_card(话费软件代充)
 	 * 食品添加剂
 	 **/
 	private $foodSecurityFoodAdditive;
+	
+	/** 
+	 * 健字号，保健品/膳食营养补充剂 这个类目下特有的信息，此类目下无需填写生产许可证编号（QS），如果填写了生产许可证编号（QS）将被忽略不保存；保存宝贝时，标题前会自动加上健字号产品名称一起作为宝贝标题；
+	 **/
+	private $foodSecurityHealthProductNo;
 	
 	/** 
 	 * 配料表
@@ -132,11 +161,14 @@ fee_card(话费软件代充)
 	private $freightPayer;
 	
 	/** 
-	 * 针对全球购卖家的库存类型业务，
+	 * 全球购商品采购地（地区/国家）,默认值只在全球购商品采购地（库存类型选择情况生效），地区国家值为（美国, 香港, 日本, 英国, 新西兰, 德国, 韩国, 荷兰, 澳洲, 法国, 意大利, 台湾, 澳门, 加拿大, 瑞士, 西班牙, 泰国, 新加坡, 马来西亚, 菲律宾, 其他）
+	 **/
+	private $globalStockCountry;
+	
+	/** 
+	 * 全球购商品采购地（库存类型），
 有两种库存类型：现货和代购
-参数值为1时代表现货，值为2时代表代购
-如果传值为这两个值之外的值，会报错;
-如果不是全球购卖家，这两个值即使设置也不会处理
+参数值为1时代表现货，值为2时代表代购。注意：使用时请与 全球购商品采购地（地区/国家）配合使用
 	 **/
 	private $globalStockType;
 	
@@ -166,7 +198,7 @@ fee_card(话费软件代充)
 	private $image;
 	
 	/** 
-	 * 加价幅度。如果为0，代表系统代理幅度
+	 * 加价(降价)幅度。如果为0，代表系统代理幅度。对于增价拍和荷兰拍来说是加价幅度，对于降价拍来说是降价幅度。
 	 **/
 	private $increment;
 	
@@ -264,6 +296,11 @@ fee_card(话费软件代充)
 	private $localityLifeRefundRatio;
 	
 	/** 
+	 * 退款码费承担方。发布电子凭证宝贝的时候会增加“退款码费承担方”配置项，可选填：(1)s（卖家承担） (2)b(买家承担)
+	 **/
+	private $localityLifeRefundmafee;
+	
+	/** 
 	 * 核销打款 
 1代表核销打款 0代表非核销打款
 	 **/
@@ -280,7 +317,8 @@ fee_card(话费软件代充)
 	private $locationState;
 	
 	/** 
-	 * 商品数量，取值范围:0-999999的整数。且需要等于Sku所有数量的和
+	 * 商品数量，取值范围:0-900000000的整数。且需要等于Sku所有数量的和。
+拍卖商品中增加拍只能为1，荷兰拍要在[2,500)范围内。
 	 **/
 	private $num;
 	
@@ -288,6 +326,37 @@ fee_card(话费软件代充)
 	 * 商品外部编码，该字段的最大长度是512个字节
 	 **/
 	private $outerId;
+	
+	/** 
+	 * 拍卖宝贝的保证金。对于增价拍和荷兰拍来说保证金有两种模式：淘宝默认模式（首次出价金额的10%），自定义固定保证金（固定冻结金额只能输入不超过30万的正整数），并且保证金只冻结1次。对于降价拍来说保证金只有淘宝默认的（竞拍价格的10% * 竞拍数量），并且每次出价都需要冻结保证金。
+对于拍卖宝贝来说，保证金是必须的，但是默认使用淘宝默认保证金模式，只有用户需要使用自定义固定保证金的时候才需要使用到这个参数，如果该参数不传或传入0则代表使用默认。
+	 **/
+	private $paimaiInfoDeposit;
+	
+	/** 
+	 * 降价拍宝贝的降价周期(分钟)。降价拍宝贝的价格每隔paimai_info.interval时间会下降一次increment。
+	 **/
+	private $paimaiInfoInterval;
+	
+	/** 
+	 * 拍卖商品选择的拍卖类型，拍卖类型包括三种：增价拍(1)，荷兰拍(2)和降价拍(3)。
+	 **/
+	private $paimaiInfoMode;
+	
+	/** 
+	 * 降价拍宝贝的保留价。对于降价拍来说，paimai_info.reserve必须大于0，且小于price-increment，而且（price-paimai_info.reserve）/increment的计算结果必须为整数
+	 **/
+	private $paimaiInfoReserve;
+	
+	/** 
+	 * 自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
+	 **/
+	private $paimaiInfoValidHour;
+	
+	/** 
+	 * 自定义销售周期的分钟数。拍卖宝贝可以自定义销售周期，这里是指定销售周期的分钟数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
+	 **/
+	private $paimaiInfoValidMinute;
 	
 	/** 
 	 * 商品主图需要关联的图片空间的相对url。这个url所对应的图片必须要属于当前用户。pic_path和image只需要传入一个,如果两个都传，默认选择pic_path
@@ -306,6 +375,7 @@ fee_card(话费软件代充)
 	
 	/** 
 	 * 商品价格。取值范围:0-100000000;精确到2位小数;单位:元。如:200.07，表示:200元7分。需要在正确的价格区间内。
+拍卖商品对应的起拍价。
 	 **/
 	private $price;
 	
@@ -333,6 +403,11 @@ fee_card(话费软件代充)
 	 * 景区门票类宝贝发布时候，当卖家签订了支付宝代扣协议时候，需要选择支付方式：全额支付和订金支付。当scenic_ticket_pay_way为1时表示全额支付，为2时表示订金支付
 	 **/
 	private $scenicTicketPayWay;
+	
+	/** 
+	 * 商品卖点信息，最长150个字符。仅天猫商家可用。
+	 **/
+	private $sellPoint;
 	
 	/** 
 	 * 是否承诺退换货服务!虚拟商品无须设置此项!
@@ -367,6 +442,11 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	private $skuQuantities;
 	
 	/** 
+	 * 此参数暂时不起作用
+	 **/
+	private $skuSpecIds;
+	
+	/** 
 	 * 新旧程度。可选值：new(新)，second(二手)，unused(闲置)。B商家不能发布二手商品。
 如果是二手商品，特定类目下属性里面必填新旧成色属性
 	 **/
@@ -380,12 +460,14 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	private $subStock;
 	
 	/** 
-	 * 宝贝标题。不能超过60字符，受违禁词控制
+	 * 宝贝标题。不能超过30字符，受违禁词控制。天猫图书管控类目最大允许120字符；
 	 **/
 	private $title;
 	
 	/** 
-	 * 发布类型。可选值:fixed(一口价),auction(拍卖)。B商家不能发布拍卖商品，而且拍卖商品是没有SKU的
+	 * 发布类型。可选值:fixed(一口价),auction(拍卖)。B商家不能发布拍卖商品，而且拍卖商品是没有SKU的。
+拍卖商品发布时需要附加拍卖商品信息：拍卖类型(paimai_info.mode，拍卖类型包括三种：增价拍[1]，荷兰拍[2]以及降价拍[3])，商品数量(num)，起拍价(price)，价格幅度(increament)，保证金(paimai_info.deposit)。另外拍卖商品支持自定义销售周期，通过paimai_info.valid_hour和paimai_info.valid_minute来指定。对于降价拍来说需要设置降价周期(paimai_info.interval)和拍卖保留价(paimai_info.reserve)。
+注意：通过taobao.item.get接口获取拍卖信息时，会返回除了valid_hour和valid_minute之外的所有拍卖信息。
 	 **/
 	private $type;
 	
@@ -445,6 +527,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		return $this->autoFill;
 	}
 
+	public function setChangeProp($changeProp)
+	{
+		$this->changeProp = $changeProp;
+		$this->apiParas["change_prop"] = $changeProp;
+	}
+
+	public function getChangeProp()
+	{
+		return $this->changeProp;
+	}
+
 	public function setCid($cid)
 	{
 		$this->cid = $cid;
@@ -476,6 +569,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getDesc()
 	{
 		return $this->desc;
+	}
+
+	public function setDescModules($descModules)
+	{
+		$this->descModules = $descModules;
+		$this->apiParas["desc_modules"] = $descModules;
+	}
+
+	public function getDescModules()
+	{
+		return $this->descModules;
 	}
 
 	public function setEmsFee($emsFee)
@@ -553,6 +657,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getFoodSecurityFoodAdditive()
 	{
 		return $this->foodSecurityFoodAdditive;
+	}
+
+	public function setFoodSecurityHealthProductNo($foodSecurityHealthProductNo)
+	{
+		$this->foodSecurityHealthProductNo = $foodSecurityHealthProductNo;
+		$this->apiParas["food_security.health_product_no"] = $foodSecurityHealthProductNo;
+	}
+
+	public function getFoodSecurityHealthProductNo()
+	{
+		return $this->foodSecurityHealthProductNo;
 	}
 
 	public function setFoodSecurityMix($foodSecurityMix)
@@ -663,6 +778,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getFreightPayer()
 	{
 		return $this->freightPayer;
+	}
+
+	public function setGlobalStockCountry($globalStockCountry)
+	{
+		$this->globalStockCountry = $globalStockCountry;
+		$this->apiParas["global_stock_country"] = $globalStockCountry;
+	}
+
+	public function getGlobalStockCountry()
+	{
+		return $this->globalStockCountry;
 	}
 
 	public function setGlobalStockType($globalStockType)
@@ -929,6 +1055,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		return $this->localityLifeRefundRatio;
 	}
 
+	public function setLocalityLifeRefundmafee($localityLifeRefundmafee)
+	{
+		$this->localityLifeRefundmafee = $localityLifeRefundmafee;
+		$this->apiParas["locality_life.refundmafee"] = $localityLifeRefundmafee;
+	}
+
+	public function getLocalityLifeRefundmafee()
+	{
+		return $this->localityLifeRefundmafee;
+	}
+
 	public function setLocalityLifeVerification($localityLifeVerification)
 	{
 		$this->localityLifeVerification = $localityLifeVerification;
@@ -982,6 +1119,72 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getOuterId()
 	{
 		return $this->outerId;
+	}
+
+	public function setPaimaiInfoDeposit($paimaiInfoDeposit)
+	{
+		$this->paimaiInfoDeposit = $paimaiInfoDeposit;
+		$this->apiParas["paimai_info.deposit"] = $paimaiInfoDeposit;
+	}
+
+	public function getPaimaiInfoDeposit()
+	{
+		return $this->paimaiInfoDeposit;
+	}
+
+	public function setPaimaiInfoInterval($paimaiInfoInterval)
+	{
+		$this->paimaiInfoInterval = $paimaiInfoInterval;
+		$this->apiParas["paimai_info.interval"] = $paimaiInfoInterval;
+	}
+
+	public function getPaimaiInfoInterval()
+	{
+		return $this->paimaiInfoInterval;
+	}
+
+	public function setPaimaiInfoMode($paimaiInfoMode)
+	{
+		$this->paimaiInfoMode = $paimaiInfoMode;
+		$this->apiParas["paimai_info.mode"] = $paimaiInfoMode;
+	}
+
+	public function getPaimaiInfoMode()
+	{
+		return $this->paimaiInfoMode;
+	}
+
+	public function setPaimaiInfoReserve($paimaiInfoReserve)
+	{
+		$this->paimaiInfoReserve = $paimaiInfoReserve;
+		$this->apiParas["paimai_info.reserve"] = $paimaiInfoReserve;
+	}
+
+	public function getPaimaiInfoReserve()
+	{
+		return $this->paimaiInfoReserve;
+	}
+
+	public function setPaimaiInfoValidHour($paimaiInfoValidHour)
+	{
+		$this->paimaiInfoValidHour = $paimaiInfoValidHour;
+		$this->apiParas["paimai_info.valid_hour"] = $paimaiInfoValidHour;
+	}
+
+	public function getPaimaiInfoValidHour()
+	{
+		return $this->paimaiInfoValidHour;
+	}
+
+	public function setPaimaiInfoValidMinute($paimaiInfoValidMinute)
+	{
+		$this->paimaiInfoValidMinute = $paimaiInfoValidMinute;
+		$this->apiParas["paimai_info.valid_minute"] = $paimaiInfoValidMinute;
+	}
+
+	public function getPaimaiInfoValidMinute()
+	{
+		return $this->paimaiInfoValidMinute;
 	}
 
 	public function setPicPath($picPath)
@@ -1083,6 +1286,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		return $this->scenicTicketPayWay;
 	}
 
+	public function setSellPoint($sellPoint)
+	{
+		$this->sellPoint = $sellPoint;
+		$this->apiParas["sell_point"] = $sellPoint;
+	}
+
+	public function getSellPoint()
+	{
+		return $this->sellPoint;
+	}
+
 	public function setSellPromise($sellPromise)
 	{
 		$this->sellPromise = $sellPromise;
@@ -1147,6 +1361,17 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 	public function getSkuQuantities()
 	{
 		return $this->skuQuantities;
+	}
+
+	public function setSkuSpecIds($skuSpecIds)
+	{
+		$this->skuSpecIds = $skuSpecIds;
+		$this->apiParas["sku_spec_ids"] = $skuSpecIds;
+	}
+
+	public function getSkuSpecIds()
+	{
+		return $this->skuSpecIds;
 	}
 
 	public function setStuffStatus($stuffStatus)
@@ -1232,17 +1457,27 @@ sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要�
 		RequestCheckUtil::checkMinValue($this->cid,0,"cid");
 		RequestCheckUtil::checkNotNull($this->desc,"desc");
 		RequestCheckUtil::checkMaxLength($this->desc,200000,"desc");
+		RequestCheckUtil::checkMaxLength($this->globalStockCountry,30,"globalStockCountry");
 		RequestCheckUtil::checkNotNull($this->locationCity,"locationCity");
 		RequestCheckUtil::checkNotNull($this->locationState,"locationState");
 		RequestCheckUtil::checkNotNull($this->num,"num");
-		RequestCheckUtil::checkMaxValue($this->num,999999,"num");
+		RequestCheckUtil::checkMaxValue($this->num,900000000,"num");
 		RequestCheckUtil::checkMinValue($this->num,0,"num");
+		RequestCheckUtil::checkMaxValue($this->paimaiInfoInterval,60,"paimaiInfoInterval");
+		RequestCheckUtil::checkMinValue($this->paimaiInfoInterval,1,"paimaiInfoInterval");
+		RequestCheckUtil::checkMaxValue($this->paimaiInfoMode,3,"paimaiInfoMode");
+		RequestCheckUtil::checkMinValue($this->paimaiInfoMode,1,"paimaiInfoMode");
+		RequestCheckUtil::checkMaxValue($this->paimaiInfoValidHour,48,"paimaiInfoValidHour");
+		RequestCheckUtil::checkMinValue($this->paimaiInfoValidHour,1,"paimaiInfoValidHour");
+		RequestCheckUtil::checkMaxValue($this->paimaiInfoValidMinute,59,"paimaiInfoValidMinute");
+		RequestCheckUtil::checkMinValue($this->paimaiInfoValidMinute,0,"paimaiInfoValidMinute");
 		RequestCheckUtil::checkNotNull($this->price,"price");
 		RequestCheckUtil::checkMaxLength($this->propertyAlias,511,"propertyAlias");
+		RequestCheckUtil::checkMaxLength($this->sellPoint,150,"sellPoint");
 		RequestCheckUtil::checkMaxListSize($this->sellerCids,10,"sellerCids");
 		RequestCheckUtil::checkNotNull($this->stuffStatus,"stuffStatus");
 		RequestCheckUtil::checkNotNull($this->title,"title");
-		RequestCheckUtil::checkMaxLength($this->title,60,"title");
+		RequestCheckUtil::checkMaxLength($this->title,120,"title");
 		RequestCheckUtil::checkNotNull($this->type,"type");
 	}
 	

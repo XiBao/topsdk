@@ -3,17 +3,43 @@
  * TOP API: taobao.caipiao.present.win.items.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CaipiaoPresentWinItemsGetRequest
 {
 	/** 
-	 * 查询个数，最大值为50.如果为空、0和负数，则取默认值50
+	 * 查询日期，格式请严格遵守yyyy-MM-dd
+	 **/
+	private $date;
+	
+	/** 
+	 * 查询个数，最大值为500.如果为空、0和负数，则取默认值500
 	 **/
 	private $num;
 	
+	/** 
+	 * 查询页码，空，零，负的情况默认为1（注意每页数据量为50）
+	 **/
+	private $pageNo;
+	
+	/** 
+	 * 0：查询中奖订单，1：查询所有订单，默认为0，注意按列表数量查询只会查询中奖订单。
+	 **/
+	private $searchType;
+	
 	private $apiParas = array();
 	
+	public function setDate($date)
+	{
+		$this->date = $date;
+		$this->apiParas["date"] = $date;
+	}
+
+	public function getDate()
+	{
+		return $this->date;
+	}
+
 	public function setNum($num)
 	{
 		$this->num = $num;
@@ -23,6 +49,28 @@ class CaipiaoPresentWinItemsGetRequest
 	public function getNum()
 	{
 		return $this->num;
+	}
+
+	public function setPageNo($pageNo)
+	{
+		$this->pageNo = $pageNo;
+		$this->apiParas["page_no"] = $pageNo;
+	}
+
+	public function getPageNo()
+	{
+		return $this->pageNo;
+	}
+
+	public function setSearchType($searchType)
+	{
+		$this->searchType = $searchType;
+		$this->apiParas["search_type"] = $searchType;
+	}
+
+	public function getSearchType()
+	{
+		return $this->searchType;
 	}
 
 	public function getApiMethodName()

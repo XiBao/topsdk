@@ -3,7 +3,7 @@
  * TOP API: taobao.traderates.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class TraderatesGetRequest
 {
@@ -23,7 +23,7 @@ class TraderatesGetRequest
 	private $numIid;
 	
 	/** 
-	 * 页码。取值范围:大于零的整数; 默认值:1
+	 * 页码。取值范围:大于零的整数最大限制为200; 默认值:1
 	 **/
 	private $pageNo;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.jipiao.policy.process request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class JipiaoPolicyProcessRequest
 {
@@ -23,7 +23,9 @@ class JipiaoPolicyProcessRequest
 	/** 
 	 * 扩展字段：
     "rfc" 对应值 1:不退不改不签,2:收费退改签（退、改、签中任意一个收费即为收费退改签）3:免费退改签
-    "ipt" 对应值 1:“打印价格等于销售价”,2:“不提供行程单”,3:“打印价格高于销售价”,4:“打印价格低于销售价”,例如：rfc=1;ipt=1
+    "ipt" 对应值 1:等额行程单 2:不提供发票5:等额“行程单+发票”（对应旧的2） 6:等额发票（对应旧的1）,例如：rfc=1;ipt=1
+    "fdtod"对应值起飞时间“0000”为0时0分 
+    "ldtod"对应值：到达时间“2359”为23时59分
 	 **/
 	private $attributes;
 	
@@ -170,7 +172,7 @@ class JipiaoPolicyProcessRequest
 	private $shareSupport;
 	
 	/** 
-	 * 特殊说明
+	 * 特殊说明,此字段不再使用,填写内容将会报相应的填写错误
 	 **/
 	private $specialRule;
 	

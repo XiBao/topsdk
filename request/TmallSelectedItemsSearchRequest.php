@@ -3,7 +3,7 @@
  * TOP API: tmall.selected.items.search request
  * 
  * @author auto create
- * @since 1.0, 2012-12-24 12:33:33
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class TmallSelectedItemsSearchRequest
 {

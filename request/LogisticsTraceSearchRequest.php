@@ -3,14 +3,24 @@
  * TOP API: taobao.logistics.trace.search request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class LogisticsTraceSearchRequest
 {
 	/** 
+	 * 表明是否是拆单，默认值0，1表示拆单
+	 **/
+	private $isSplit;
+	
+	/** 
 	 * 卖家昵称
 	 **/
 	private $sellerNick;
+	
+	/** 
+	 * 拆单子订单列表，对应的数据是：子订单号的列表。可以不传，但是如果传了则必须符合传递的规则。子订单必须是操作的物流订单的子订单的真子集
+	 **/
+	private $subTid;
 	
 	/** 
 	 * 淘宝交易号，请勿传非淘宝交易号
@@ -19,6 +29,17 @@ class LogisticsTraceSearchRequest
 	
 	private $apiParas = array();
 	
+	public function setIsSplit($isSplit)
+	{
+		$this->isSplit = $isSplit;
+		$this->apiParas["is_split"] = $isSplit;
+	}
+
+	public function getIsSplit()
+	{
+		return $this->isSplit;
+	}
+
 	public function setSellerNick($sellerNick)
 	{
 		$this->sellerNick = $sellerNick;
@@ -28,6 +49,17 @@ class LogisticsTraceSearchRequest
 	public function getSellerNick()
 	{
 		return $this->sellerNick;
+	}
+
+	public function setSubTid($subTid)
+	{
+		$this->subTid = $subTid;
+		$this->apiParas["sub_tid"] = $subTid;
+	}
+
+	public function getSubTid()
+	{
+		return $this->subTid;
 	}
 
 	public function setTid($tid)
@@ -55,6 +87,7 @@ class LogisticsTraceSearchRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->sellerNick,"sellerNick");
+		RequestCheckUtil::checkMaxListSize($this->subTid,50,"subTid");
 		RequestCheckUtil::checkNotNull($this->tid,"tid");
 	}
 	

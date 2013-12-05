@@ -3,17 +3,24 @@
  * TOP API: taobao.picture.upload request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class PictureUploadRequest
 {
+	/** 
+	 * 图片上传的来源，有电脑版本宝贝发布，手机版本宝贝发布
+client:computer电脑版本宝贝使用
+client:phone手机版本宝贝使用
+	 **/
+	private $clientType;
+	
 	/** 
 	 * 包括后缀名的图片标题,不能为空，如Bule.jpg,有些卖家希望图片上传后取图片文件的默认名
 	 **/
 	private $imageInputTitle;
 	
 	/** 
-	 * 图片二进制文件流,不能为空,允许png、jpg、gif图片格式
+	 * 图片二进制文件流,不能为空,允许png、jpg、gif图片格式,2M以内。
 	 **/
 	private $img;
 	
@@ -29,6 +36,17 @@ class PictureUploadRequest
 	
 	private $apiParas = array();
 	
+	public function setClientType($clientType)
+	{
+		$this->clientType = $clientType;
+		$this->apiParas["client_type"] = $clientType;
+	}
+
+	public function getClientType()
+	{
+		return $this->clientType;
+	}
+
 	public function setImageInputTitle($imageInputTitle)
 	{
 		$this->imageInputTitle = $imageInputTitle;
@@ -89,6 +107,8 @@ class PictureUploadRequest
 		RequestCheckUtil::checkNotNull($this->imageInputTitle,"imageInputTitle");
 		RequestCheckUtil::checkNotNull($this->img,"img");
 		RequestCheckUtil::checkNotNull($this->pictureCategoryId,"pictureCategoryId");
+		RequestCheckUtil::checkMaxValue($this->pictureCategoryId,9223372036854775807,"pictureCategoryId");
+		RequestCheckUtil::checkMinValue($this->pictureCategoryId,0,"pictureCategoryId");
 	}
 	
 	public function putOtherTextParam($key, $value) {

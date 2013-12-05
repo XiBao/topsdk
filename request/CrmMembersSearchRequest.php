@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.search request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CrmMembersSearchRequest
 {
@@ -18,13 +18,12 @@ class CrmMembersSearchRequest
 	private $city;
 	
 	/** 
-	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1
+	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1.最大1000页
 	 **/
 	private $currentPage;
 	
 	/** 
-	 * 会员等级，1：普通客户，2：高级会员，3：VIP会员, 4：至尊VIP会员           
-注：grade=0通过relation_source=2查询
+	 * 会员等级，0：店铺客户，1：普通客户，2：高级会员，3：VIP会员, 4：至尊VIP会员
 	 **/
 	private $grade;
 	
@@ -94,11 +93,6 @@ class CrmMembersSearchRequest
 	private $minTradeCount;
 	
 	/** 
-	 * 指定按哪个字段排序，目前可排序的字段为：relation，trade_count，trade_amount，avg_price，lastest_time
-	 **/
-	private $order;
-	
-	/** 
 	 * 每页显示的会员数量，page_size的最大值不能超过100，最小值不能小于1
 	 **/
 	private $pageSize;
@@ -109,14 +103,9 @@ class CrmMembersSearchRequest
 	private $province;
 	
 	/** 
-	 * 关系来源，1交易成功，2未成交(grade=0)
+	 * 关系来源，1交易成功，2未成交，3卖家手动吸纳
 	 **/
 	private $relationSource;
-	
-	/** 
-	 * 用于描述是按升序还是降序排列结果
-	 **/
-	private $sort;
 	
 	private $apiParas = array();
 	
@@ -307,17 +296,6 @@ class CrmMembersSearchRequest
 		return $this->minTradeCount;
 	}
 
-	public function setOrder($order)
-	{
-		$this->order = $order;
-		$this->apiParas["order"] = $order;
-	}
-
-	public function getOrder()
-	{
-		return $this->order;
-	}
-
 	public function setPageSize($pageSize)
 	{
 		$this->pageSize = $pageSize;
@@ -351,17 +329,6 @@ class CrmMembersSearchRequest
 		return $this->relationSource;
 	}
 
-	public function setSort($sort)
-	{
-		$this->sort = $sort;
-		$this->apiParas["sort"] = $sort;
-	}
-
-	public function getSort()
-	{
-		return $this->sort;
-	}
-
 	public function getApiMethodName()
 	{
 		return "taobao.crm.members.search";
@@ -375,12 +342,12 @@ class CrmMembersSearchRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkMaxLength($this->buyerNick,32,"buyerNick");
+		RequestCheckUtil::checkMaxLength($this->buyerNick,1000,"buyerNick");
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
-		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->grade,4,"grade");
-		RequestCheckUtil::checkMinValue($this->grade,1,"grade");
+		RequestCheckUtil::checkMinValue($this->grade,-1,"grade");
 		RequestCheckUtil::checkMinValue($this->maxCloseTradeNum,0,"maxCloseTradeNum");
 		RequestCheckUtil::checkMinValue($this->maxItemNum,0,"maxItemNum");
 		RequestCheckUtil::checkMinValue($this->maxTradeCount,0,"maxTradeCount");
@@ -391,7 +358,12 @@ class CrmMembersSearchRequest
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 		RequestCheckUtil::checkMaxValue($this->province,35,"province");
 		RequestCheckUtil::checkMinValue($this->province,1,"province");
-		RequestCheckUtil::checkMaxValue($this->relationSource,2,"relationSource");
+		RequestCheckUtil::checkMaxValue($this->relationSource,3,"relationSource");
 		RequestCheckUtil::checkMinValue($this->relationSource,1,"relationSource");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

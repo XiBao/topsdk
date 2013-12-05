@@ -3,14 +3,14 @@
  * TOP API: taobao.fenxiao.distributor.procuct.static.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoDistributorProcuctStaticGetRequest
 {
 	/** 
-	 * 分销商淘宝店主ID
+	 * 分销商淘宝店主nick
 	 **/
-	private $distributorUserId;
+	private $distributorUserNick;
 	
 	/** 
 	 * 供应商商品id，一次可以传多个，每次最多40个。
@@ -20,15 +20,15 @@ class FenxiaoDistributorProcuctStaticGetRequest
 	
 	private $apiParas = array();
 	
-	public function setDistributorUserId($distributorUserId)
+	public function setDistributorUserNick($distributorUserNick)
 	{
-		$this->distributorUserId = $distributorUserId;
-		$this->apiParas["distributor_user_id"] = $distributorUserId;
+		$this->distributorUserNick = $distributorUserNick;
+		$this->apiParas["distributor_user_nick"] = $distributorUserNick;
 	}
 
-	public function getDistributorUserId()
+	public function getDistributorUserNick()
 	{
-		return $this->distributorUserId;
+		return $this->distributorUserNick;
 	}
 
 	public function setProductIdArray($productIdArray)
@@ -55,7 +55,7 @@ class FenxiaoDistributorProcuctStaticGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->distributorUserId,"distributorUserId");
+		RequestCheckUtil::checkNotNull($this->distributorUserNick,"distributorUserNick");
 		RequestCheckUtil::checkNotNull($this->productIdArray,"productIdArray");
 	}
 	

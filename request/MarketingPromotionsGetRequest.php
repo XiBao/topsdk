@@ -3,7 +3,7 @@
  * TOP API: taobao.marketing.promotions.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class MarketingPromotionsGetRequest
 {
@@ -11,6 +11,11 @@ class MarketingPromotionsGetRequest
 	 * 需返回的优惠策略结构字段列表。可选值为Promotion中所有字段，如：promotion_id, promotion_title, item_id, status, tag_id等等
 	 **/
 	private $fields;
+	
+	/** 
+	 * 是否新标签标识
+	 **/
+	private $isNewTag;
 	
 	/** 
 	 * 商品数字ID。根据该ID查询商品下通过第三方工具设置的所有优惠策略
@@ -38,6 +43,17 @@ class MarketingPromotionsGetRequest
 	public function getFields()
 	{
 		return $this->fields;
+	}
+
+	public function setIsNewTag($isNewTag)
+	{
+		$this->isNewTag = $isNewTag;
+		$this->apiParas["is_new_tag"] = $isNewTag;
+	}
+
+	public function getIsNewTag()
+	{
+		return $this->isNewTag;
 	}
 
 	public function setNumIid($numIid)

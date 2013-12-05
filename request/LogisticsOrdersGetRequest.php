@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.orders.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class LogisticsOrdersGetRequest
 {
@@ -19,7 +19,7 @@ class LogisticsOrdersGetRequest
 	
 	/** 
 	 * 需返回的字段列表.可选值:Shipping 物流数据结构中的以下字段: <br>
-tid,order_code,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_title,receiver_name, created,modified,status,type,freight_payer,seller_confirm,company_name；<br>多个字段之间用","分隔。如tid,seller_nick,buyer_nick,delivery_start。
+tid,order_code,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_title,receiver_name, created,modified,status,type,freight_payer,seller_confirm,company_name,sub_tids,is_spilt；<br>多个字段之间用","分隔。如tid,seller_nick,buyer_nick,delivery_start。
 	 **/
 	private $fields;
 	
@@ -59,7 +59,7 @@ tid,order_code,seller_nick,buyer_nick,delivery_start, delivery_end,out_sid,item_
 	private $status;
 	
 	/** 
-	 * 交易ID.如果加入tid参数的话,不用传其他的参数,但是仅会返回一条物流订单信息.
+	 * 交易ID.如果加入tid参数的话,不用传其他的参数,若传入tid：非拆单场景，仅会返回一条物流订单信息；拆单场景，会返回多条物流订单信息
 	 **/
 	private $tid;
 	

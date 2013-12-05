@@ -3,7 +3,7 @@
  * TOP API: taobao.wlb.order.create request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class WlbOrderCreateRequest
 {
@@ -101,8 +101,8 @@ class WlbOrderCreateRequest
 	private $prevOrderCode;
 	
 	/** 
-	 * 发收方发货方信息必须传 手机和电话必选其一
-收货方信息
+	 * 收货方信息，必须传， 手机和电话必选其一。
+收货方信息：
 邮编^^^省^^^市^^^区^^^具体地址^^^收件方名称^^^手机^^^电话
 
 如果某一个字段的数据为空时，必须传NA
@@ -135,7 +135,7 @@ class WlbOrderCreateRequest
 	private $scheduleType;
 	
 	/** 
-	 * 发货方信息，发收方发货方信息必须传 手机和电话必选其一
+	 * 发货方信息，发货方信息必须传， 手机和电话必选其一。 发货方信息：
 邮编^^^省^^^市^^^区^^^具体地址^^^收件方名称^^^手机^^^电话
 如果某一个字段的数据为空时，必须传NA
 	 **/

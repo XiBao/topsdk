@@ -3,10 +3,15 @@
  * TOP API: taobao.itempropvalues.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ItempropvaluesGetRequest
 {
+	/** 
+	 * 属性的Key，支持多条，以“,”分隔
+	 **/
+	private $attrKeys;
+	
 	/** 
 	 * 叶子类目ID ,通过taobao.itemcats.get获得叶子类目ID
 	 **/
@@ -29,6 +34,17 @@ class ItempropvaluesGetRequest
 	
 	private $apiParas = array();
 	
+	public function setAttrKeys($attrKeys)
+	{
+		$this->attrKeys = $attrKeys;
+		$this->apiParas["attr_keys"] = $attrKeys;
+	}
+
+	public function getAttrKeys()
+	{
+		return $this->attrKeys;
+	}
+
 	public function setCid($cid)
 	{
 		$this->cid = $cid;

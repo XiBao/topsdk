@@ -3,7 +3,7 @@
  * TOP API: tmall.product.spec.add request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class TmallProductSpecAddRequest
 {
@@ -18,9 +18,39 @@ class TmallProductSpecAddRequest
 	private $certifiedPicStr;
 	
 	/** 
+	 * 存放产品规格认证类型-认证文本映射信息，格式为k:v;k:v;，其中key为认证类型数字id，value为认证文本值
+	 **/
+	private $certifiedTxtStr;
+	
+	/** 
+	 * 产品基础色，数据格式为：pid:vid:rvid1,rvid2,rvid3;pid:vid:rvid1
+	 **/
+	private $changeProp;
+	
+	/** 
+	 * 用户自定义销售属性，结构：pid1:value1;pid2:value2。在
+	 **/
+	private $customerSpecProps;
+	
+	/** 
 	 * 产品图片
 	 **/
 	private $image;
+	
+	/** 
+	 * 产品规格吊牌价，以分为单位，无默认值，上限999999999
+	 **/
+	private $labelPrice;
+	
+	/** 
+	 * 产品上市时间
+	 **/
+	private $marketTime;
+	
+	/** 
+	 * 产品货号
+	 **/
+	private $productCode;
 	
 	/** 
 	 * 产品ID
@@ -33,7 +63,7 @@ class TmallProductSpecAddRequest
 	private $specProps;
 	
 	/** 
-	 * 规格属性别名
+	 * 规格属性别名,只允许传颜色别名
 	 **/
 	private $specPropsAlias;
 	
@@ -61,6 +91,39 @@ class TmallProductSpecAddRequest
 		return $this->certifiedPicStr;
 	}
 
+	public function setCertifiedTxtStr($certifiedTxtStr)
+	{
+		$this->certifiedTxtStr = $certifiedTxtStr;
+		$this->apiParas["certified_txt_str"] = $certifiedTxtStr;
+	}
+
+	public function getCertifiedTxtStr()
+	{
+		return $this->certifiedTxtStr;
+	}
+
+	public function setChangeProp($changeProp)
+	{
+		$this->changeProp = $changeProp;
+		$this->apiParas["change_prop"] = $changeProp;
+	}
+
+	public function getChangeProp()
+	{
+		return $this->changeProp;
+	}
+
+	public function setCustomerSpecProps($customerSpecProps)
+	{
+		$this->customerSpecProps = $customerSpecProps;
+		$this->apiParas["customer_spec_props"] = $customerSpecProps;
+	}
+
+	public function getCustomerSpecProps()
+	{
+		return $this->customerSpecProps;
+	}
+
 	public function setImage($image)
 	{
 		$this->image = $image;
@@ -70,6 +133,39 @@ class TmallProductSpecAddRequest
 	public function getImage()
 	{
 		return $this->image;
+	}
+
+	public function setLabelPrice($labelPrice)
+	{
+		$this->labelPrice = $labelPrice;
+		$this->apiParas["label_price"] = $labelPrice;
+	}
+
+	public function getLabelPrice()
+	{
+		return $this->labelPrice;
+	}
+
+	public function setMarketTime($marketTime)
+	{
+		$this->marketTime = $marketTime;
+		$this->apiParas["market_time"] = $marketTime;
+	}
+
+	public function getMarketTime()
+	{
+		return $this->marketTime;
+	}
+
+	public function setProductCode($productCode)
+	{
+		$this->productCode = $productCode;
+		$this->apiParas["product_code"] = $productCode;
+	}
+
+	public function getProductCode()
+	{
+		return $this->productCode;
 	}
 
 	public function setProductId($productId)
@@ -118,10 +214,10 @@ class TmallProductSpecAddRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->barcode,"barcode");
 		RequestCheckUtil::checkNotNull($this->image,"image");
+		RequestCheckUtil::checkMaxValue($this->labelPrice,999999999,"labelPrice");
+		RequestCheckUtil::checkMinValue($this->labelPrice,0,"labelPrice");
 		RequestCheckUtil::checkNotNull($this->productId,"productId");
-		RequestCheckUtil::checkNotNull($this->specProps,"specProps");
 		RequestCheckUtil::checkMaxLength($this->specPropsAlias,60,"specPropsAlias");
 	}
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.group.update request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CrmGroupUpdateRequest
 {
@@ -58,5 +58,10 @@ class CrmGroupUpdateRequest
 		RequestCheckUtil::checkMinValue($this->groupId,1,"groupId");
 		RequestCheckUtil::checkNotNull($this->newGroupName,"newGroupName");
 		RequestCheckUtil::checkMaxLength($this->newGroupName,15,"newGroupName");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

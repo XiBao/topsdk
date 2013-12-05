@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.get request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CrmMembersGetRequest
 {
@@ -13,13 +13,12 @@ class CrmMembersGetRequest
 	private $buyerNick;
 	
 	/** 
-	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1
+	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1，最大页数为1000
 	 **/
 	private $currentPage;
 	
 	/** 
-	 * 会员等级，0：返回所有会员1：普通客户，2：高级会员，3：VIP会员， 4：至尊VIP会员
-(如果要查交易关闭的会员  请选择taobao.crm.members.search接口的 relation_source=2)
+	 * 会员等级，0：店铺客户，1：普通会员，2：高级会员，3：VIP会员， 4：至尊VIP会员。如果不传入值则默认为全部等级。
 	 **/
 	private $grade;
 	
@@ -183,15 +182,20 @@ class CrmMembersGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkMaxLength($this->buyerNick,32,"buyerNick");
+		RequestCheckUtil::checkMaxLength($this->buyerNick,1000,"buyerNick");
 		RequestCheckUtil::checkNotNull($this->currentPage,"currentPage");
-		RequestCheckUtil::checkMaxValue($this->currentPage,1000000,"currentPage");
+		RequestCheckUtil::checkMaxValue($this->currentPage,1000,"currentPage");
 		RequestCheckUtil::checkMinValue($this->currentPage,1,"currentPage");
 		RequestCheckUtil::checkMaxValue($this->grade,4,"grade");
-		RequestCheckUtil::checkMinValue($this->grade,1,"grade");
+		RequestCheckUtil::checkMinValue($this->grade,-1,"grade");
 		RequestCheckUtil::checkMinValue($this->maxTradeCount,0,"maxTradeCount");
 		RequestCheckUtil::checkMinValue($this->minTradeCount,0,"minTradeCount");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }
