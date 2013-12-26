@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoProductAddRequest
 {
@@ -181,9 +181,19 @@ no:不需要授权
 	private $skuStandardPrices;
 	
 	/** 
-	 * 标准价格，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
+	 * 产品spuID，达尔文产品必须要传spuID，否则不能发布。其他非达尔文产品，看情况传
+	 **/
+	private $spuId;
+	
+	/** 
+	 * 采购基准价格，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
 	 **/
 	private $standardPrice;
+	
+	/** 
+	 * 零售基准价，单位：元。例：“10.56”。必须在0.01元到10000000元之间。
+	 **/
+	private $standardRetailPrice;
 	
 	/** 
 	 * 分销方式：AGENT（只做代销，默认值）、DEALER（只做经销）、ALL（代销和经销都做）
@@ -566,6 +576,17 @@ no:不需要授权
 		return $this->skuStandardPrices;
 	}
 
+	public function setSpuId($spuId)
+	{
+		$this->spuId = $spuId;
+		$this->apiParas["spu_id"] = $spuId;
+	}
+
+	public function getSpuId()
+	{
+		return $this->spuId;
+	}
+
 	public function setStandardPrice($standardPrice)
 	{
 		$this->standardPrice = $standardPrice;
@@ -575,6 +596,17 @@ no:不需要授权
 	public function getStandardPrice()
 	{
 		return $this->standardPrice;
+	}
+
+	public function setStandardRetailPrice($standardRetailPrice)
+	{
+		$this->standardRetailPrice = $standardRetailPrice;
+		$this->apiParas["standard_retail_price"] = $standardRetailPrice;
+	}
+
+	public function getStandardRetailPrice()
+	{
+		return $this->standardRetailPrice;
 	}
 
 	public function setTradeType($tradeType)

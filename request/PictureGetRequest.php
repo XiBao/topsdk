@@ -3,10 +3,16 @@
  * TOP API: taobao.picture.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class PictureGetRequest
 {
+	/** 
+	 * 图片使用，如果是pc宝贝detail使用，设置为client:computer，查询出来的图片是符合pc的宝贝detail显示的
+如果是手机宝贝detail使用，设置为client:phone，查询出来的图片是符合手机的宝贝detail显示的
+	 **/
+	private $clientType;
+	
 	/** 
 	 * 是否删除,unfroze代表没有删除
 	 **/
@@ -57,8 +63,24 @@ class PictureGetRequest
 	 **/
 	private $title;
 	
+	/** 
+	 * 图片url查询接口
+	 **/
+	private $urls;
+	
 	private $apiParas = array();
 	
+	public function setClientType($clientType)
+	{
+		$this->clientType = $clientType;
+		$this->apiParas["client_type"] = $clientType;
+	}
+
+	public function getClientType()
+	{
+		return $this->clientType;
+	}
+
 	public function setDeleted($deleted)
 	{
 		$this->deleted = $deleted;
@@ -167,6 +189,17 @@ class PictureGetRequest
 	public function getTitle()
 	{
 		return $this->title;
+	}
+
+	public function setUrls($urls)
+	{
+		$this->urls = $urls;
+		$this->apiParas["urls"] = $urls;
+	}
+
+	public function getUrls()
+	{
+		return $this->urls;
 	}
 
 	public function getApiMethodName()

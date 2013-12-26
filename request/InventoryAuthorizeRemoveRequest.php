@@ -3,7 +3,7 @@
  * TOP API: taobao.inventory.authorize.remove request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class InventoryAuthorizeRemoveRequest
 {
@@ -11,6 +11,11 @@ class InventoryAuthorizeRemoveRequest
 	 * 库存授权结果码
 	 **/
 	private $authorizeCode;
+	
+	/** 
+	 * 后端商品id
+	 **/
+	private $scItemId;
 	
 	/** 
 	 * 移除授权的目标用户昵称列表，用”,”隔开
@@ -28,6 +33,17 @@ class InventoryAuthorizeRemoveRequest
 	public function getAuthorizeCode()
 	{
 		return $this->authorizeCode;
+	}
+
+	public function setScItemId($scItemId)
+	{
+		$this->scItemId = $scItemId;
+		$this->apiParas["sc_item_id"] = $scItemId;
+	}
+
+	public function getScItemId()
+	{
+		return $this->scItemId;
 	}
 
 	public function setUserNickList($userNickList)
@@ -55,6 +71,7 @@ class InventoryAuthorizeRemoveRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->authorizeCode,"authorizeCode");
+		RequestCheckUtil::checkNotNull($this->scItemId,"scItemId");
 		RequestCheckUtil::checkNotNull($this->userNickList,"userNickList");
 	}
 	

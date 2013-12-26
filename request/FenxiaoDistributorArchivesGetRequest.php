@@ -3,26 +3,26 @@
  * TOP API: taobao.fenxiao.distributor.archives.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoDistributorArchivesGetRequest
 {
 	/** 
-	 * 分销商淘宝店主ID
+	 * 分销商淘宝店主nick
 	 **/
-	private $distributorUserId;
+	private $distributorUserNick;
 	
 	private $apiParas = array();
 	
-	public function setDistributorUserId($distributorUserId)
+	public function setDistributorUserNick($distributorUserNick)
 	{
-		$this->distributorUserId = $distributorUserId;
-		$this->apiParas["distributor_user_id"] = $distributorUserId;
+		$this->distributorUserNick = $distributorUserNick;
+		$this->apiParas["distributor_user_nick"] = $distributorUserNick;
 	}
 
-	public function getDistributorUserId()
+	public function getDistributorUserNick()
 	{
-		return $this->distributorUserId;
+		return $this->distributorUserNick;
 	}
 
 	public function getApiMethodName()
@@ -38,7 +38,7 @@ class FenxiaoDistributorArchivesGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->distributorUserId,"distributorUserId");
+		RequestCheckUtil::checkNotNull($this->distributorUserNick,"distributorUserNick");
 	}
 	
 	public function putOtherTextParam($key, $value) {

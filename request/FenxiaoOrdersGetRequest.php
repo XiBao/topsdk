@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.orders.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoOrdersGetRequest
 {
@@ -50,6 +50,11 @@ sub_purchase_orders表示只返回子采购单列表
 	 * 交易状态，不传默认查询所有采购单根据身份选择自身状态可选值:<br> *供应商：<br> WAIT_SELLER_SEND_GOODS(等待发货)<br> WAIT_SELLER_CONFIRM_PAY(待确认收款)<br> WAIT_BUYER_PAY(等待付款)<br> WAIT_BUYER_CONFIRM_GOODS(已发货)<br> TRADE_REFUNDING(退款中)<br> TRADE_FINISHED(采购成功)<br> TRADE_CLOSED(已关闭)<br> *分销商：<br> WAIT_BUYER_PAY(等待付款)<br> WAIT_BUYER_CONFIRM_GOODS(待收货确认)<br> TRADE_FOR_PAY(已付款)<br> TRADE_REFUNDING(退款中)<br> TRADE_FINISHED(采购成功)<br> TRADE_CLOSED(已关闭)<br>
 	 **/
 	private $status;
+	
+	/** 
+	 * 采购单下游买家订单id
+	 **/
+	private $tcOrderId;
 	
 	/** 
 	 * 可选值：trade_time_type(采购单按照成交时间范围查询),update_time_type(采购单按照更新时间范围查询)
@@ -135,6 +140,17 @@ sub_purchase_orders表示只返回子采购单列表
 		return $this->status;
 	}
 
+	public function setTcOrderId($tcOrderId)
+	{
+		$this->tcOrderId = $tcOrderId;
+		$this->apiParas["tc_order_id"] = $tcOrderId;
+	}
+
+	public function getTcOrderId()
+	{
+		return $this->tcOrderId;
+	}
+
 	public function setTimeType($timeType)
 	{
 		$this->timeType = $timeType;
@@ -159,6 +175,12 @@ sub_purchase_orders表示只返回子采购单列表
 	public function check()
 	{
 		
+		RequestCheckUtil::checkMaxValue($this->pageNo,2147483647,"pageNo");
+		RequestCheckUtil::checkMinValue($this->pageNo,-21474836478,"pageNo");
+		RequestCheckUtil::checkMaxValue($this->pageSize,2147483647,"pageSize");
+		RequestCheckUtil::checkMinValue($this->pageSize,-21474836478,"pageSize");
+		RequestCheckUtil::checkMaxValue($this->purchaseOrderId,9223372036854775807,"purchaseOrderId");
+		RequestCheckUtil::checkMinValue($this->purchaseOrderId,-9223372036854775808,"purchaseOrderId");
 	}
 	
 	public function putOtherTextParam($key, $value) {

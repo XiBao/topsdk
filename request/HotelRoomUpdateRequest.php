@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.room.update request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class HotelRoomUpdateRequest
 {
@@ -51,9 +51,14 @@ A：无早，B：单早，C：双早，D：三早，E：多早
 	private $gid;
 	
 	/** 
-	 * 购买须知。不能超过4000个汉字（8000个字符）。
+	 * 购买须知。不能超过300个字。
 	 **/
 	private $guide;
+	
+	/** 
+	 * 酒店商品是否提供发票
+	 **/
+	private $hasReceipt;
 	
 	/** 
 	 * 为到店支付卖家特殊使用，代表多种支付类型的房态。room_quotas可选，如果有值，也会处理。
@@ -81,6 +86,26 @@ A：全额支付，B：手续费，C：订金，D：手续费/间夜，E：前�
 	 * 价格类型。可选值：A,B。分别代表：A：参考预订价，B实时预订价 。未选该参数默认为参考预订价。选择实时预订价的情况下，支付类型必须选择为A(全额支付)
 	 **/
 	private $priceType;
+	
+	/** 
+	 * 发票说明，不能超过100个汉字,200个字符。
+	 **/
+	private $receiptInfo;
+	
+	/** 
+	 * 发票类型为其他时的发票描述,不能超过30个汉字，60个字符。
+	 **/
+	private $receiptOtherTypeDesc;
+	
+	/** 
+	 * 发票类型。A,B。分别代表： A:酒店住宿发票,B:其他
+	 **/
+	private $receiptType;
+	
+	/** 
+	 * 1. 全额支付类型必填 2. t代表类别(1表示任意退;2表示不能退;3表示阶梯退)，p代表退款规则（数组）， d代表天数，r代表扣除手续费比率。示例代表的意思就是"阶梯退:提前3天内退订，收取订单总额10%的违约金;提前2天内退订，收取订单总额20%的违约金，提前1天内退订，收取订单总额30%的违约金"。 3. 任意退、不能退不能指定退款规则;阶梯退不能没有退款规则;阶梯退规则最多10条,且每条规则天数、费率不能相同;阶梯退遵循天数越短,违约金越大的业务规则;天数需为整数,且90>天数>=0;费率需为整数且100<=费率<=0;阶梯退规则只有一条时,费率不能设置为100%;阶梯退规则只有一条时,不能设定0天收取0%;
+	 **/
+	private $refundPolicyInfo;
 	
 	/** 
 	 * 房态信息。可以传今天开始90天内的房态信息。日期必须连续。JSON格式传递。
@@ -227,6 +252,17 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		return $this->guide;
 	}
 
+	public function setHasReceipt($hasReceipt)
+	{
+		$this->hasReceipt = $hasReceipt;
+		$this->apiParas["has_receipt"] = $hasReceipt;
+	}
+
+	public function getHasReceipt()
+	{
+		return $this->hasReceipt;
+	}
+
 	public function setMultiRoomQuotas($multiRoomQuotas)
 	{
 		$this->multiRoomQuotas = $multiRoomQuotas;
@@ -280,6 +316,50 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 	public function getPriceType()
 	{
 		return $this->priceType;
+	}
+
+	public function setReceiptInfo($receiptInfo)
+	{
+		$this->receiptInfo = $receiptInfo;
+		$this->apiParas["receipt_info"] = $receiptInfo;
+	}
+
+	public function getReceiptInfo()
+	{
+		return $this->receiptInfo;
+	}
+
+	public function setReceiptOtherTypeDesc($receiptOtherTypeDesc)
+	{
+		$this->receiptOtherTypeDesc = $receiptOtherTypeDesc;
+		$this->apiParas["receipt_other_type_desc"] = $receiptOtherTypeDesc;
+	}
+
+	public function getReceiptOtherTypeDesc()
+	{
+		return $this->receiptOtherTypeDesc;
+	}
+
+	public function setReceiptType($receiptType)
+	{
+		$this->receiptType = $receiptType;
+		$this->apiParas["receipt_type"] = $receiptType;
+	}
+
+	public function getReceiptType()
+	{
+		return $this->receiptType;
+	}
+
+	public function setRefundPolicyInfo($refundPolicyInfo)
+	{
+		$this->refundPolicyInfo = $refundPolicyInfo;
+		$this->apiParas["refund_policy_info"] = $refundPolicyInfo;
+	}
+
+	public function getRefundPolicyInfo()
+	{
+		return $this->refundPolicyInfo;
 	}
 
 	public function setRoomQuotas($roomQuotas)
@@ -382,7 +462,7 @@ bar：吧台，catv：有线电视，ddd：国内长途电话，idd：国际长�
 		RequestCheckUtil::checkMaxValue($this->fee,99999900,"fee");
 		RequestCheckUtil::checkMinValue($this->fee,0,"fee");
 		RequestCheckUtil::checkNotNull($this->gid,"gid");
-		RequestCheckUtil::checkMaxLength($this->guide,8000,"guide");
+		RequestCheckUtil::checkMaxLength($this->guide,300,"guide");
 		RequestCheckUtil::checkMaxLength($this->paymentType,1,"paymentType");
 		RequestCheckUtil::checkMaxLength($this->priceType,1,"priceType");
 		RequestCheckUtil::checkMaxLength($this->size,1,"size");

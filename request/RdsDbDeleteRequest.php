@@ -3,14 +3,14 @@
  * TOP API: taobao.rds.db.delete request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class RdsDbDeleteRequest
 {
 	/** 
-	 * 数据库的ID，可以通过 taobao.rds.db.get 获取
+	 * 数据库的name，可以通过 taobao.rds.db.get 获取
 	 **/
-	private $dbId;
+	private $dbName;
 	
 	/** 
 	 * rds的实例名
@@ -19,15 +19,15 @@ class RdsDbDeleteRequest
 	
 	private $apiParas = array();
 	
-	public function setDbId($dbId)
+	public function setDbName($dbName)
 	{
-		$this->dbId = $dbId;
-		$this->apiParas["db_id"] = $dbId;
+		$this->dbName = $dbName;
+		$this->apiParas["db_name"] = $dbName;
 	}
 
-	public function getDbId()
+	public function getDbName()
 	{
-		return $this->dbId;
+		return $this->dbName;
 	}
 
 	public function setInstanceName($instanceName)
@@ -54,7 +54,7 @@ class RdsDbDeleteRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->dbId,"dbId");
+		RequestCheckUtil::checkNotNull($this->dbName,"dbName");
 		RequestCheckUtil::checkNotNull($this->instanceName,"instanceName");
 		RequestCheckUtil::checkMaxLength($this->instanceName,30,"instanceName");
 	}

@@ -3,7 +3,7 @@
  * TOP API: taobao.crm.members.groups.batchdelete request
  * 
  * @author auto create
- * @since 1.0, 2012-07-30 16:33:53
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CrmMembersGroupsBatchdeleteRequest
 {
@@ -58,5 +58,10 @@ class CrmMembersGroupsBatchdeleteRequest
 		RequestCheckUtil::checkMaxListSize($this->buyerIds,10,"buyerIds");
 		RequestCheckUtil::checkNotNull($this->groupIds,"groupIds");
 		RequestCheckUtil::checkMaxListSize($this->groupIds,10,"groupIds");
+	}
+	
+	public function putOtherTextParam($key, $value) {
+		$this->apiParas[$key] = $value;
+		$this->$key = $value;
 	}
 }

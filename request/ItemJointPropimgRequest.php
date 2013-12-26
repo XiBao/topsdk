@@ -3,7 +3,7 @@
  * TOP API: taobao.item.joint.propimg request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ItemJointPropimgRequest
 {
@@ -28,7 +28,7 @@ class ItemJointPropimgRequest
 	private $position;
 	
 	/** 
-	 * 属性列表。调用taobao.itemprops.get.v2获取类目属性，属性必须是颜色属性，再用taobao.itempropvalues.get取得vid。格式:pid:vid。
+	 * 属性列表。调用taobao.itemprops.get获取，属性必须是颜色属性，格式:pid:vid。
 	 **/
 	private $properties;
 	

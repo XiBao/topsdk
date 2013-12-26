@@ -3,14 +3,14 @@
  * TOP API: taobao.inventory.authorize.removeall request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class InventoryAuthorizeRemoveallRequest
 {
 	/** 
-	 * 商品编码列表，用”,”隔开.每次请求的商品列表不超过50个
+	 * 后端商品id
 	 **/
-	private $scItemIdList;
+	private $scItemId;
 	
 	/** 
 	 * 移除授权的目标用户昵称列表，用”,”隔开
@@ -19,15 +19,15 @@ class InventoryAuthorizeRemoveallRequest
 	
 	private $apiParas = array();
 	
-	public function setScItemIdList($scItemIdList)
+	public function setScItemId($scItemId)
 	{
-		$this->scItemIdList = $scItemIdList;
-		$this->apiParas["sc_item_id_list"] = $scItemIdList;
+		$this->scItemId = $scItemId;
+		$this->apiParas["sc_item_id"] = $scItemId;
 	}
 
-	public function getScItemIdList()
+	public function getScItemId()
 	{
-		return $this->scItemIdList;
+		return $this->scItemId;
 	}
 
 	public function setUserNickList($userNickList)
@@ -54,7 +54,7 @@ class InventoryAuthorizeRemoveallRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->scItemIdList,"scItemIdList");
+		RequestCheckUtil::checkNotNull($this->scItemId,"scItemId");
 	}
 	
 	public function putOtherTextParam($key, $value) {

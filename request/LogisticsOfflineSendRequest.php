@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.offline.send request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class LogisticsOfflineSendRequest
 {
@@ -35,14 +35,31 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	private $feature;
 	
 	/** 
+	 * 表明是否是拆单
+1表示拆单
+0表示不拆单，默认值0
+	 **/
+	private $isSplit;
+	
+	/** 
 	 * 运单号.具体一个物流公司的真实运单号码。淘宝官方物流会校验，请谨慎传入；若company_code中传入的代码非淘宝官方物流合作公司，此处运单号不校验。
 	 **/
 	private $outSid;
 	
 	/** 
+	 * 商家的IP地址
+	 **/
+	private $sellerIp;
+	
+	/** 
 	 * 卖家联系人地址库ID，可以通过taobao.logistics.address.search接口查询到地址库ID。<font color='red'>如果为空，取的卖家的默认取货地址</font>
 	 **/
 	private $senderId;
+	
+	/** 
+	 * 需要拆单发货的子订单集合，为空表示不做拆单发货。
+	 **/
+	private $subTid;
 	
 	/** 
 	 * 淘宝交易ID
@@ -84,6 +101,17 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 		return $this->feature;
 	}
 
+	public function setIsSplit($isSplit)
+	{
+		$this->isSplit = $isSplit;
+		$this->apiParas["is_split"] = $isSplit;
+	}
+
+	public function getIsSplit()
+	{
+		return $this->isSplit;
+	}
+
 	public function setOutSid($outSid)
 	{
 		$this->outSid = $outSid;
@@ -95,6 +123,17 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 		return $this->outSid;
 	}
 
+	public function setSellerIp($sellerIp)
+	{
+		$this->sellerIp = $sellerIp;
+		$this->apiParas["seller_ip"] = $sellerIp;
+	}
+
+	public function getSellerIp()
+	{
+		return $this->sellerIp;
+	}
+
 	public function setSenderId($senderId)
 	{
 		$this->senderId = $senderId;
@@ -104,6 +143,17 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	public function getSenderId()
 	{
 		return $this->senderId;
+	}
+
+	public function setSubTid($subTid)
+	{
+		$this->subTid = $subTid;
+		$this->apiParas["sub_tid"] = $subTid;
+	}
+
+	public function getSubTid()
+	{
+		return $this->subTid;
 	}
 
 	public function setTid($tid)
@@ -132,7 +182,9 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 		
 		RequestCheckUtil::checkNotNull($this->companyCode,"companyCode");
 		RequestCheckUtil::checkNotNull($this->outSid,"outSid");
+		RequestCheckUtil::checkMaxListSize($this->subTid,50,"subTid");
 		RequestCheckUtil::checkNotNull($this->tid,"tid");
+		RequestCheckUtil::checkMinValue($this->tid,1000,"tid");
 	}
 	
 	public function putOtherTextParam($key, $value) {

@@ -3,7 +3,7 @@
  * TOP API: taobao.caipiao.lottery.sendbynick request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class CaipiaoLotterySendbynickRequest
 {
@@ -23,7 +23,7 @@ class CaipiaoLotterySendbynickRequest
 	private $stakeCount;
 	
 	/** 
-	 * 送彩票给接收方的赠言。 不能超过50个字符，1个中文字符、1个英文字母及1个数字等均当作一个字符，如果超过，则会截取。
+	 * 送彩票给接收方的赠言。 不能超过20个字符，1个中文字符、1个英文字母及1个数字等均当作一个字符，如果超过，则会截取。
 	 **/
 	private $sweetyWords;
 	

@@ -14,6 +14,10 @@ class TopClient
 	public $gatewayUrl = "http://gw.api.taobao.com/router/rest";
 
 	public $format = "xml";
+	
+	public $connectTimeout;
+
+	public $readTimeout;
 
 	/** 是否打开入参check**/
 	public $checkRequest = true;
@@ -22,7 +26,7 @@ class TopClient
 
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "top-sdk-php-20130222";
+	protected $sdkVersion = "top-sdk-php-20131205";
 
 	protected function generateSign($params)
 	{
@@ -31,7 +35,7 @@ class TopClient
 		$stringToBeSigned = $this->secretKey;
 		foreach ($params as $k => $v)
 		{
-			if("@" != substr($v, 0, 1) || !is_file($v))
+			if("@" != substr($v, 0, 1) || !is_file(substr($v,1)))
 			{
 				$stringToBeSigned .= "$k$v";
 			}
@@ -47,6 +51,12 @@ class TopClient
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_FAILONERROR, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		if ($this->readTimeout) {
+			curl_setopt($ch, CURLOPT_TIMEOUT, $this->readTimeout);
+		}
+		if ($this->connectTimeout) {
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
+		}
 		//https 请求
 		if(strlen($url) > 5 && strtolower(substr($url,0,5)) == "https" ) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -59,7 +69,7 @@ class TopClient
 			$postMultipart = false;
 			foreach ($postFields as $k => $v)
 			{
-				if("@" != substr($v, 0, 1) || !is_file($v))//判断是不是文件上传
+				if("@" != substr($v, 0, 1) || !is_file(substr($v,1)))//判断是不是文件上传
 				{
 					$postBodyString .= "$k=" . urlencode($v) . "&"; 
 				}
@@ -210,7 +220,7 @@ class TopClient
 		{
 			$this->logCommunicationError($sysParams["method"],$requestUrl,"HTTP_RESPONSE_NOT_WELL_FORMED",$resp);
 			$result->code = 0;
-			$result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED";
+			$result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED:".$resp;
 			return $result;
 		}
 

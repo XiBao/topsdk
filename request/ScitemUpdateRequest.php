@@ -3,7 +3,7 @@
  * TOP API: taobao.scitem.update request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ScitemUpdateRequest
 {
@@ -26,6 +26,11 @@ class ScitemUpdateRequest
 	 * 高 单位：mm
 	 **/
 	private $height;
+	
+	/** 
+	 * 1表示区域销售，0或是空是非区域销售
+	 **/
+	private $isAreaSale;
 	
 	/** 
 	 * 是否是贵重品 0:不是 1：是
@@ -166,6 +171,17 @@ class ScitemUpdateRequest
 	public function getHeight()
 	{
 		return $this->height;
+	}
+
+	public function setIsAreaSale($isAreaSale)
+	{
+		$this->isAreaSale = $isAreaSale;
+		$this->apiParas["is_area_sale"] = $isAreaSale;
+	}
+
+	public function getIsAreaSale()
+	{
+		return $this->isAreaSale;
 	}
 
 	public function setIsCostly($isCostly)
@@ -390,7 +406,6 @@ class ScitemUpdateRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->itemType,"itemType");
 	}
 	
 	public function putOtherTextParam($key, $value) {

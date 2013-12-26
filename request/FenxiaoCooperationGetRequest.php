@@ -3,12 +3,12 @@
  * TOP API: taobao.fenxiao.cooperation.get request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class FenxiaoCooperationGetRequest
 {
 	/** 
-	 * 合作结束时间yyyy-MM-dd
+	 * 合作结束时间yyyy-MM-dd HH:mm:ss
 	 **/
 	private $endDate;
 	
@@ -23,7 +23,7 @@ class FenxiaoCooperationGetRequest
 	private $pageSize;
 	
 	/** 
-	 * 合作开始时间yyyy-MM-dd
+	 * 合作开始时间yyyy-MM-dd HH:mm:ss
 	 **/
 	private $startDate;
 	

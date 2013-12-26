@@ -3,7 +3,7 @@
  * TOP API: taobao.udp.item.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class UdpItemGetRequest
 {
@@ -31,6 +31,31 @@ class UdpItemGetRequest
 	 * 商品ID
 	 **/
 	private $itemid;
+	
+	/** 
+	 * 多个宝贝列表
+	 **/
+	private $items;
+	
+	/** 
+	 * 排序指标
+	 **/
+	private $orderBy;
+	
+	/** 
+	 * 排序规则
+	 **/
+	private $orderRule;
+	
+	/** 
+	 * 查询页码，0为第一页
+	 **/
+	private $pageNo;
+	
+	/** 
+	 * 每页记录数
+	 **/
+	private $pageSize;
 	
 	/** 
 	 * 备用
@@ -99,6 +124,61 @@ class UdpItemGetRequest
 		return $this->itemid;
 	}
 
+	public function setItems($items)
+	{
+		$this->items = $items;
+		$this->apiParas["items"] = $items;
+	}
+
+	public function getItems()
+	{
+		return $this->items;
+	}
+
+	public function setOrderBy($orderBy)
+	{
+		$this->orderBy = $orderBy;
+		$this->apiParas["order_by"] = $orderBy;
+	}
+
+	public function getOrderBy()
+	{
+		return $this->orderBy;
+	}
+
+	public function setOrderRule($orderRule)
+	{
+		$this->orderRule = $orderRule;
+		$this->apiParas["order_rule"] = $orderRule;
+	}
+
+	public function getOrderRule()
+	{
+		return $this->orderRule;
+	}
+
+	public function setPageNo($pageNo)
+	{
+		$this->pageNo = $pageNo;
+		$this->apiParas["page_no"] = $pageNo;
+	}
+
+	public function getPageNo()
+	{
+		return $this->pageNo;
+	}
+
+	public function setPageSize($pageSize)
+	{
+		$this->pageSize = $pageSize;
+		$this->apiParas["page_size"] = $pageSize;
+	}
+
+	public function getPageSize()
+	{
+		return $this->pageSize;
+	}
+
 	public function setParameters($parameters)
 	{
 		$this->parameters = $parameters;
@@ -138,7 +218,9 @@ class UdpItemGetRequest
 		RequestCheckUtil::checkNotNull($this->endTime,"endTime");
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
 		RequestCheckUtil::checkMaxListSize($this->fields,10,"fields");
-		RequestCheckUtil::checkNotNull($this->itemid,"itemid");
+		RequestCheckUtil::checkMaxListSize($this->items,20,"items");
+		RequestCheckUtil::checkMaxValue($this->pageSize,50,"pageSize");
+		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 	}
 	
 	public function putOtherTextParam($key, $value) {

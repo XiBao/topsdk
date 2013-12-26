@@ -3,7 +3,7 @@
  * TOP API: taobao.inventory.authorize.set request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class InventoryAuthorizeSetRequest
 {
@@ -17,7 +17,7 @@ PRIVATE:独享
 	/** 
 	 * 授权明细
 [{“index”:0,“scItemId”:232323,”scItemCode”:”A232”,”storeCode”:”Kj11”,”inventoryType”:1,”channelFlag”:0,”quotaQuantity”:1000,”nickNameList”:”s108,TY000”，“nickName":"ca11"}]
-每次请求的列表数据量不超过50条，如果authorize_type是PUBLIC,使用nickNameList，否则请用nickName
+每次请求的列表数据量是1条，如果authorize_type是PUBLIC,使用nickNameList，否则请用nickName
 	 **/
 	private $items;
 	

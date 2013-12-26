@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.type.add request
  * 
  * @author auto create
- * @since 1.0, 2012-12-20 16:37:10
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class HotelTypeAddRequest
 {
@@ -18,7 +18,7 @@ class HotelTypeAddRequest
 	private $name;
 	
 	/** 
-	 * 接入卖家数据主键
+	 * 接入卖家数据主键,格式为“接入方酒店id-接入方房型id”
 	 **/
 	private $siteParam;
 	

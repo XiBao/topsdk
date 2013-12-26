@@ -3,10 +3,15 @@
  * TOP API: taobao.itemprops.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2013-12-05 12:50:25
  */
 class ItempropsGetRequest
 {
+	/** 
+	 * 属性的Key，支持多条，以“,”分隔
+	 **/
+	private $attrKeys;
+	
 	/** 
 	 * 类目子属性路径,由该子属性上层的类目属性和类目属性值组成,格式pid:vid;pid:vid.取类目子属性需要传child_path,cid
 	 **/
@@ -69,6 +74,17 @@ class ItempropsGetRequest
 	
 	private $apiParas = array();
 	
+	public function setAttrKeys($attrKeys)
+	{
+		$this->attrKeys = $attrKeys;
+		$this->apiParas["attr_keys"] = $attrKeys;
+	}
+
+	public function getAttrKeys()
+	{
+		return $this->attrKeys;
+	}
+
 	public function setChildPath($childPath)
 	{
 		$this->childPath = $childPath;
