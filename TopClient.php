@@ -136,7 +136,7 @@ class TopClient
     		$errorCode,
     		str_replace("\n","",$responseTxt)
 		);
-		Kohana::$log->add(Log::ERROR, 'TOP: '.json_encode($logData));
+		Kohana::$log->add(Log::ERROR, json_encode($logData));
 	}
 
 	public function execute($request, $session = null)
@@ -233,7 +233,7 @@ class TopClient
 			//	date("Y-m-d H:i:s"),
 			//	$resp
 			//));
-			$this->logCommunicationError($sysParams["method"],$requestUrl, $respObject->code, $resp);
+			//$this->logCommunicationError($sysParams["method"],$requestUrl, $respObject->code, $resp);
 			//print $resp;
 		}
 		return $respObject;
