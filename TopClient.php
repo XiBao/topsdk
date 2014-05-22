@@ -195,9 +195,9 @@ class TopClient
 		$respWellFormed = false;
 		if ("json" == $this->format)
 		{
-			$resp = str_replace(array("\n","\r", "\t"),"",$resp); 
-    		$resp = preg_replace('/([{,]+)(\s*)([^"]+?)\s*:/','$1"$3":',$resp);
-			$respObject = json_decode($resp);
+			$json = str_replace(array("\n","\r", "\t"),"",$resp); 
+    		//$json = preg_replace('/([{,]+)(\s*)([^"]+?)\s*:/','$1"$3":',$json);
+			$respObject = json_decode($json);
 			if (null !== $respObject)
 			{
 				$respWellFormed = true;
