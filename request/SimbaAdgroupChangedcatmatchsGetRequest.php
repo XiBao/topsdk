@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.changedcatmatchs.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaAdgroupChangedcatmatchsGetRequest
 {
@@ -18,7 +18,7 @@ class SimbaAdgroupChangedcatmatchsGetRequest
 	private $pageNo;
 	
 	/** 
-	 * 返回的每页数据量大小,默认200最大1000
+	 * 返回的每页数据量大小,默认200最大1000<br /> 支持的最大列表长度为：1000
 	 **/
 	private $pageSize;
 	

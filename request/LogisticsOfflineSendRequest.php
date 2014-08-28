@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.offline.send request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class LogisticsOfflineSendRequest
 {
@@ -62,7 +62,7 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	private $subTid;
 	
 	/** 
-	 * 淘宝交易ID
+	 * 淘宝交易ID<br /> 支持最小值为：1000
 	 **/
 	private $tid;
 	

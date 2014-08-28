@@ -3,22 +3,22 @@
  * TOP API: taobao.fenxiao.productcat.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoProductcatUpdateRequest
 {
 	/** 
-	 * 代销默认采购价比例，注意：100.00%，则输入为10000
+	 * 代销默认采购价比例，注意：100.00%，则输入为10000<br /> 支持最大值为：99999<br /> 支持最小值为：100
 	 **/
 	private $agentCostPercent;
 	
 	/** 
-	 * 经销默认采购价比例，注意：100.00%，则输入为10000
+	 * 经销默认采购价比例，注意：100.00%，则输入为10000<br /> 支持最大值为：99999<br /> 支持最小值为：100
 	 **/
 	private $dealerCostPercent;
 	
 	/** 
-	 * 产品线名称
+	 * 产品线名称<br /> 支持最大长度为：10<br /> 支持的最大列表长度为：10
 	 **/
 	private $name;
 	
@@ -28,12 +28,12 @@ class FenxiaoProductcatUpdateRequest
 	private $productLineId;
 	
 	/** 
-	 * 最高零售价比例，注意：100.00%，则输入为10000
+	 * 最高零售价比例，注意：100.00%，则输入为10000<br /> 支持最大值为：99999<br /> 支持最小值为：100
 	 **/
 	private $retailHighPercent;
 	
 	/** 
-	 * 最低零售价比例，注意：100.00%，则输入为10000
+	 * 最低零售价比例，注意：100.00%，则输入为10000<br /> 支持最大值为：99999<br /> 支持最小值为：100
 	 **/
 	private $retailLowPercent;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.picture.upload request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class PictureUploadRequest
 {
@@ -20,12 +20,12 @@ client:phone手机版本宝贝使用
 	private $imageInputTitle;
 	
 	/** 
-	 * 图片二进制文件流,不能为空,允许png、jpg、gif图片格式,2M以内。
+	 * 图片二进制文件流,不能为空,允许png、jpg、gif图片格式,3M以内。
 	 **/
 	private $img;
 	
 	/** 
-	 * 图片分类ID，设置具体某个分类ID或设置0上传到默认分类，只能传入一个分类
+	 * 图片分类ID，设置具体某个分类ID或设置0上传到默认分类，只能传入一个分类<br /> 支持最大值为：9223372036854775807<br /> 支持最小值为：0
 	 **/
 	private $pictureCategoryId;
 	

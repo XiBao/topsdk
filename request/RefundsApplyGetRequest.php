@@ -3,7 +3,7 @@
  * TOP API: taobao.refunds.apply.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class RefundsApplyGetRequest
 {
@@ -13,12 +13,12 @@ class RefundsApplyGetRequest
 	private $fields;
 	
 	/** 
-	 * 页码。传入值为 1 代表第一页，传入值为 2 代表第二页，依此类推。默认返回的数据是从第一页开始
+	 * 页码。传入值为 1 代表第一页，传入值为 2 代表第二页，依此类推。默认返回的数据是从第一页开始<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页条数。取值范围:大于零的整数; 默认值:40;最大值:100
+	 * 每页条数。取值范围:大于零的整数; 默认值:40;最大值:100<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

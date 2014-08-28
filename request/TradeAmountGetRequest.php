@@ -3,7 +3,7 @@
  * TOP API: taobao.trade.amount.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class TradeAmountGetRequest
 {
@@ -19,7 +19,7 @@ order_amounts.sku_properties_name,order_amounts.sku_id,order_amounts.num,order_a
 	private $fields;
 	
 	/** 
-	 * 订单交易编号
+	 * 订单交易编号<br /> 支持最大值为：9223372036854775807<br /> 支持最小值为：-9223372036854775808
 	 **/
 	private $tid;
 	

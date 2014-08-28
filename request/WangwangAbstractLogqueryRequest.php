@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.abstract.logquery request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WangwangAbstractLogqueryRequest
 {
@@ -13,7 +13,7 @@ class WangwangAbstractLogqueryRequest
 	private $charset;
 	
 	/** 
-	 * 获取记录条数，默认值是1000
+	 * 获取记录条数，默认值是1000<br /> 支持最小值为：1
 	 **/
 	private $count;
 	

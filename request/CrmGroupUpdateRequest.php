@@ -3,17 +3,17 @@
  * TOP API: taobao.crm.group.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class CrmGroupUpdateRequest
 {
 	/** 
-	 * 分组的id
+	 * 分组的id<br /> 支持最小值为：1<br /> 支持的最大列表长度为：19
 	 **/
 	private $groupId;
 	
 	/** 
-	 * 新的分组名，分组名称不能包含|或者：
+	 * 新的分组名，分组名称不能包含|或者：<br /> 支持最大长度为：15<br /> 支持的最大列表长度为：15
 	 **/
 	private $newGroupName;
 	

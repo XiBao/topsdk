@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaAdgroupUpdateRequest
 {
@@ -13,7 +13,7 @@ class SimbaAdgroupUpdateRequest
 	private $adgroupId;
 	
 	/** 
-	 * 默认出价，单位是分，不能小于5
+	 * 默认出价，单位是分，不能小于5<br /> 支持最小值为：5
 	 **/
 	private $defaultPrice;
 	
@@ -23,7 +23,7 @@ class SimbaAdgroupUpdateRequest
 	private $nick;
 	
 	/** 
-	 * 非搜索出价，单位是分，不能小于5，如果use_nonseatch_default_price为使用默认出价，则此nonsearch_max_price字段传入的数据不起作用，商品将使用默认非搜索出价
+	 * 非搜索出价，单位是分，不能小于5，如果use_nonseatch_default_price为使用默认出价，则此nonsearch_max_price字段传入的数据不起作用，商品将使用默认非搜索出价<br /> 支持最小值为：5
 	 **/
 	private $nonsearchMaxPrice;
 	

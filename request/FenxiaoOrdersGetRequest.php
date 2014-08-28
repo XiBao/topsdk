@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.orders.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoOrdersGetRequest
 {
@@ -27,17 +27,17 @@ sub_purchase_orders表示只返回子采购单列表
 	private $fields;
 	
 	/** 
-	 * 页码。（大于0的整数。默认为1）
+	 * 页码。（大于0的整数。默认为1）<br /> 支持最大值为：2147483647<br /> 支持最小值为：-21474836478
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页条数。（每页条数不超过50条）
+	 * 每页条数。（每页条数不超过50条）<br /> 支持最大值为：2147483647<br /> 支持最小值为：-21474836478
 	 **/
 	private $pageSize;
 	
 	/** 
-	 * 采购单编号或分销流水号，若其它参数没传，则此参数必传。
+	 * 采购单编号或分销流水号，若其它参数没传，则此参数必传。<br /> 支持最大值为：9223372036854775807<br /> 支持最小值为：-9223372036854775808
 	 **/
 	private $purchaseOrderId;
 	

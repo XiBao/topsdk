@@ -3,12 +3,12 @@
  * TOP API: taobao.sellercenter.subuser.permissions.roles.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class SellercenterSubuserPermissionsRolesGetRequest
 {
 	/** 
-	 * 子账号昵称(子账号标识)
+	 * 子账号昵称(子账号标识)<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
 	 **/
 	private $nick;
 	

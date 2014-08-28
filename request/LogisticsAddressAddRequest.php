@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.address.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class LogisticsAddressAddRequest
 {
@@ -41,7 +41,7 @@ class LogisticsAddressAddRequest
 	private $getDef;
 	
 	/** 
-	 * 备注,<br><font color='red'>备注不能超过256字节</font>
+	 * 备注,<br><font color='red'>备注不能超过256字节</font><br /> 支持最大长度为：256<br /> 支持的最大列表长度为：256
 	 **/
 	private $memo;
 	
@@ -62,7 +62,7 @@ class LogisticsAddressAddRequest
 	private $province;
 	
 	/** 
-	 * 公司名称,<br><font color="red">公司名称长能不能超过20字节</font>
+	 * 公司名称,<br><font color="red">公司名称长能不能超过20字节</font><br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $sellerCompany;
 	

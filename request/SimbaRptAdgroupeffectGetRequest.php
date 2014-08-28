@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.rpt.adgroupeffect.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaRptAdgroupeffectGetRequest
 {
@@ -28,12 +28,12 @@ class SimbaRptAdgroupeffectGetRequest
 	private $nick;
 	
 	/** 
-	 * 页码
+	 * 页码<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页大小
+	 * 每页大小<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

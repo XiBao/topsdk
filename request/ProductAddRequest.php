@@ -3,14 +3,14 @@
  * TOP API: taobao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ProductAddRequest
 {
 	/** 
 	 * 非关键属性结构:pid:vid;pid:vid.<br>
 非关键属性<font color=red>不包含</font>关键属性、销售属性、用户自定义属性、商品属性;
-<br>调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font>
+<br>调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font><br /> 支持最大长度为：512<br /> 支持的最大列表长度为：512
 	 **/
 	private $binds;
 	
@@ -31,14 +31,19 @@ class ProductAddRequest
 	private $desc;
 	
 	/** 
-	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.
+	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.<br /> 支持最大长度为：25000<br /> 支持的最大列表长度为：25000
 	 **/
 	private $extraInfo;
 	
 	/** 
-	 * 产品主图片.最大1M,目前仅支持GIF,JPG.
+	 * 产品主图片.最大1M,目前仅支持GIF,JPG.<br /> 支持的文件类型为：gif,jpg,png,jpeg<br /> 支持的最大列表长度为：1048576
 	 **/
 	private $image;
+	
+	/** 
+	 * 是否发布套装产品，和suite_items_str配合使用，is_pub_suite=true走套装SPU发布逻辑，达尔文体系下不需要再走tmall.product.spec.add发布产品规格
+	 **/
+	private $isPubSuite;
 	
 	/** 
 	 * 是不是主图
@@ -97,6 +102,16 @@ class ProductAddRequest
 	 * 商品卖点描述，长度限制为20个汉字
 	 **/
 	private $sellPt;
+	
+	/** 
+	 * 发布套装产品时，套装关联的产品规格+数量的字符串，格式：specsId:number。
+	 **/
+	private $suiteItemsStr;
+	
+	/** 
+	 * 在天猫，无关键属性发布产品，必须指定模板ID,模板ID通过tmall.product.template.get获取
+	 **/
+	private $templateId;
 	
 	private $apiParas = array();
 	
@@ -164,6 +179,17 @@ class ProductAddRequest
 	public function getImage()
 	{
 		return $this->image;
+	}
+
+	public function setIsPubSuite($isPubSuite)
+	{
+		$this->isPubSuite = $isPubSuite;
+		$this->apiParas["is_pub_suite"] = $isPubSuite;
+	}
+
+	public function getIsPubSuite()
+	{
+		return $this->isPubSuite;
 	}
 
 	public function setMajor($major)
@@ -285,6 +311,28 @@ class ProductAddRequest
 	public function getSellPt()
 	{
 		return $this->sellPt;
+	}
+
+	public function setSuiteItemsStr($suiteItemsStr)
+	{
+		$this->suiteItemsStr = $suiteItemsStr;
+		$this->apiParas["suite_items_str"] = $suiteItemsStr;
+	}
+
+	public function getSuiteItemsStr()
+	{
+		return $this->suiteItemsStr;
+	}
+
+	public function setTemplateId($templateId)
+	{
+		$this->templateId = $templateId;
+		$this->apiParas["template_id"] = $templateId;
+	}
+
+	public function getTemplateId()
+	{
+		return $this->templateId;
 	}
 
 	public function getApiMethodName()

@@ -3,47 +3,50 @@
  * TOP API: taobao.crm.members.search request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class CrmMembersSearchRequest
 {
 	/** 
-	 * 买家昵称
+	 * 买家昵称<br /> 支持最大长度为：1000<br /> 支持的最大列表长度为：1000
 	 **/
 	private $buyerNick;
 	
 	/** 
-	 * 城市
+	 * 城市.
+请注意:该字段从2014-4-23之后不再支持作为搜索条件检索.
 	 **/
 	private $city;
 	
 	/** 
-	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1.最大1000页
+	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1.最大1000页<br /> 支持最大值为：1000<br /> 支持最小值为：1
 	 **/
 	private $currentPage;
 	
 	/** 
-	 * 会员等级，0：店铺客户，1：普通客户，2：高级会员，3：VIP会员, 4：至尊VIP会员
+	 * 会员等级，0：店铺客户，1：普通客户，2：高级会员，3：VIP会员, 4：至尊VIP会员<br /> 支持最大值为：4<br /> 支持最小值为：-1<br /> 支持的最大列表长度为：32
 	 **/
 	private $grade;
 	
 	/** 
-	 * 分组id
+	 * 分组id<br /> 支持的最大列表长度为：19
 	 **/
 	private $groupId;
 	
 	/** 
-	 * 最大平均客单价，单位为元
+	 * 最大平均客单价，单位为元.
+请注意:该字段从2014-4-23之后不再支持作为搜索条件检索.
 	 **/
 	private $maxAvgPrice;
 	
 	/** 
-	 * 最大交易关闭笔数
+	 * 最大交易关闭笔数.
+请注意:该字段从2014-4-23之后不再支持作为搜索条件检索.<br /> 支持最小值为：0
 	 **/
 	private $maxCloseTradeNum;
 	
 	/** 
-	 * 最大交易宝贝件数
+	 * 最大交易宝贝件数<br /> 支持最小值为：0
 	 **/
 	private $maxItemNum;
 	
@@ -58,22 +61,24 @@ class CrmMembersSearchRequest
 	private $maxTradeAmount;
 	
 	/** 
-	 * 最大交易量
+	 * 最大交易量<br /> 支持最小值为：0
 	 **/
 	private $maxTradeCount;
 	
 	/** 
-	 * 最少平均客单价，单位为元
+	 * 最少平均客单价，单位为元.
+请注意:该字段从2014-4-23之后不再支持作为搜索条件检索.
 	 **/
 	private $minAvgPrice;
 	
 	/** 
-	 * 最小交易关闭的笔数
+	 * 最小交易关闭的笔数.
+请注意:该字段从2014-4-23之后不再支持作为搜索条件检索.<br /> 支持最小值为：0
 	 **/
 	private $minCloseTradeNum;
 	
 	/** 
-	 * 最小交易宝贝件数
+	 * 最小交易宝贝件数<br /> 支持最小值为：0
 	 **/
 	private $minItemNum;
 	
@@ -88,22 +93,23 @@ class CrmMembersSearchRequest
 	private $minTradeAmount;
 	
 	/** 
-	 * 最小交易量
+	 * 最小交易量<br /> 支持最小值为：0
 	 **/
 	private $minTradeCount;
 	
 	/** 
-	 * 每页显示的会员数量，page_size的最大值不能超过100，最小值不能小于1
+	 * 每页显示的会员数量，page_size的最大值不能超过100，最小值不能小于1<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	
 	/** 
-	 * 北京=1,天津=2,河北省=3,山西省=4,内蒙古自治区=5,辽宁省=6,吉林省=7,黑龙江省=8,上海=9,江苏省=10,浙江省=11,安徽省=12,福建省=13,江西省=14,山东省=15,河南省=16,湖北省=17,湖南省=18, 广东省=19,广西壮族自治区=20,海南省=21,重庆=22,四川省=23,贵州省=24,云南省=25,西藏自治区26,陕西省=27,甘肃省=28,青海省=29,宁夏回族自治区=30,新疆维吾尔自治区=31,台湾省=32,香港特别行政区=33,澳门特别行政区=34,海外=35
+	 * 北京=1,天津=2,河北省=3,山西省=4,内蒙古自治区=5,辽宁省=6,吉林省=7,黑龙江省=8,上海=9,江苏省=10,浙江省=11,安徽省=12,福建省=13,江西省=14,山东省=15,河南省=16,湖北省=17,湖南省=18, 广东省=19,广西壮族自治区=20,海南省=21,重庆=22,四川省=23,贵州省=24,云南省=25,西藏自治区26,陕西省=27,甘肃省=28,青海省=29,宁夏回族自治区=30,新疆维吾尔自治区=31,台湾省=32,香港特别行政区=33,澳门特别行政区=34,海外=35.
+注:请注意:从2014.4.23之后,省市将采用地区标准码,请通过物流API taobao.areas.get接口获取,参考:http://api.taobao.com/apidoc/api.htm?spm=0.0.0.0.nOOF9g&path=cid:7-apiId:59.API对于老的省市代码兼容会逐步下线.<br /> 支持最大值为：1000000<br /> 支持最小值为：1
 	 **/
 	private $province;
 	
 	/** 
-	 * 关系来源，1交易成功，2未成交，3卖家手动吸纳
+	 * 关系来源，1交易成功，2未成交，3卖家手动吸纳<br /> 支持最大值为：3<br /> 支持最小值为：1<br /> 支持的最大列表长度为：32
 	 **/
 	private $relationSource;
 	
@@ -356,7 +362,7 @@ class CrmMembersSearchRequest
 		RequestCheckUtil::checkMinValue($this->minTradeCount,0,"minTradeCount");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
-		RequestCheckUtil::checkMaxValue($this->province,35,"province");
+		RequestCheckUtil::checkMaxValue($this->province,1000000,"province");
 		RequestCheckUtil::checkMinValue($this->province,1,"province");
 		RequestCheckUtil::checkMaxValue($this->relationSource,3,"relationSource");
 		RequestCheckUtil::checkMinValue($this->relationSource,1,"relationSource");

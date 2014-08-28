@@ -3,12 +3,12 @@
  * TOP API: taobao.picture.delete request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class PictureDeleteRequest
 {
 	/** 
-	 * 图片ID字符串,可以一个也可以一组,用英文逗号间隔,如450,120,155
+	 * 图片ID字符串,可以一个也可以一组,用英文逗号间隔,如450,120,155.限制数量是100
 	 **/
 	private $pictureIds;
 	
@@ -39,6 +39,7 @@ class PictureDeleteRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->pictureIds,"pictureIds");
+		RequestCheckUtil::checkMaxListSize($this->pictureIds,100,"pictureIds");
 	}
 	
 	public function putOtherTextParam($key, $value) {

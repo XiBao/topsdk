@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.order.remark.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoOrderRemarkUpdateRequest
 {
@@ -13,7 +13,7 @@ class FenxiaoOrderRemarkUpdateRequest
 	private $purchaseOrderId;
 	
 	/** 
-	 * 备注旗子(供应商操作)
+	 * 备注内容(供应商操作)
 	 **/
 	private $supplierMemo;
 	
@@ -23,7 +23,7 @@ class FenxiaoOrderRemarkUpdateRequest
 2:黄色
 3:绿色
 4:蓝色
-5:粉红色
+5:粉红色<br /> 支持最大值为：5<br /> 支持最小值为：1
 	 **/
 	private $supplierMemoFlag;
 	

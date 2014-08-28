@@ -3,12 +3,12 @@
  * TOP API: taobao.wlb.item.synchronize.delete request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbItemSynchronizeDeleteRequest
 {
 	/** 
-	 * 外部实体ID
+	 * 外部实体ID<br /> 支持的最大列表长度为：64
 	 **/
 	private $extEntityId;
 	
@@ -18,7 +18,7 @@ class WlbItemSynchronizeDeleteRequest
 	private $extEntityType;
 	
 	/** 
-	 * 物流宝商品ID
+	 * 物流宝商品ID<br /> 支持的最大列表长度为：20
 	 **/
 	private $itemId;
 	

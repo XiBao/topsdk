@@ -3,7 +3,7 @@
  * TOP API: taobao.item.joint.img request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemJointImgRequest
 {
@@ -13,12 +13,12 @@ class ItemJointImgRequest
 	private $id;
 	
 	/** 
-	 * 上传的图片是否关联为商品主图
+	 * 上传的图片是否关联为商品主图（如果需更新主图，则需要传人true）
 	 **/
 	private $isMajor;
 	
 	/** 
-	 * 商品数字ID，必选
+	 * 商品数字ID，必选<br /> 支持最小值为：0
 	 **/
 	private $numIid;
 	

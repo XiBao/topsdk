@@ -3,22 +3,22 @@
  * TOP API: taobao.hotel.type.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelTypeAddRequest
 {
 	/** 
-	 * 酒店id。必须为数字
+	 * 酒店id。必须为数字<br /> 支持最小值为：0
 	 **/
 	private $hid;
 	
 	/** 
-	 * 房型名称。长度不能超过30
+	 * 房型名称。长度不能超过30<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
 	 **/
 	private $name;
 	
 	/** 
-	 * 接入卖家数据主键,格式为“接入方酒店id-接入方房型id”
+	 * 接入卖家数据主键,格式为“接入方酒店id-接入方房型id”<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
 	 **/
 	private $siteParam;
 	

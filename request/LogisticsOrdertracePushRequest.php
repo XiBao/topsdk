@@ -3,22 +3,22 @@
  * TOP API: taobao.logistics.ordertrace.push request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class LogisticsOrdertracePushRequest
 {
 	/** 
-	 * 物流公司名称
+	 * 物流公司名称<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $companyName;
 	
 	/** 
-	 * 流转节点的当前城市
+	 * 流转节点的当前城市<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $currentCity;
 	
 	/** 
-	 * 网点名称
+	 * 网点名称<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
 	 **/
 	private $facilityName;
 	
@@ -28,12 +28,12 @@ class LogisticsOrdertracePushRequest
 	private $mailNo;
 	
 	/** 
-	 * 流转节点的下一个城市
+	 * 流转节点的下一个城市<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $nextCity;
 	
 	/** 
-	 * 描述当前节点的操作，操作是“揽收”、“派送”或“签收”。
+	 * 描述当前节点的操作，操作是“揽收”、“派送”或“签收”。<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $nodeDescription;
 	
@@ -43,17 +43,17 @@ class LogisticsOrdertracePushRequest
 	private $occureTime;
 	
 	/** 
-	 * 流转节点的详细地址及操作描述
+	 * 流转节点的详细地址及操作描述<br /> 支持最大长度为：200<br /> 支持的最大列表长度为：200
 	 **/
 	private $operateDetail;
 	
 	/** 
-	 * 快递业务员联系方式，手机号码或电话。
+	 * 快递业务员联系方式，手机号码或电话。<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $operatorContact;
 	
 	/** 
-	 * 快递业务员名称
+	 * 快递业务员名称<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $operatorName;
 	

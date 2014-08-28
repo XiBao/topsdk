@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroup.onlineitemsvon.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaAdgroupOnlineitemsvonGetRequest
 {
@@ -23,12 +23,12 @@ class SimbaAdgroupOnlineitemsvonGetRequest
 	private $orderField;
 	
 	/** 
-	 * 页码，从1开始,最大50。最大只能获取1W个宝贝
+	 * 页码，从1开始,最大50。最大只能获取1W个宝贝<br /> 支持最大值为：50
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 页尺寸，最大200
+	 * 页尺寸，最大200<br /> 支持最大值为：200
 	 **/
 	private $pageSize;
 	

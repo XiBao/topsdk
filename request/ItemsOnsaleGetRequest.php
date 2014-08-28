@@ -3,12 +3,12 @@
  * TOP API: taobao.items.onsale.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemsOnsaleGetRequest
 {
 	/** 
-	 * 商品类目ID。ItemCat中的cid字段。可以通过taobao.itemcats.get取到
+	 * 商品类目ID。ItemCat中的cid字段。可以通过taobao.itemcats.get取到<br /> 支持最小值为：0
 	 **/
 	private $cid;
 	
@@ -35,6 +35,11 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru,list_tim
 	private $hasShowcase;
 	
 	/** 
+	 * 是否挂接了达尔文标准产品体系。
+	 **/
+	private $isCspu;
+	
+	/** 
 	 * 商品是否在外部网店显示
 	 **/
 	private $isEx;
@@ -45,7 +50,7 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru,list_tim
 	private $isTaobao;
 	
 	/** 
-	 * 排序方式。格式为column:asc/desc ，column可选值:list_time(上架时间),delist_time(下架时间),num(商品数量)，modified(最近修改时间);默认上架时间降序(即最新上架排在前面)。如按照上架时间降序排序方式为list_time:desc
+	 * 排序方式。格式为column:asc/desc ，column可选值:list_time(上架时间),delist_time(下架时间),num(商品数量)，modified(最近修改时间)，sold_quantity（商品销量）,;默认上架时间降序(即最新上架排在前面)。如按照上架时间降序排序方式为list_time:desc
 	 **/
 	private $orderBy;
 	
@@ -129,6 +134,17 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru,list_tim
 	public function getHasShowcase()
 	{
 		return $this->hasShowcase;
+	}
+
+	public function setIsCspu($isCspu)
+	{
+		$this->isCspu = $isCspu;
+		$this->apiParas["is_cspu"] = $isCspu;
+	}
+
+	public function getIsCspu()
+	{
+		return $this->isCspu;
 	}
 
 	public function setIsEx($isEx)

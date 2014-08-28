@@ -3,7 +3,7 @@
  * TOP API: alipay.ebpp.bill.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class AlipayEbppBillAddRequest
 {
@@ -18,17 +18,17 @@ class AlipayEbppBillAddRequest
 	private $billDate;
 	
 	/** 
-	 * 账单单据号，例如水费单号，手机号，电费号，信用卡卡号。没有唯一性要求。
+	 * 账单单据号，例如水费单号，手机号，电费号，信用卡卡号。没有唯一性要求。<br /> 支持最大长度为：50<br /> 支持的最大列表长度为：50
 	 **/
 	private $billKey;
 	
 	/** 
-	 * 支付宝给每个出账机构指定了一个对应的英文短名称来唯一表示该收费单位。
+	 * 支付宝给每个出账机构指定了一个对应的英文短名称来唯一表示该收费单位。<br /> 支持最大长度为：80<br /> 支持的最大列表长度为：80
 	 **/
 	private $chargeInst;
 	
 	/** 
-	 * 输出机构的业务流水号，需要保证唯一性。
+	 * 输出机构的业务流水号，需要保证唯一性。<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $merchantOrderNo;
 	
@@ -38,12 +38,12 @@ class AlipayEbppBillAddRequest
 	private $mobile;
 	
 	/** 
-	 * 支付宝订单类型。公共事业缴纳JF,信用卡还款HK
+	 * 支付宝订单类型。公共事业缴纳JF,信用卡还款HK<br /> 支持最大长度为：10<br /> 支持的最大列表长度为：10
 	 **/
 	private $orderType;
 	
 	/** 
-	 * 拥有该账单的用户姓名
+	 * 拥有该账单的用户姓名<br /> 支持最大长度为：50<br /> 支持的最大列表长度为：50
 	 **/
 	private $ownerName;
 	
@@ -58,7 +58,7 @@ class AlipayEbppBillAddRequest
 	private $serviceAmount;
 	
 	/** 
-	 * 子业务类型是业务类型的下一级概念，例如：WATER表示JF下面的水费，ELECTRIC表示JF下面的电费，GAS表示JF下面的燃气费。
+	 * 子业务类型是业务类型的下一级概念，例如：WATER表示JF下面的水费，ELECTRIC表示JF下面的电费，GAS表示JF下面的燃气费。<br /> 支持最大长度为：10<br /> 支持的最大列表长度为：10
 	 **/
 	private $subOrderType;
 	

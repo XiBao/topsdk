@@ -3,7 +3,7 @@
  * TOP API: taobao.product.propimg.upload request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ProductPropimgUploadRequest
 {
@@ -13,7 +13,7 @@ class ProductPropimgUploadRequest
 	private $id;
 	
 	/** 
-	 * 图片内容.图片最大为2M,只支持JPG,GIF.
+	 * 图片内容.图片最大为2M,只支持JPG,GIF.<br /> 支持的文件类型为：gif,jpg,png,jpeg<br /> 支持的最大列表长度为：1048576
 	 **/
 	private $image;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.orders.search request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelOrdersSearchRequest
 {
@@ -74,7 +74,7 @@ oids，tids，hids，rids，gids同时出现时，优先级按此顺序由高到
 	private $rids;
 	
 	/** 
-	 * 订单状态。A：等待买家付款。B：买家已付款待卖家发货。C：卖家已发货待买家确认。D：交易成功。E：交易关闭
+	 * 订单状态。A：等待买家付款。B：买家已付款待卖家发货。C：卖家已发货待买家确认。D：交易成功。E：交易关闭<br /> 支持最大长度为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $status;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroupsbyadgroupids.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaAdgroupsbyadgroupidsGetRequest
 {
@@ -18,12 +18,12 @@ class SimbaAdgroupsbyadgroupidsGetRequest
 	private $nick;
 	
 	/** 
-	 * 页码，从1开始
+	 * 页码，从1开始<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 页尺寸，最大200，如果入参adgroup_ids有传入值，则page_size和page_no值不起作用。如果adgrpup_ids为空而campaign_id有值，此时page_size和page_no值才是返回的页数据大小和页码
+	 * 页尺寸，最大200，如果入参adgroup_ids有传入值，则page_size和page_no值不起作用。如果adgrpup_ids为空而campaign_id有值，此时page_size和page_no值才是返回的页数据大小和页码<br /> 支持最大值为：200<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

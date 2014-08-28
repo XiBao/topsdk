@@ -3,17 +3,17 @@
  * TOP API: taobao.tmc.user.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class TmcUserGetRequest
 {
 	/** 
-	 * 需返回的字段列表，多个字段以半角逗号分隔。可选值：TmcUser结构体中的所有字段（topics除外）
+	 * 需返回的字段列表，多个字段以半角逗号分隔。可选值：TmcUser结构体中的所有字段，一定要返回topic。
 	 **/
 	private $fields;
 	
 	/** 
-	 * 用户昵称
+	 * 用户昵称<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
 	 **/
 	private $nick;
 	

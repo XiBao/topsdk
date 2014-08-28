@@ -3,7 +3,7 @@
  * TOP API: taobao.refund.messages.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class RefundMessagesGetRequest
 {
@@ -13,12 +13,12 @@ class RefundMessagesGetRequest
 	private $fields;
 	
 	/** 
-	 * 页码。取值范围:大于零的整数; 默认值:1
+	 * 页码。取值范围:大于零的整数; 默认值:1<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页条数。取值范围:大于零的整数; 默认值:40;最大值:100
+	 * 每页条数。取值范围:大于零的整数; 默认值:40;最大值:100<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

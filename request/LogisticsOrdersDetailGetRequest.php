@@ -3,7 +3,7 @@
  * TOP API: taobao.logistics.orders.detail.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class LogisticsOrdersDetailGetRequest
 {
@@ -33,7 +33,7 @@ class LogisticsOrdersDetailGetRequest
 	private $pageNo;
 	
 	/** 
-	 * 每页条数.该字段没传 或 值<1 ，则默认page_size为40
+	 * 每页条数.该字段没传 或 值<1 ，则默认page_size为40<br /> 支持最大值为：100
 	 **/
 	private $pageSize;
 	

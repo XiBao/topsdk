@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keywords.recommend.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaKeywordsRecommendGetRequest
 {
@@ -28,12 +28,12 @@ class SimbaKeywordsRecommendGetRequest
 	private $orderBy;
 	
 	/** 
-	 * 返回的第几页数据，默认为1
+	 * 返回的第几页数据，默认为1<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 返回的每页数据量大小,最大200
+	 * 返回的每页数据量大小,最大200<br /> 支持最大值为：200<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ProductUpdateRequest
 {
@@ -18,12 +18,12 @@ class ProductUpdateRequest
 	private $desc;
 	
 	/** 
-	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.
+	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.<br /> 支持最大长度为：25000<br /> 支持的最大列表长度为：25000
 	 **/
 	private $extraInfo;
 	
 	/** 
-	 * 产品主图.最大500K,目前仅支持GIF,JPG
+	 * 产品主图.最大500K,目前仅支持GIF,JPG<br /> 支持的文件类型为：gif,jpg,png,jpeg<br /> 支持的最大列表长度为：1048576
 	 **/
 	private $image;
 	

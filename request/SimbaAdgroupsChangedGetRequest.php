@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.adgroups.changed.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaAdgroupsChangedGetRequest
 {
@@ -13,12 +13,12 @@ class SimbaAdgroupsChangedGetRequest
 	private $nick;
 	
 	/** 
-	 * 返回的第几页数据，默认为1
+	 * 返回的第几页数据，默认为1<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 返回的每页数据量大小,默认200最大1000
+	 * 返回的每页数据量大小,默认200最大1000<br /> 支持最大值为：1000<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

@@ -3,12 +3,12 @@
  * TOP API: taobao.trade.memo.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class TradeMemoAddRequest
 {
 	/** 
-	 * 交易备注旗帜，可选值为：0(灰色), 1(红色), 2(黄色), 3(绿色), 4(蓝色), 5(粉红色)，默认值为0
+	 * 交易备注旗帜，可选值为：0(灰色), 1(红色), 2(黄色), 3(绿色), 4(蓝色), 5(粉红色)，默认值为0<br /> 支持最大值为：5<br /> 支持最小值为：0
 	 **/
 	private $flag;
 	

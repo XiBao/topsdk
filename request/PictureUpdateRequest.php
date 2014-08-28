@@ -3,12 +3,12 @@
  * TOP API: taobao.picture.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class PictureUpdateRequest
 {
 	/** 
-	 * 新的图片名，最大长度50字符，不能为空
+	 * 新的图片名，最大长度50字符，不能为空<br /> 支持最大长度为：50<br /> 支持的最大列表长度为：50
 	 **/
 	private $newName;
 	

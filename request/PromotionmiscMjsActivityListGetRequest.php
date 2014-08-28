@@ -3,22 +3,22 @@
  * TOP API: taobao.promotionmisc.mjs.activity.list.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class PromotionmiscMjsActivityListGetRequest
 {
 	/** 
-	 * 活动类型： 1表示商品级别的活动；2表示店铺级别的活动。
+	 * 活动类型： 1表示商品级别的活动；2表示店铺级别的活动。<br /> 支持最大值为：2<br /> 支持最小值为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $activityType;
 	
 	/** 
-	 * 页码。
+	 * 页码。<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页记录数，最大支持50 。
+	 * 每页记录数，最大支持50 。<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

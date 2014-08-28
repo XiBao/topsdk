@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.insight.catstopword.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaInsightCatstopwordGetRequest
 {
@@ -18,7 +18,7 @@ class SimbaInsightCatstopwordGetRequest
 	private $nick;
 	
 	/** 
-	 * 最大返回数量(1-100)
+	 * 最大返回数量(1-100)<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $resultNum;
 	

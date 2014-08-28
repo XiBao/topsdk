@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.grade.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoGradeUpdateRequest
 {
@@ -13,7 +13,7 @@ class FenxiaoGradeUpdateRequest
 	private $gradeId;
 	
 	/** 
-	 * 等级名称，等级名称不可重复
+	 * 等级名称，等级名称不可重复<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $name;
 	

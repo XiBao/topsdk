@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.keyword.rankingforecast.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-19 16:43:23
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaKeywordRankingforecastGetRequest
 {

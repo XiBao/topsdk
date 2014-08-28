@@ -3,7 +3,7 @@
  * TOP API: taobao.refund.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class RefundGetRequest
 {
@@ -13,7 +13,7 @@ class RefundGetRequest
 	private $fields;
 	
 	/** 
-	 * 退款单号
+	 * 退款单号<br /> 支持最大值为：9223372036854775807<br /> 支持最小值为：1
 	 **/
 	private $refundId;
 	

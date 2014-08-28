@@ -3,7 +3,7 @@
  * TOP API: taobao.wlb.replenish.statistics request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbReplenishStatisticsRequest
 {
@@ -23,7 +23,7 @@ class WlbReplenishStatisticsRequest
 	private $pageNo;
 	
 	/** 
-	 * 分页每页页数，默认20，最大50
+	 * 分页每页页数，默认20，最大50<br /> 支持最大值为：50
 	 **/
 	private $pageSize;
 	

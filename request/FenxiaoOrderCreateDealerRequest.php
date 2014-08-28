@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.order.create.dealer request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoOrderCreateDealerRequest
 {
@@ -13,7 +13,7 @@ class FenxiaoOrderCreateDealerRequest
 	private $addr;
 	
 	/** 
-	 * 买家姓名
+	 * 买家姓名<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $buyerName;
 	
@@ -38,7 +38,7 @@ class FenxiaoOrderCreateDealerRequest
 	private $logisticType;
 	
 	/** 
-	 * 留言
+	 * 留言<br /> 支持最大长度为：200<br /> 支持的最大列表长度为：200
 	 **/
 	private $message;
 	

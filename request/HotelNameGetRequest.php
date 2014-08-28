@@ -3,13 +3,13 @@
  * TOP API: taobao.hotel.name.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelNameGetRequest
 {
 	/** 
 	 * 城市编码。参见：http://kezhan.trip.taobao.com/area.html。
-domestic为true时，province,city,district不能同时为空或为0
+domestic为true时，province,city,district不能同时为空或为0<br /> 支持的最大列表长度为：6
 	 **/
 	private $city;
 	
@@ -21,7 +21,7 @@ domestic为false时，必须传定义的海外国家编码值，是必填项。�
 	
 	/** 
 	 * 区域（县级市）编码。参见：http://kezhan.trip.taobao.com/area.html。
-domestic为true时，province,city,district不能同时为空或为0
+domestic为true时，province,city,district不能同时为空或为0<br /> 支持的最大列表长度为：6
 	 **/
 	private $district;
 	
@@ -31,13 +31,13 @@ domestic为true时，province,city,district不能同时为空或为0
 	private $domestic;
 	
 	/** 
-	 * 酒店全部名称/别名。不能超过60字节
+	 * 酒店全部名称/别名。不能超过60字节<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $name;
 	
 	/** 
 	 * 省份编码。参见：http://kezhan.trip.taobao.com/area.html。
-domestic为true时，province,city,district不能同时为空或为0
+domestic为true时，province,city,district不能同时为空或为0<br /> 支持的最大列表长度为：6
 	 **/
 	private $province;
 	

@@ -3,22 +3,22 @@
  * TOP API: taobao.promotionmisc.mjs.activity.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class PromotionmiscMjsActivityUpdateRequest
 {
 	/** 
-	 * 活动id。
+	 * 活动id。<br /> 支持最小值为：0
 	 **/
 	private $activityId;
 	
 	/** 
-	 * 减多少钱。当is_decrease_money为true时，该值才有意义。注意：该值单位为分，即100表示1元。
+	 * 减多少钱。当is_decrease_money为true时，该值才有意义。注意：该值单位为分，即100表示1元。<br /> 支持最小值为：0
 	 **/
 	private $decreaseAmount;
 	
 	/** 
-	 * 折扣值。当is_discount为true时，该值才有意义。注意：800表示8折。
+	 * 折扣值。当is_discount为true时，该值才有意义。注意：800表示8折。<br /> 支持最小值为：0
 	 **/
 	private $discountRate;
 	
@@ -38,7 +38,7 @@ class PromotionmiscMjsActivityUpdateRequest
 	private $giftId;
 	
 	/** 
-	 * 礼品名称。当is_send_gift为true时，该值才有意义。
+	 * 礼品名称。当is_send_gift为true时，该值才有意义。<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $giftName;
 	
@@ -98,22 +98,22 @@ class PromotionmiscMjsActivityUpdateRequest
 	private $isUserTag;
 	
 	/** 
-	 * 满多少件。当is_item_count_over为true时，该值才有意义。
+	 * 满多少件。当is_item_count_over为true时，该值才有意义。<br /> 支持最小值为：0
 	 **/
 	private $itemCount;
 	
 	/** 
-	 * 活动名称。
+	 * 活动名称。<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $name;
 	
 	/** 
-	 * 活动范围：0表示全部参与； 1表示部分商品参与。
+	 * 活动范围：0表示全部参与； 1表示部分商品参与。<br /> 支持最大值为：1<br /> 支持最小值为：0<br /> 支持的最大列表长度为：1
 	 **/
 	private $participateRange;
 	
 	/** 
-	 * 店铺会员等级，当is_shop_member为true时，该值才有意义。0：店铺客户；1：普通客户；2：高级会员；3：VIP会员； 4：至尊VIP会员。
+	 * 店铺会员等级，当is_shop_member为true时，该值才有意义。0：店铺客户；1：普通客户；2：高级会员；3：VIP会员； 4：至尊VIP会员。<br /> 支持最大值为：9<br /> 支持最小值为：0
 	 **/
 	private $shopMemberLevel;
 	
@@ -123,7 +123,7 @@ class PromotionmiscMjsActivityUpdateRequest
 	private $startTime;
 	
 	/** 
-	 * 满多少元。当is_amount_over为true时，该才字段有意义。注意：单位是分，即10000表示100元。
+	 * 满多少元。当is_amount_over为true时，该才字段有意义。注意：单位是分，即10000表示100元。<br /> 支持最小值为：0
 	 **/
 	private $totalPrice;
 	

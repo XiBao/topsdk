@@ -3,7 +3,7 @@
  * TOP API: taobao.picture.category.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class PictureCategoryUpdateRequest
 {
@@ -13,7 +13,7 @@ class PictureCategoryUpdateRequest
 	private $categoryId;
 	
 	/** 
-	 * 图片分类的新名字，最大长度20字符，不能为空
+	 * 图片分类的新名字，最大长度20字符，不能为空<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $categoryName;
 	

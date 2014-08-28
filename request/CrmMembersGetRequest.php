@@ -3,22 +3,22 @@
  * TOP API: taobao.crm.members.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class CrmMembersGetRequest
 {
 	/** 
-	 * 买家的昵称
+	 * 买家的昵称<br /> 支持最大长度为：1000<br /> 支持的最大列表长度为：1000
 	 **/
 	private $buyerNick;
 	
 	/** 
-	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1，最大页数为1000
+	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1，最大页数为1000<br /> 支持最大值为：1000<br /> 支持最小值为：1
 	 **/
 	private $currentPage;
 	
 	/** 
-	 * 会员等级，0：店铺客户，1：普通会员，2：高级会员，3：VIP会员， 4：至尊VIP会员。如果不传入值则默认为全部等级。
+	 * 会员等级，0：店铺客户，1：普通会员，2：高级会员，3：VIP会员， 4：至尊VIP会员。如果不传入值则默认为全部等级。<br /> 支持最大值为：4<br /> 支持最小值为：-1<br /> 支持的最大列表长度为：32
 	 **/
 	private $grade;
 	
@@ -33,7 +33,7 @@ class CrmMembersGetRequest
 	private $maxTradeAmount;
 	
 	/** 
-	 * 最大交易量
+	 * 最大交易量<br /> 支持最小值为：0
 	 **/
 	private $maxTradeCount;
 	
@@ -48,12 +48,12 @@ class CrmMembersGetRequest
 	private $minTradeAmount;
 	
 	/** 
-	 * 最小交易量
+	 * 最小交易量<br /> 支持最小值为：0
 	 **/
 	private $minTradeCount;
 	
 	/** 
-	 * 表示每页显示的会员数量,page_size的最大值不能超过100条,最小值不能低于1，
+	 * 表示每页显示的会员数量,page_size的最大值不能超过100条,最小值不能低于1，<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	

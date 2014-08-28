@@ -3,7 +3,7 @@
  * TOP API: taobao.items.inventory.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemsInventoryGetRequest
 {
@@ -22,7 +22,7 @@ violation_off_shelf(违规下架的)<br>
 	private $banner;
 	
 	/** 
-	 * 商品类目ID。ItemCat中的cid字段。可以通过taobao.itemcats.get取到
+	 * 商品类目ID。ItemCat中的cid字段。可以通过taobao.itemcats.get取到<br /> 支持最小值为：0
 	 **/
 	private $cid;
 	
@@ -44,6 +44,11 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_ti
 	private $hasDiscount;
 	
 	/** 
+	 * 是否挂接了达尔文标准产品体系。
+	 **/
+	private $isCspu;
+	
+	/** 
 	 * 商品是否在外部网店显示
 	 **/
 	private $isEx;
@@ -59,7 +64,7 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_ti
 	private $orderBy;
 	
 	/** 
-	 * 页码。取值范围:大于零小于等于101的整数;默认值为1，即返回第一页数据。当页码超过101页时系统就会报错，故请大家在用此接口获取数据时尽可能的细化自己的搜索条件，例如根据修改时间分段获取商品。
+	 * 页码。取值范围:大于零小于等于101的整数;默认值为1，即返回第一页数据。当页码超过101页时系统就会报错，故请大家在用此接口获取数据时尽可能的细化自己的搜索条件，例如根据修改时间分段获取商品。<br /> 支持最大值为：101
 	 **/
 	private $pageNo;
 	
@@ -138,6 +143,17 @@ approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_ti
 	public function getHasDiscount()
 	{
 		return $this->hasDiscount;
+	}
+
+	public function setIsCspu($isCspu)
+	{
+		$this->isCspu = $isCspu;
+		$this->apiParas["is_cspu"] = $isCspu;
+	}
+
+	public function getIsCspu()
+	{
+		return $this->isCspu;
 	}
 
 	public function setIsEx($isEx)

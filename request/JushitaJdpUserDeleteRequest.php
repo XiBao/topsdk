@@ -3,7 +3,7 @@
  * TOP API: taobao.jushita.jdp.user.delete request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class JushitaJdpUserDeleteRequest
 {
@@ -13,7 +13,7 @@ class JushitaJdpUserDeleteRequest
 	private $nick;
 	
 	/** 
-	 * 需要删除的用户编号
+	 * 需要删除的用户编号<br /> 支持最小值为：1
 	 **/
 	private $userId;
 	

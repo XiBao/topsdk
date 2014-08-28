@@ -3,7 +3,7 @@
  * TOP API: taobao.item.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemUpdateRequest
 {
@@ -31,22 +31,33 @@ fee_card(话费软件代充)
 	private $autoFill;
 	
 	/** 
+	 * 商品条形码
+	 **/
+	private $barcode;
+	
+	/** 
 	 * 商品基础色，数据格式为：pid:vid:rvid1,rvid2,rvid3;pid:vid:rvid1
 	 **/
 	private $changeProp;
 	
 	/** 
-	 * 叶子类目id
+	 * 天猫超市扩展字段，天猫超市专用
+	 **/
+	private $chaoshiExtendsInfo;
+	
+	/** 
+	 * 叶子类目id<br /> 支持最小值为：0
 	 **/
 	private $cid;
 	
 	/** 
 	 * 货到付款运费模板ID
+该字段已经废弃，货到付款模板已经集成到运费模板中。
 	 **/
 	private $codPostageId;
 	
 	/** 
-	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制
+	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制<br /> 支持最大长度为：200000<br /> 支持的最大列表长度为：200000
 	 **/
 	private $desc;
 	
@@ -151,7 +162,7 @@ fee_card(话费软件代充)
 	private $freightPayer;
 	
 	/** 
-	 * 全球购商品采购地（地区/国家）,默认值只在全球购商品采购地（库存类型选择情况生效），地区国家值为（美国, 香港, 日本, 英国, 新西兰, 德国, 韩国, 荷兰, 澳洲, 法国, 意大利, 台湾, 澳门, 加拿大, 瑞士, 西班牙, 泰国, 新加坡, 马来西亚, 菲律宾, 其他）
+	 * 全球购商品采购地（地区/国家）,默认值只在全球购商品采购地（库存类型选择情况生效），地区国家值为（美国, 香港, 日本, 英国, 新西兰, 德国, 韩国, 荷兰, 澳洲, 法国, 意大利, 台湾, 澳门, 加拿大, 瑞士, 西班牙, 泰国, 新加坡, 马来西亚, 菲律宾, 其他）<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
 	 **/
 	private $globalStockCountry;
 	
@@ -182,7 +193,7 @@ fee_card(话费软件代充)
 	private $hasWarranty;
 	
 	/** 
-	 * 商品图片。类型:JPG,GIF;最大长度:500k
+	 * 商品图片。类型:JPG,GIF;最大长度:500k<br /> 支持的文件类型为：gif,jpg,jpeg,png<br /> 支持的最大列表长度为：524288
 	 **/
 	private $image;
 	
@@ -215,6 +226,11 @@ fee_card(话费软件代充)
 	 * 实物闪电发货。注意：在售的闪电发货产品不允许取消闪电发货，需要先下架商品才能取消闪电发货标记
 	 **/
 	private $isLightningConsignment;
+	
+	/** 
+	 * 是否是线下商品。 1：线上商品（默认值）； 2：线上或线下商品； 3：线下商品。
+	 **/
+	private $isOffline;
 	
 	/** 
 	 * 是否替换sku
@@ -301,22 +317,27 @@ fee_card(话费软件代充)
 	private $localityLifeVerification;
 	
 	/** 
-	 * 所在地城市。如杭州 具体可以下载http://dl.open.taobao.com/sdk/商品城市列表.rar 取到
+	 * 所在地城市。如杭州
 	 **/
 	private $locationCity;
 	
 	/** 
-	 * 所在地省份。如浙江 具体可以下载http://dl.open.taobao.com/sdk/商品城市列表.rar 取到
+	 * 所在地省份。如浙江
 	 **/
 	private $locationState;
 	
 	/** 
-	 * 商品数量，取值范围:0-900000000的整数。且需要等于Sku所有数量的和 拍卖商品中增加拍只能为1，荷兰拍要在[2,500)范围内。
+	 * 该宝贝是否支持【7天无理由退货】，卖家选择的值只是一个因素，最终以类目和选择的属性条件来确定是否支持7天。填入字符0，表示不支持；未填写或填人字符1，表示支持7天无理由退货；<br>注意：使用该API修改商品其它属性如标题title时，如需保持商品不支持7天无理由退货状态，该字段需传入0 。
+	 **/
+	private $newprepay;
+	
+	/** 
+	 * 商品数量，取值范围:0-900000000的整数。且需要等于Sku所有数量的和 拍卖商品中增加拍只能为1，荷兰拍要在[2,500)范围内。<br /> 支持最大值为：900000000<br /> 支持最小值为：0
 	 **/
 	private $num;
 	
 	/** 
-	 * 商品数字ID，该参数必须
+	 * 商品数字ID，该参数必须<br /> 支持最小值为：1
 	 **/
 	private $numIid;
 	
@@ -332,12 +353,12 @@ fee_card(话费软件代充)
 	private $paimaiInfoDeposit;
 	
 	/** 
-	 * 降价拍宝贝的降价周期(分钟)。降价拍宝贝的价格每隔paimai_info.interval时间会下降一次increment。
+	 * 降价拍宝贝的降价周期(分钟)。降价拍宝贝的价格每隔paimai_info.interval时间会下降一次increment。<br /> 支持最大值为：60<br /> 支持最小值为：1
 	 **/
 	private $paimaiInfoInterval;
 	
 	/** 
-	 * 拍卖商品选择的拍卖类型，拍卖类型包括三种：增价拍(1)，荷兰拍(2)和降价拍(3)。
+	 * 拍卖商品选择的拍卖类型，拍卖类型包括三种：增价拍(1)，荷兰拍(2)和降价拍(3)。<br /> 支持最大值为：3<br /> 支持最小值为：1
 	 **/
 	private $paimaiInfoMode;
 	
@@ -347,12 +368,12 @@ fee_card(话费软件代充)
 	private $paimaiInfoReserve;
 	
 	/** 
-	 * 自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
+	 * 自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。<br /> 支持最大值为：48<br /> 支持最小值为：1
 	 **/
 	private $paimaiInfoValidHour;
 	
 	/** 
-	 * 自定义销售周期的分钟数。拍卖宝贝可以自定义销售周期，这里是指定销售周期的分钟数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
+	 * 自定义销售周期的分钟数。拍卖宝贝可以自定义销售周期，这里是指定销售周期的分钟数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。<br /> 支持最大值为：59<br /> 支持最小值为：0
 	 **/
 	private $paimaiInfoValidMinute;
 	
@@ -367,7 +388,7 @@ fee_card(话费软件代充)
 	private $postFee;
 	
 	/** 
-	 * 宝贝所属的运费模板ID。取值范围：整数且必须是该卖家的运费模板的ID（可通过taobao.postages.get获得当前会话用户的所有邮费模板）
+	 * 宝贝所属的运费模板ID。取值范围：整数且必须是该卖家的运费模板的ID（可通过taobao.delivery.templates.get获得当前会话用户的所有邮费模板）
 	 **/
 	private $postageId;
 	
@@ -382,7 +403,7 @@ fee_card(话费软件代充)
 	private $productId;
 	
 	/** 
-	 * 属性值别名。如pid:vid:别名;pid1:vid1:别名1， pid:属性id vid:值id。总长度不超过512字节
+	 * 属性值别名。如pid:vid:别名;pid1:vid1:别名1， pid:属性id vid:值id。总长度不超过800字节<br /> 支持最大长度为：800<br /> 支持的最大列表长度为：800
 	 **/
 	private $propertyAlias;
 	
@@ -402,7 +423,7 @@ fee_card(话费软件代充)
 	private $scenicTicketPayWay;
 	
 	/** 
-	 * 商品卖点信息，最长150个字符。仅天猫商家可用。
+	 * 商品卖点信息，最长150个字符。天猫和集市都可用<br /> 支持最大长度为：150<br /> 支持的最大列表长度为：150
 	 **/
 	private $sellPoint;
 	
@@ -415,6 +436,11 @@ fee_card(话费软件代充)
 	 * 重新关联商品与店铺类目，结构:",cid1,cid2,...,"，如果店铺类目存在二级类目，必须传入子类目cids。
 	 **/
 	private $sellerCids;
+	
+	/** 
+	 * sku层面的条形码，多个SKU情况，与SKU价格库存格式类似，用逗号分隔
+	 **/
+	private $skuBarcode;
 	
 	/** 
 	 * Sku的外部id串，结构如：1234,1342,… sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要一一对应，如果没有sku_outer_ids也要写上这个参数，入参是","(这个是两个sku的示列，逗号数应该是sku个数减1)；该参数最大长度是512个字节
@@ -454,7 +480,7 @@ fee_card(话费软件代充)
 	private $subStock;
 	
 	/** 
-	 * 宝贝标题. 不能超过30字符,受违禁词控制
+	 * 宝贝标题. 不能超过30字符,受违禁词控制<br /> 支持最大长度为：120<br /> 支持的最大列表长度为：120
 	 **/
 	private $title;
 	
@@ -514,6 +540,17 @@ fee_card(话费软件代充)
 		return $this->autoFill;
 	}
 
+	public function setBarcode($barcode)
+	{
+		$this->barcode = $barcode;
+		$this->apiParas["barcode"] = $barcode;
+	}
+
+	public function getBarcode()
+	{
+		return $this->barcode;
+	}
+
 	public function setChangeProp($changeProp)
 	{
 		$this->changeProp = $changeProp;
@@ -523,6 +560,17 @@ fee_card(话费软件代充)
 	public function getChangeProp()
 	{
 		return $this->changeProp;
+	}
+
+	public function setChaoshiExtendsInfo($chaoshiExtendsInfo)
+	{
+		$this->chaoshiExtendsInfo = $chaoshiExtendsInfo;
+		$this->apiParas["chaoshi_extends_info"] = $chaoshiExtendsInfo;
+	}
+
+	public function getChaoshiExtendsInfo()
+	{
+		return $this->chaoshiExtendsInfo;
 	}
 
 	public function setCid($cid)
@@ -921,6 +969,17 @@ fee_card(话费软件代充)
 		return $this->isLightningConsignment;
 	}
 
+	public function setIsOffline($isOffline)
+	{
+		$this->isOffline = $isOffline;
+		$this->apiParas["is_offline"] = $isOffline;
+	}
+
+	public function getIsOffline()
+	{
+		return $this->isOffline;
+	}
+
 	public function setIsReplaceSku($isReplaceSku)
 	{
 		$this->isReplaceSku = $isReplaceSku;
@@ -1106,6 +1165,17 @@ fee_card(话费软件代充)
 	public function getLocationState()
 	{
 		return $this->locationState;
+	}
+
+	public function setNewprepay($newprepay)
+	{
+		$this->newprepay = $newprepay;
+		$this->apiParas["newprepay"] = $newprepay;
+	}
+
+	public function getNewprepay()
+	{
+		return $this->newprepay;
 	}
 
 	public function setNum($num)
@@ -1339,6 +1409,17 @@ fee_card(话费软件代充)
 		return $this->sellerCids;
 	}
 
+	public function setSkuBarcode($skuBarcode)
+	{
+		$this->skuBarcode = $skuBarcode;
+		$this->apiParas["sku_barcode"] = $skuBarcode;
+	}
+
+	public function getSkuBarcode()
+	{
+		return $this->skuBarcode;
+	}
+
 	public function setSkuOuterIds($skuOuterIds)
 	{
 		$this->skuOuterIds = $skuOuterIds;
@@ -1477,6 +1558,7 @@ fee_card(话费软件代充)
 		RequestCheckUtil::checkMinValue($this->paimaiInfoValidHour,1,"paimaiInfoValidHour");
 		RequestCheckUtil::checkMaxValue($this->paimaiInfoValidMinute,59,"paimaiInfoValidMinute");
 		RequestCheckUtil::checkMinValue($this->paimaiInfoValidMinute,0,"paimaiInfoValidMinute");
+		RequestCheckUtil::checkMaxLength($this->propertyAlias,800,"propertyAlias");
 		RequestCheckUtil::checkMaxLength($this->sellPoint,150,"sellPoint");
 		RequestCheckUtil::checkMaxListSize($this->sellerCids,10,"sellerCids");
 		RequestCheckUtil::checkMaxLength($this->title,120,"title");

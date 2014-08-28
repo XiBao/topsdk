@@ -3,7 +3,7 @@
  * TOP API: taobao.wlb.item.query request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbItemQueryRequest
 {
@@ -14,7 +14,7 @@ class WlbItemQueryRequest
 	private $isSku;
 	
 	/** 
-	 * 商家编码
+	 * 商家编码<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $itemCode;
 	
@@ -33,12 +33,12 @@ DISTRIBUTION  2:是否是分销商品(货主是别人)
 	private $name;
 	
 	/** 
-	 * 当前页
+	 * 当前页<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 分页记录个数，如果用户输入的记录数大于50，则一页显示50条记录
+	 * 分页记录个数，如果用户输入的记录数大于50，则一页显示50条记录<br /> 支持最大值为：50<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	
@@ -56,7 +56,7 @@ ITEM_STATUS_LOCK  -- 2 表示锁住。
 	private $status;
 	
 	/** 
-	 * 商品前台销售名字
+	 * 商品前台销售名字<br /> 支持最大长度为：255<br /> 支持的最大列表长度为：255
 	 **/
 	private $title;
 	

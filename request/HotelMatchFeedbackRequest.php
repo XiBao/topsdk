@@ -3,22 +3,22 @@
  * TOP API: taobao.hotel.match.feedback request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelMatchFeedbackRequest
 {
 	/** 
-	 * 需进行匹配的酒店id
+	 * 需进行匹配的酒店id<br /> 支持最小值为：1
 	 **/
 	private $haid;
 	
 	/** 
-	 * 匹配命中的酒店id
+	 * 匹配命中的酒店id<br /> 支持最小值为：0
 	 **/
 	private $hid;
 	
 	/** 
-	 * 匹配结果 0:未匹配，1:匹配
+	 * 匹配结果 0:未匹配，1:匹配<br /> 支持最大值为：1<br /> 支持最小值为：0
 	 **/
 	private $matchResult;
 	

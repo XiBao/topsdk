@@ -3,22 +3,22 @@
  * TOP API: taobao.inventory.ipc.inventorydetail.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class InventoryIpcInventorydetailGetRequest
 {
 	/** 
-	 * 主订单号，可选
+	 * 主订单号，可选<br /> 支持最小值为：0
 	 **/
 	private $bizOrderId;
 	
 	/** 
-	 * 子订单号，可选
+	 * 子订单号，可选<br /> 支持最小值为：0
 	 **/
 	private $bizSubOrderId;
 	
 	/** 
-	 * 当前页数
+	 * 当前页数<br /> 支持最小值为：0
 	 **/
 	private $pageIndex;
 	
@@ -33,7 +33,7 @@ class InventoryIpcInventorydetailGetRequest
 	private $scItemId;
 	
 	/** 
-	 * 1:查询预扣  4：查询占用
+	 * 1:查询预扣  4：查询占用<br /> 支持最小值为：1
 	 **/
 	private $statusQuery;
 	

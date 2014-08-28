@@ -3,7 +3,7 @@
  * TOP API: taobao.bill.book.bills.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class BillBookBillsGetRequest
 {
@@ -18,7 +18,7 @@ class BillBookBillsGetRequest
 	private $endTime;
 	
 	/** 
-	 * 需要返回的字段:bid,account_id,journal_type,amount,book_time,description,gmt_create,gmt_modified ,如果不是以上字段将自动忽略
+	 * 需要返回的字段:bid,account_id,journal_type,amount,book_time,description,gmt_create,gmt_modified ,如果不是以上字段将自动忽略<br /> 支持的最大列表长度为：300
 	 **/
 	private $fields;
 	

@@ -3,17 +3,17 @@
  * TOP API: taobao.hotel.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelAddRequest
 {
 	/** 
-	 * 酒店地址。长度不能超过120
+	 * 酒店地址。长度不能超过120<br /> 支持最大长度为：120<br /> 支持的最大列表长度为：120
 	 **/
 	private $address;
 	
 	/** 
-	 * 城市编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时，输入对应国家的海外城市编码，可调用海外城市查询接口获取
+	 * 城市编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时，输入对应国家的海外城市编码，可调用海外城市查询接口获取<br /> 支持最大值为：999999<br /> 支持最小值为：0<br /> 支持的最大列表长度为：6
 	 **/
 	private $city;
 	
@@ -24,17 +24,17 @@ domestic为false时，必须传定义的海外国家编码值。参见：http://
 	private $country;
 	
 	/** 
-	 * 装修年份。长度不能超过4。
+	 * 装修年份。长度不能超过4。<br /> 支持最大长度为：4<br /> 支持的最大列表长度为：4
 	 **/
 	private $decorateTime;
 	
 	/** 
-	 * 酒店介绍。不超过25000个汉字
+	 * 酒店介绍。不超过25000个汉字<br /> 支持最大长度为：50000<br /> 支持的最大列表长度为：50000
 	 **/
 	private $desc;
 	
 	/** 
-	 * 区域（县级市）编码。参见：http://kezhan.trip.taobao.com/area.html
+	 * 区域（县级市）编码。参见：http://kezhan.trip.taobao.com/area.html<br /> 支持最大值为：999999<br /> 支持最小值为：0<br /> 支持的最大列表长度为：6
 	 **/
 	private $district;
 	
@@ -44,37 +44,37 @@ domestic为false时，必须传定义的海外国家编码值。参见：http://
 	private $domestic;
 	
 	/** 
-	 * 酒店级别。可选值：A,B,C,D,E,F。代表客栈公寓、经济连锁、二星级/以下、三星级/舒适、四星级/高档、五星级/豪华
+	 * 酒店级别。可选值：A,B,C,D,E,F。代表客栈公寓、经济连锁、二星级/以下、三星级/舒适、四星级/高档、五星级/豪华<br /> 支持最大长度为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $level;
 	
 	/** 
-	 * 酒店名称。不能超过60
+	 * 酒店名称。不能超过60<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $name;
 	
 	/** 
-	 * 开业年份。长度不能超过4。
+	 * 开业年份。长度不能超过4。<br /> 支持最大长度为：4<br /> 支持的最大列表长度为：4
 	 **/
 	private $openingTime;
 	
 	/** 
-	 * 酒店定位。可选值：T,B。代表旅游度假、商务出行
+	 * 酒店定位。可选值：T,B。代表旅游度假、商务出行<br /> 支持最大长度为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $orientation;
 	
 	/** 
-	 * 酒店图片。最大长度:500K。支持的文件类型：gif,jpg,png
+	 * 酒店图片。最大长度:500K。支持的文件类型：gif,jpg,png<br /> 支持的文件类型为：jpg,png,gif<br /> 支持的最大列表长度为：512000
 	 **/
 	private $pic;
 	
 	/** 
-	 * 省份编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时默认为0
+	 * 省份编码。参见：http://kezhan.trip.taobao.com/area.html，domestic为false时默认为0<br /> 支持最大值为：999999<br /> 支持最小值为：0<br /> 支持的最大列表长度为：6
 	 **/
 	private $province;
 	
 	/** 
-	 * 房间数。长度不能超过4。
+	 * 房间数。长度不能超过4。<br /> 支持最大值为：9999<br /> 支持最小值为：0<br /> 支持的最大列表长度为：4
 	 **/
 	private $rooms;
 	
@@ -86,17 +86,17 @@ parking：停车场，airportShuttle：机场接送，rentCar：租车，meeting
 	private $service;
 	
 	/** 
-	 * 接入卖家数据主键
+	 * 接入卖家数据主键<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
 	 **/
 	private $siteParam;
 	
 	/** 
-	 * 楼层数。长度不能超过4。
+	 * 楼层数。长度不能超过4。<br /> 支持最大值为：9999<br /> 支持最小值为：0<br /> 支持的最大列表长度为：4
 	 **/
 	private $storeys;
 	
 	/** 
-	 * 酒店电话。格式：国家代码（最长6位）#区号（最长4位）#电话（最长20位）。国家代码提示：中国大陆0086、香港00852、澳门00853、台湾00886
+	 * 酒店电话。格式：国家代码（最长6位）#区号（最长4位）#电话（最长20位）。国家代码提示：中国大陆0086、香港00852、澳门00853、台湾00886<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $tel;
 	

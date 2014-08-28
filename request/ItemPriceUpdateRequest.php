@@ -3,7 +3,7 @@
  * TOP API: taobao.item.price.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemPriceUpdateRequest
 {
@@ -31,7 +31,7 @@ fee_card(话费软件代充)
 	private $autoFill;
 	
 	/** 
-	 * 叶子类目id
+	 * 叶子类目id<br /> 支持最小值为：0
 	 **/
 	private $cid;
 	
@@ -41,7 +41,7 @@ fee_card(话费软件代充)
 	private $codPostageId;
 	
 	/** 
-	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制
+	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制<br /> 支持最大长度为：200000<br /> 支持的最大列表长度为：200000
 	 **/
 	private $desc;
 	
@@ -81,7 +81,7 @@ fee_card(话费软件代充)
 	private $hasWarranty;
 	
 	/** 
-	 * 商品图片。类型:JPG,GIF;最大长度:500k
+	 * 商品图片。类型:JPG,GIF;最大长度:500k<br /> 支持的文件类型为：gif,jpg,jpeg,png<br /> 支持的最大列表长度为：524288
 	 **/
 	private $image;
 	
@@ -151,12 +151,12 @@ fee_card(话费软件代充)
 	private $locationState;
 	
 	/** 
-	 * 商品数量，取值范围:0-999999的整数。且需要等于Sku所有数量的和
+	 * 商品数量，取值范围:0-999999的整数。且需要等于Sku所有数量的和<br /> 支持最大值为：999999<br /> 支持最小值为：0
 	 **/
 	private $num;
 	
 	/** 
-	 * 商品数字ID，该参数必须
+	 * 商品数字ID，该参数必须<br /> 支持最小值为：1
 	 **/
 	private $numIid;
 	
@@ -241,7 +241,7 @@ fee_card(话费软件代充)
 	private $subStock;
 	
 	/** 
-	 * 宝贝标题. 不能超过60字符,受违禁词控制
+	 * 宝贝标题. 不能超过60字符,受违禁词控制<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $title;
 	

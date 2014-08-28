@@ -3,22 +3,22 @@
  * TOP API: alipay.system.oauth.token request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class AlipaySystemOauthTokenRequest
 {
 	/** 
-	 * 授权码，用户对应用授权后得到。
+	 * 授权码，用户对应用授权后得到。<br /> 支持最大长度为：40<br /> 支持的最大列表长度为：40
 	 **/
 	private $code;
 	
 	/** 
-	 * 获取访问令牌的类型，authorization_code表示用授权码换，refresh_token表示用刷新令牌来换。
+	 * 获取访问令牌的类型，authorization_code表示用授权码换，refresh_token表示用刷新令牌来换。<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $grantType;
 	
 	/** 
-	 * 刷新令牌，上次换取访问令牌是得到。
+	 * 刷新令牌，上次换取访问令牌是得到。<br /> 支持最大长度为：40<br /> 支持的最大列表长度为：40
 	 **/
 	private $refreshToken;
 	

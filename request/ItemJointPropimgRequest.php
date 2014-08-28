@@ -3,7 +3,7 @@
  * TOP API: taobao.item.joint.propimg request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemJointPropimgRequest
 {
@@ -13,7 +13,7 @@ class ItemJointPropimgRequest
 	private $id;
 	
 	/** 
-	 * 商品数字ID，必选
+	 * 商品数字ID，必选<br /> 支持最小值为：0
 	 **/
 	private $numIid;
 	

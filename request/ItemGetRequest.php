@@ -3,7 +3,7 @@
  * TOP API: taobao.item.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemGetRequest
 {
@@ -13,7 +13,7 @@ class ItemGetRequest
 	private $fields;
 	
 	/** 
-	 * 商品数字ID
+	 * 商品数字ID<br /> 支持最小值为：1
 	 **/
 	private $numIid;
 	

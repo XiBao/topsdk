@@ -3,7 +3,7 @@
  * TOP API: taobao.favorite.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class FavoriteAddRequest
 {
@@ -13,7 +13,7 @@ class FavoriteAddRequest
 	private $collectType;
 	
 	/** 
-	 * 如果收藏的是商品，就传num_iid，如果是店铺，就传入sid
+	 * 如果收藏的是商品，就传num_iid，如果是店铺，就传入sid<br /> 支持最大值为：9223372036854775807<br /> 支持最小值为：1
 	 **/
 	private $itemNumid;
 	

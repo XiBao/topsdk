@@ -3,7 +3,7 @@
  * TOP API: taobao.simba.campaign.platform.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class SimbaCampaignPlatformUpdateRequest
 {
@@ -13,22 +13,27 @@ class SimbaCampaignPlatformUpdateRequest
 	private $campaignId;
 	
 	/** 
+	 * 站内无线频道折扣。百分比，数值必须是大于等于 1小于等于200的整数
+	 **/
+	private $mobileDiscount;
+	
+	/** 
 	 * 主人昵称
 	 **/
 	private $nick;
 	
 	/** 
-	 * 非搜索投放频道代码数组，频道代码必须是直通车非搜索类频道列表中的值。
+	 * 非搜索投放频道代码数组，频道代码必须是直通车非搜索类频道列表中的值。<br /> 支持最大值为：128<br /> 支持最小值为：0
 	 **/
 	private $nonsearchChannels;
 	
 	/** 
-	 * 溢价的百分比，必须是大于等于 1小于等于200的整数
+	 * 溢价的百分比，必须是大于等于 1小于等于200的整数<br /> 支持最大值为：200<br /> 支持最小值为：1
 	 **/
 	private $outsideDiscount;
 	
 	/** 
-	 * 搜索投放频道代码数组，频道代码必须是直通车搜索类频道列表中的值，必须包含淘宝内网。
+	 * 搜索投放频道代码数组，频道代码必须是直通车搜索类频道列表中的值，必须包含淘宝内网。<br /> 支持最大值为：128<br /> 支持最小值为：0
 	 **/
 	private $searchChannels;
 	
@@ -43,6 +48,17 @@ class SimbaCampaignPlatformUpdateRequest
 	public function getCampaignId()
 	{
 		return $this->campaignId;
+	}
+
+	public function setMobileDiscount($mobileDiscount)
+	{
+		$this->mobileDiscount = $mobileDiscount;
+		$this->apiParas["mobile_discount"] = $mobileDiscount;
+	}
+
+	public function getMobileDiscount()
+	{
+		return $this->mobileDiscount;
 	}
 
 	public function setNick($nick)
@@ -103,6 +119,7 @@ class SimbaCampaignPlatformUpdateRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->campaignId,"campaignId");
+		RequestCheckUtil::checkNotNull($this->mobileDiscount,"mobileDiscount");
 		RequestCheckUtil::checkMaxListSize($this->nonsearchChannels,10,"nonsearchChannels");
 		RequestCheckUtil::checkNotNull($this->outsideDiscount,"outsideDiscount");
 		RequestCheckUtil::checkMaxValue($this->outsideDiscount,200,"outsideDiscount");

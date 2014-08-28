@@ -3,17 +3,17 @@
  * TOP API: taobao.crm.group.append request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class CrmGroupAppendRequest
 {
 	/** 
-	 * 添加的来源分组
+	 * 添加的来源分组<br /> 支持最小值为：1<br /> 支持的最大列表长度为：19
 	 **/
 	private $fromGroupId;
 	
 	/** 
-	 * 添加的目标分组
+	 * 添加的目标分组<br /> 支持最小值为：1<br /> 支持的最大列表长度为：19
 	 **/
 	private $toGroupId;
 	

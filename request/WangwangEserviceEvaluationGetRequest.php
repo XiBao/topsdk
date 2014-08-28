@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.eservice.evaluation.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WangwangEserviceEvaluationGetRequest
 {
@@ -13,7 +13,7 @@ class WangwangEserviceEvaluationGetRequest
 	private $endDate;
 	
 	/** 
-	 * 客服人员id：cntaobao+淘宝nick，例如cntaobaotest
+	 * 客服人员id：cntaobao+淘宝nick，例如cntaobaotest<br /> 支持最大长度为：1900<br /> 支持的最大列表长度为：1900
 	 **/
 	private $serviceStaffId;
 	

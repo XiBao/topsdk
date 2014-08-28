@@ -3,12 +3,12 @@
  * TOP API: taobao.promotionmisc.activity.range.remove request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class PromotionmiscActivityRangeRemoveRequest
 {
 	/** 
-	 * 活动id。
+	 * 活动id。<br /> 支持最小值为：0
 	 **/
 	private $activityId;
 	

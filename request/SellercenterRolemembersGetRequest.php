@@ -3,12 +3,12 @@
  * TOP API: taobao.sellercenter.rolemembers.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class SellercenterRolemembersGetRequest
 {
 	/** 
-	 * 角色id
+	 * 角色id<br /> 支持的最大列表长度为：100
 	 **/
 	private $roleId;
 	

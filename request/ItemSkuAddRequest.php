@@ -3,7 +3,7 @@
  * TOP API: taobao.item.sku.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemSkuAddRequest
 {
@@ -18,7 +18,7 @@ class ItemSkuAddRequest
 	private $lang;
 	
 	/** 
-	 * Sku所属商品数字id，可通过 taobao.item.get 获取。必选
+	 * Sku所属商品数字id，可通过 taobao.item.get 获取。必选<br /> 支持最小值为：0
 	 **/
 	private $numIid;
 	
@@ -39,7 +39,7 @@ class ItemSkuAddRequest
 	private $properties;
 	
 	/** 
-	 * Sku的库存数量。sku的总数量应该小于等于商品总数量(Item的NUM)。取值范围:大于零的整数
+	 * Sku的库存数量。sku的总数量应该小于等于商品总数量(Item的NUM)。取值范围:大于零的整数<br /> 支持最小值为：0
 	 **/
 	private $quantity;
 	

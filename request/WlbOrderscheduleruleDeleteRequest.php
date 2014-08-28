@@ -3,17 +3,17 @@
  * TOP API: taobao.wlb.orderschedulerule.delete request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbOrderscheduleruleDeleteRequest
 {
 	/** 
-	 * 订单调度规则ID
+	 * 订单调度规则ID<br /> 支持的最大列表长度为：20
 	 **/
 	private $id;
 	
 	/** 
-	 * 商品userNick
+	 * 商品userNick<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $userNick;
 	

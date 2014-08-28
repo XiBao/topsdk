@@ -3,12 +3,12 @@
  * TOP API: taobao.fenxiao.order.close request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoOrderCloseRequest
 {
 	/** 
-	 * 关闭理由,特殊字符会被转义，会改变长度，有特殊字符是请注意
+	 * 关闭理由,特殊字符会被转义，会改变长度，有特殊字符是请注意<br /> 支持最大长度为：200<br /> 支持的最大列表长度为：200
 	 **/
 	private $message;
 	

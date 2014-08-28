@@ -3,7 +3,7 @@
  * TOP API: taobao.sp.content.getcount request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class SpContentGetcountRequest
 {
@@ -18,7 +18,7 @@ type(Integer，选填) ：内容类型，包括三种： 1 -- 宝贝，2 -- 图�
 	private $query;
 	
 	/** 
-	 * 站长Key
+	 * 站长Key<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $siteKey;
 	

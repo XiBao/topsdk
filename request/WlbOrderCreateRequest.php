@@ -3,7 +3,7 @@
  * TOP API: taobao.wlb.order.create request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbOrderCreateRequest
 {
@@ -18,7 +18,7 @@ class WlbOrderCreateRequest
 	private $attributes;
 	
 	/** 
-	 * 买家呢称
+	 * 买家呢称<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $buyerNick;
 	
@@ -81,7 +81,7 @@ class WlbOrderCreateRequest
 	private $orderType;
 	
 	/** 
-	 * 外部订单业务ID，该编号在isv中是唯一编号， 用来控制并发，去重用
+	 * 外部订单业务ID，该编号在isv中是唯一编号， 用来控制并发，去重用<br /> 支持最大长度为：128<br /> 支持的最大列表长度为：128
 	 **/
 	private $outBizCode;
 	
@@ -110,7 +110,7 @@ class WlbOrderCreateRequest
 	private $receiverInfo;
 	
 	/** 
-	 * 备注
+	 * 备注<br /> 支持最大长度为：4000<br /> 支持的最大列表长度为：4000
 	 **/
 	private $remark;
 	
@@ -147,7 +147,7 @@ class WlbOrderCreateRequest
 	private $serviceFee;
 	
 	/** 
-	 * 仓库编码
+	 * 仓库编码<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $storeCode;
 	
@@ -166,7 +166,7 @@ class WlbOrderCreateRequest
 	private $tmsOrderCode;
 	
 	/** 
-	 * 物流公司编码
+	 * 物流公司编码<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $tmsServiceCode;
 	

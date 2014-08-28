@@ -3,7 +3,7 @@
  * TOP API: taobao.vas.subsc.search request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class VasSubscSearchRequest
 {
@@ -43,7 +43,7 @@ class VasSubscSearchRequest
 	private $pageNo;
 	
 	/** 
-	 * 一页包含的记录数
+	 * 一页包含的记录数<br /> 支持最大值为：200
 	 **/
 	private $pageSize;
 	

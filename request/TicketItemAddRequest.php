@@ -3,7 +3,7 @@
  * TOP API: taobao.ticket.item.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class TicketItemAddRequest
 {
@@ -13,17 +13,17 @@ class TicketItemAddRequest
 	private $auctionPoint;
 	
 	/** 
-	 * 门票商品状态（onsale：上架，instock：仓库）
+	 * 门票商品状态（onsale：上架，instock：仓库）<br /> 支持最大长度为：10<br /> 支持的最大列表长度为：10
 	 **/
 	private $auctionStatus;
 	
 	/** 
-	 * 门票商品所在地-城市
+	 * 门票商品所在地-城市<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $city;
 	
 	/** 
-	 * 门票宝贝描述
+	 * 门票宝贝描述<br /> 支持最大长度为：25000<br /> 支持的最大列表长度为：25000
 	 **/
 	private $description;
 	
@@ -33,7 +33,7 @@ class TicketItemAddRequest
 	private $etcAssociationStatus;
 	
 	/** 
-	 * 门票商品电子凭证的自动退款比例-在门票商品为电子凭证时必选
+	 * 门票商品电子凭证的自动退款比例-在门票商品为电子凭证时必选<br /> 支持最大值为：100<br /> 支持最小值为：0
 	 **/
 	private $etcAutoRefund;
 	
@@ -53,7 +53,7 @@ class TicketItemAddRequest
 	private $etcNetworkId;
 	
 	/** 
-	 * 门票商品电子凭证的过期退款比例-在门票商品为电子凭证时必选
+	 * 门票商品电子凭证的过期退款比例-在门票商品为电子凭证时必选<br /> 支持最大值为：100<br /> 支持最小值为：0
 	 **/
 	private $etcOverduePay;
 	
@@ -94,7 +94,7 @@ class TicketItemAddRequest
 	private $image5;
 	
 	/** 
-	 * 门票商品的上架时间（精确到分，格式为：yyyy-MM-dd HH:mm）
+	 * 门票商品的上架时间（精确到分，格式为：yyyy-MM-dd HH:mm）<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $listTime;
 	
@@ -115,7 +115,7 @@ class TicketItemAddRequest
 	private $promotedStatus;
 	
 	/** 
-	 * 门票商品所在地-省份
+	 * 门票商品所在地-省份<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $prov;
 	
@@ -190,7 +190,7 @@ class TicketItemAddRequest
 	private $subStockAtBuy;
 	
 	/** 
-	 * 门票商品标题
+	 * 门票商品标题<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $title;
 	

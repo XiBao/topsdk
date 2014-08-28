@@ -3,12 +3,12 @@
  * TOP API: taobao.sp.item.extra.info.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class SpItemExtraInfoGetRequest
 {
 	/** 
-	 * 商品ID
+	 * 商品ID,可批量查询, 多个商品ID中间用逗号分隔, 最多可查20个id, ID之间不能有空格
 	 **/
 	private $id;
 	

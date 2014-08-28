@@ -3,7 +3,7 @@
  * TOP API: taobao.promotion.coupons.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class PromotionCouponsGetRequest
 {
@@ -13,7 +13,7 @@ class PromotionCouponsGetRequest
 	private $couponId;
 	
 	/** 
-	 * 优惠券的面额，必须是3，5，10，20，50,100
+	 * 优惠券的面额，必须是3，5，10，20，50,100<br /> 支持最大值为：100<br /> 支持最小值为：3
 	 **/
 	private $denominations;
 	
@@ -23,12 +23,12 @@ class PromotionCouponsGetRequest
 	private $endTime;
 	
 	/** 
-	 * 查询的页号，结果集是分页返回的，每页20条
+	 * 查询的页号，结果集是分页返回的，每页20条<br /> 支持最小值为：1
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页条数
+	 * 每页条数<br /> 支持的最大列表长度为：20
 	 **/
 	private $pageSize;
 	

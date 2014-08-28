@@ -3,7 +3,7 @@
  * TOP API: taobao.product.img.upload request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ProductImgUploadRequest
 {
@@ -13,7 +13,7 @@ class ProductImgUploadRequest
 	private $id;
 	
 	/** 
-	 * 图片内容.图片最大为500K,只支持JPG,GIF格式.
+	 * 图片内容.图片最大为500K,只支持JPG,GIF格式.<br /> 支持的文件类型为：gif,jpg,png,jpeg<br /> 支持的最大列表长度为：1048576
 	 **/
 	private $image;
 	

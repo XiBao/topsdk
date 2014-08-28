@@ -3,27 +3,27 @@
  * TOP API: taobao.item.ebook.serial.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemEbookSerialUpdateRequest
 {
 	/** 
-	 * 作者。长度不能超过60个字符
+	 * 作者。长度不能超过60个字符<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $author;
 	
 	/** 
-	 * 叶子类目id
+	 * 叶子类目id<br /> 支持最小值为：0
 	 **/
 	private $cid;
 	
 	/** 
-	 * 商品主图片。类型:JPG,PNG;最大:2M
+	 * 商品主图片。类型:JPG,PNG;最大:2M<br /> 支持的文件类型为：gif,jpg,jpeg,png<br /> 支持的最大列表长度为：524288
 	 **/
 	private $cover;
 	
 	/** 
-	 * 宝贝描述。字数要大于5个字符，小于25000个字符，受违禁词控制
+	 * 宝贝描述。字数要大于5个字符，小于25000个字符，受违禁词控制<br /> 支持最大长度为：200000<br /> 支持的最大列表长度为：200000
 	 **/
 	private $desc;
 	
@@ -33,7 +33,7 @@ class ItemEbookSerialUpdateRequest
 	private $itemId;
 	
 	/** 
-	 * 书名。长度不能超过60个字符
+	 * 书名。长度不能超过60个字符<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $name;
 	
@@ -53,7 +53,7 @@ class ItemEbookSerialUpdateRequest
 	private $relationLink;
 	
 	/** 
-	 * 宝贝标题。不能超过60字符，受违禁词控制
+	 * 宝贝标题。不能超过60字符，受违禁词控制<br /> 支持最大长度为：120<br /> 支持的最大列表长度为：120
 	 **/
 	private $title;
 	

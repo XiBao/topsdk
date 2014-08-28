@@ -3,17 +3,17 @@
  * TOP API: taobao.trip.jipiao.agent.itinerary.send request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class TripJipiaoAgentItinerarySendRequest
 {
 	/** 
-	 * 物流公司代码CODE，如不清楚，请找运营提供
+	 * 物流公司代码CODE，如不清楚，请找运营提供<br /> 支持最大长度为：20<br /> 支持的最大列表长度为：20
 	 **/
 	private $companyCode;
 	
 	/** 
-	 * 邮寄单号，长度不能超过32字节
+	 * 邮寄单号，长度不能超过32字节<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $expressCode;
 	
@@ -23,7 +23,7 @@ class TripJipiaoAgentItinerarySendRequest
 	private $itineraryId;
 	
 	/** 
-	 * 行程单号
+	 * 行程单号<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $itineraryNo;
 	

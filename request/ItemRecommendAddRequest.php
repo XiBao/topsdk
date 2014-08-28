@@ -3,12 +3,12 @@
  * TOP API: taobao.item.recommend.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItemRecommendAddRequest
 {
 	/** 
-	 * 商品数字ID，该参数必须
+	 * 商品数字ID，该参数必须<br /> 支持最小值为：0
 	 **/
 	private $numIid;
 	

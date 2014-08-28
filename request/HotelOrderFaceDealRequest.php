@@ -3,7 +3,7 @@
  * TOP API: taobao.hotel.order.face.deal request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class HotelOrderFaceDealRequest
 {
@@ -13,18 +13,18 @@ class HotelOrderFaceDealRequest
 	private $oid;
 	
 	/** 
-	 * 操作类型，1：确认预订，2：取消订单
+	 * 操作类型，1：确认预订，2：取消订单<br /> 支持最大长度为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $operType;
 	
 	/** 
-	 * 取消订单时的取消原因备注信息
+	 * 取消订单时的取消原因备注信息<br /> 支持最大长度为：500<br /> 支持的最大列表长度为：500
 	 **/
 	private $reasonText;
 	
 	/** 
 	 * 取消订单时的取消原因，可选值：1,2,3,4；
-1：无房，2：价格变动，3：买家原因，4：其它原因
+1：无房，2：价格变动，3：买家原因，4：其它原因<br /> 支持最大长度为：1<br /> 支持的最大列表长度为：1
 	 **/
 	private $reasonType;
 	

@@ -3,7 +3,7 @@
  * TOP API: tmall.product.spec.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class TmallProductSpecAddRequest
 {
@@ -38,7 +38,7 @@ class TmallProductSpecAddRequest
 	private $image;
 	
 	/** 
-	 * 产品规格吊牌价，以分为单位，无默认值，上限999999999
+	 * 产品规格吊牌价，以分为单位，无默认值，上限999999999<br /> 支持最大值为：999999999<br /> 支持最小值为：0
 	 **/
 	private $labelPrice;
 	
@@ -63,7 +63,7 @@ class TmallProductSpecAddRequest
 	private $specProps;
 	
 	/** 
-	 * 规格属性别名,只允许传颜色别名
+	 * 规格属性别名,只允许传颜色别名<br /> 支持最大长度为：60<br /> 支持的最大列表长度为：60
 	 **/
 	private $specPropsAlias;
 	

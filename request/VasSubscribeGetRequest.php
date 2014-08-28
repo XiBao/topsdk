@@ -3,12 +3,12 @@
  * TOP API: taobao.vas.subscribe.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class VasSubscribeGetRequest
 {
 	/** 
-	 * 应用收费代码，从合作伙伴后台（my.open.taobao.com）-收费管理-收费项目列表 能够获得该应用的收费代码
+	 * 商品编码，从合作伙伴后台（my.open.taobao.com）-收费管理-收费项目列表 能够获得该应用的商品代码
 	 **/
 	private $articleCode;
 	

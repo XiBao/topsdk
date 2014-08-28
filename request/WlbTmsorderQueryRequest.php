@@ -3,12 +3,12 @@
  * TOP API: taobao.wlb.tmsorder.query request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class WlbTmsorderQueryRequest
 {
 	/** 
-	 * 物流订单编号
+	 * 物流订单编号<br /> 支持最大长度为：64<br /> 支持的最大列表长度为：64
 	 **/
 	private $orderCode;
 	

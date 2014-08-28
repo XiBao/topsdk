@@ -3,13 +3,13 @@
  * TOP API: taobao.picture.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class PictureGetRequest
 {
 	/** 
 	 * 图片使用，如果是pc宝贝detail使用，设置为client:computer，查询出来的图片是符合pc的宝贝detail显示的
-如果是手机宝贝detail使用，设置为client:phone，查询出来的图片是符合手机的宝贝detail显示的
+如果是手机宝贝detail使用，设置为client:phone，查询出来的图片是符合手机的宝贝detail显示的,默认值是全部
 	 **/
 	private $clientType;
 	

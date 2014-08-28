@@ -3,47 +3,47 @@
  * TOP API: taobao.trade.shippingaddress.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class TradeShippingaddressUpdateRequest
 {
 	/** 
-	 * 收货地址。最大长度为228个字节。
+	 * 收货地址。最大长度为228个字节。<br /> 支持最大长度为：228<br /> 支持的最大列表长度为：228
 	 **/
 	private $receiverAddress;
 	
 	/** 
-	 * 城市。最大长度为32个字节。如：杭州
+	 * 城市。最大长度为32个字节。如：杭州<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $receiverCity;
 	
 	/** 
-	 * 区/县。最大长度为32个字节。如：西湖区
+	 * 区/县。最大长度为32个字节。如：西湖区<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $receiverDistrict;
 	
 	/** 
-	 * 移动电话。最大长度为30个字节。
+	 * 移动电话。最大长度为30个字节。<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
 	 **/
 	private $receiverMobile;
 	
 	/** 
-	 * 收货人全名。最大长度为50个字节。
+	 * 收货人全名。最大长度为50个字节。<br /> 支持最大长度为：50<br /> 支持的最大列表长度为：50
 	 **/
 	private $receiverName;
 	
 	/** 
-	 * 固定电话。最大长度为30个字节。
+	 * 固定电话。最大长度为30个字节。<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
 	 **/
 	private $receiverPhone;
 	
 	/** 
-	 * 省份。最大长度为32个字节。如：浙江
+	 * 省份。最大长度为32个字节。如：浙江<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
 	 **/
 	private $receiverState;
 	
 	/** 
-	 * 邮政编码。必须由6个数字组成。
+	 * 邮政编码。必须由6个数字组成。<br /> 支持最大长度为：6<br /> 支持的最大列表长度为：6
 	 **/
 	private $receiverZip;
 	

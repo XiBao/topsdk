@@ -3,7 +3,7 @@
  * TOP API: taobao.ebookmedia.volume.add.or.update request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:57
  */
 class EbookmediaVolumeAddOrUpdateRequest
 {
@@ -13,7 +13,7 @@ class EbookmediaVolumeAddOrUpdateRequest
 	private $auctionId;
 	
 	/** 
-	 * 卷信息简介。不能超过2000个字符
+	 * 卷信息简介。不能超过2000个字符<br /> 支持最大长度为：2000<br /> 支持的最大列表长度为：2000
 	 **/
 	private $desc;
 	
@@ -23,7 +23,7 @@ class EbookmediaVolumeAddOrUpdateRequest
 	private $orderId;
 	
 	/** 
-	 * 电子书卷标题，不能超过30个字符
+	 * 电子书卷标题，不能超过30个字符<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
 	 **/
 	private $title;
 	

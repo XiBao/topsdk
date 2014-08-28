@@ -3,32 +3,32 @@
  * TOP API: taobao.crm.members.increment.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:56
  */
 class CrmMembersIncrementGetRequest
 {
 	/** 
-	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1
+	 * 显示第几页的会员，如果输入的页码大于总共的页码数，例如总共10页，但是current_page的值为11，则返回空白页，最小页数为1<br /> 支持最小值为：1
 	 **/
 	private $currentPage;
 	
 	/** 
-	 * 对应买家 最后一次 修改交易订单的时间，如果不填写此字段，默认为当前时间
+	 * 卖家修改会员信息的时间终点.如果不填写此字段,默认为当前时间.
 	 **/
 	private $endModify;
 	
 	/** 
-	 * 会员等级，0：店铺客户，1：普通会员，2：高级会员，3：VIP会员， 4：至尊VIP会员
+	 * 会员等级，0：店铺客户，1：普通会员，2：高级会员，3：VIP会员， 4：至尊VIP会员<br /> 支持最大值为：4<br /> 支持最小值为：-1<br /> 支持的最大列表长度为：32
 	 **/
 	private $grade;
 	
 	/** 
-	 * 每页显示的会员数，page_size的值不能超过100，最小值要大于1
+	 * 每页显示的会员数，page_size的值不能超过100，最小值要大于1<br /> 支持最大值为：100<br /> 支持最小值为：1
 	 **/
 	private $pageSize;
 	
 	/** 
-	 * 对应买家 最后一次 修改交易订单的时间
+	 * 卖家修改会员信息的时间起点.
 	 **/
 	private $startModify;
 	

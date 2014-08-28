@@ -3,7 +3,7 @@
  * TOP API: taobao.fenxiao.product.sku.add request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class FenxiaoProductSkuAddRequest
 {
@@ -18,7 +18,7 @@ class FenxiaoProductSkuAddRequest
 	private $dealerCostPrice;
 	
 	/** 
-	 * 产品ID
+	 * 产品ID<br /> 支持的最大列表长度为：64
 	 **/
 	private $productId;
 	
@@ -28,7 +28,7 @@ class FenxiaoProductSkuAddRequest
 	private $properties;
 	
 	/** 
-	 * sku产品库存，在0到1000000之间，如果不传，则库存为0
+	 * sku产品库存，在0到1000000之间，如果不传，则库存为0<br /> 支持最大值为：1000000<br /> 支持最小值为：0
 	 **/
 	private $quantity;
 	

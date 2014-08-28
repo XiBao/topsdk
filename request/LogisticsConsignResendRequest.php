@@ -3,12 +3,12 @@
  * TOP API: taobao.logistics.consign.resend request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class LogisticsConsignResendRequest
 {
 	/** 
-	 * 物流公司代码.如"POST"就代表中国邮政,"ZJS"就代表宅急送.调用 taobao.logistics.companies.get 获取。
+	 * 物流公司代码.如"POST"代表中国邮政,"ZJS"代表宅急送。调用 taobao.logistics.companies.get 获取。
 <br><font color='red'>如果是货到付款订单，选择的物流公司必须支持货到付款发货方式</font>
 	 **/
 	private $companyCode;
@@ -46,12 +46,12 @@ TIDA对应了A宝贝，冒号后用逗号分隔的"12345","67890".说明本订�
 	private $sellerIp;
 	
 	/** 
-	 * 拆单子订单列表，对应的数据是：子订单号的列表。可以不传，但是如果传了则必须符合传递的规则。子订单必须是操作的物流订单的子订单的真子集！
+	 * 拆单子订单列表，对应的数据是：子订单号列表。可以不传，但是如果传了则必须符合传递的规则。子订单必须是操作的物流订单的子订单的真子集！
 	 **/
 	private $subTid;
 	
 	/** 
-	 * 淘宝交易ID
+	 * 淘宝交易ID<br /> 支持最小值为：1000
 	 **/
 	private $tid;
 	

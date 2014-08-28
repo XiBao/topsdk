@@ -3,7 +3,7 @@
  * TOP API: taobao.itemprops.get request
  * 
  * @author auto create
- * @since 1.0, 2013-12-05 12:50:25
+ * @since 1.0, 2014-08-28 16:45:55
  */
 class ItempropsGetRequest
 {
@@ -68,7 +68,7 @@ class ItempropsGetRequest
 	private $pid;
 	
 	/** 
-	 * 获取类目的类型：1代表集市、2代表天猫
+	 * 获取类目的类型：1代表集市、2代表天猫<br /> 支持最大值为：2<br /> 支持最小值为：1
 	 **/
 	private $type;
 	
