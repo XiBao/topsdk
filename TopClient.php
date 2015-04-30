@@ -50,7 +50,7 @@ class TopClient
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 
-		curl_setopt($ch,CURLOPT_HTTPHEADER,["content-type: application/x-www-form-urlencoded; charset=UTF-8"]);
+		//curl_setopt($ch,CURLOPT_HTTPHEADER,["content-type: application/x-www-form-urlencoded; charset=UTF-8"]);
 
 		curl_setopt($ch, CURLOPT_FAILONERROR, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
