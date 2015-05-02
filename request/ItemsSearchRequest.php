@@ -507,4 +507,8 @@ false：非自动发货
 	{
 		return $this->apiParas;
 	}
+    
+    public function check() {
+        return true;
+    }
 }
