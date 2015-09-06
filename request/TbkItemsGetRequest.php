@@ -3,7 +3,7 @@
  * TOP API: taobao.tbk.items.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.06
  */
 class TbkItemsGetRequest
 {
@@ -28,7 +28,7 @@ class TbkItemsGetRequest
 	private $cashOndelivery;
 	
 	/** 
-	 * 标准商品后台类目id。该ID可以通过taobao.itemcats.get接口获取到。<br /> 支持最大值为：2147483647
+	 * 标准商品后台类目id。该ID可以通过taobao.itemcats.get接口获取到。
 	 **/
 	private $cid;
 	
@@ -93,12 +93,12 @@ class TbkItemsGetRequest
 	private $overseasItem;
 	
 	/** 
-	 * 结果页数.1~10<br /> 支持最大值为：10
+	 * 结果页数.1~10
 	 **/
 	private $pageNo;
 	
 	/** 
-	 * 每页返回结果数.最大每页40<br /> 支持最大值为：400
+	 * 每页返回结果数.最大每页40
 	 **/
 	private $pageSize;
 	
