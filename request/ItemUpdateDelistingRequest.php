@@ -3,12 +3,12 @@
  * TOP API: taobao.item.update.delisting request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItemUpdateDelistingRequest
 {
 	/** 
-	 * 商品数字ID，该参数必须<br /> 支持最小值为：0
+	 * 商品数字ID，该参数必须
 	 **/
 	private $numIid;
 	

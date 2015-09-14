@@ -3,7 +3,7 @@
  * TOP API: taobao.itempropvalues.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItempropvaluesGetRequest
 {
@@ -18,6 +18,11 @@ class ItempropvaluesGetRequest
 	private $cid;
 	
 	/** 
+	 * 假如传2005-01-01 00:00:00，则取所有的属性和子属性(状态为删除的属性值不返回prop_name)
+	 **/
+	private $datetime;
+	
+	/** 
 	 * 需要返回的字段。目前支持有：cid,pid,prop_name,vid,name,name_alias,status,sort_order
 	 **/
 	private $fields;
@@ -28,7 +33,7 @@ class ItempropvaluesGetRequest
 	private $pvs;
 	
 	/** 
-	 * 获取类目的类型：1代表集市、2代表天猫<br /> 支持最大值为：2<br /> 支持最小值为：1
+	 * 获取类目的类型：1代表集市、2代表天猫
 	 **/
 	private $type;
 	
@@ -54,6 +59,17 @@ class ItempropvaluesGetRequest
 	public function getCid()
 	{
 		return $this->cid;
+	}
+
+	public function setDatetime($datetime)
+	{
+		$this->datetime = $datetime;
+		$this->apiParas["datetime"] = $datetime;
+	}
+
+	public function getDatetime()
+	{
+		return $this->datetime;
 	}
 
 	public function setFields($fields)

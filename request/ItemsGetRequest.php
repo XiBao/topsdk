@@ -3,7 +3,7 @@
  * TOP API: taobao.items.get request
  * 
  * @author auto create
- * @since 1.0, 2013-02-22 16:36:25
+ * @since 1.0, 2015.09.13
  */
 class ItemsGetRequest
 {
@@ -48,8 +48,7 @@ class ItemsGetRequest
 	private $isCod;
 	
 	/** 
-	 * 表示是否搜索商城的商品这一搜索条件。
-值含义：true：搜索商城商品，false：搜素集市商品，若为null，则搜索全部的商品（默认值）
+	 * 表示是否搜索商城的商品这一搜索条件。值含义：true：搜索商城商品，false：搜素集市商品，若为null，则搜索全部的商品（默认值）
 	 **/
 	private $isMall;
 	
@@ -59,8 +58,7 @@ class ItemsGetRequest
 	private $isPrepay;
 	
 	/** 
-	 * 表示是否新品这一搜索条件。
-值含义：true-是新品，false-无限制，null-无限制
+	 * 表示是否新品这一搜索条件。值含义：true-是新品，false-无限制，null-无限制
 	 **/
 	private $isXinpin;
 	

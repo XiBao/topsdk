@@ -3,7 +3,7 @@
  * TOP API: taobao.tmc.group.delete request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:57
+ * @since 1.0, 2015.09.13
  */
 class TmcGroupDeleteRequest
 {
@@ -16,6 +16,11 @@ class TmcGroupDeleteRequest
 	 * 用户列表，不传表示删除整个分组，如果用户全部删除后，也会自动删除整个分组
 	 **/
 	private $nicks;
+	
+	/** 
+	 * 用户所属于的平台类型，tbUIC:淘宝用户; icbu: icbu用户
+	 **/
+	private $userPlatform;
 	
 	private $apiParas = array();
 	
@@ -39,6 +44,17 @@ class TmcGroupDeleteRequest
 	public function getNicks()
 	{
 		return $this->nicks;
+	}
+
+	public function setUserPlatform($userPlatform)
+	{
+		$this->userPlatform = $userPlatform;
+		$this->apiParas["user_platform"] = $userPlatform;
+	}
+
+	public function getUserPlatform()
+	{
+		return $this->userPlatform;
 	}
 
 	public function getApiMethodName()

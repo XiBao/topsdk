@@ -3,12 +3,12 @@
  * TOP API: taobao.tmc.group.add request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:57
+ * @since 1.0, 2015.09.13
  */
 class TmcGroupAddRequest
 {
 	/** 
-	 * 分组名称，同一个应用下需要保证唯一性，最长32个字符。添加分组后，消息通道会为用户的消息分配独立分组，但之前的消息还是存储于默认分组中。不能以default开头，default开头为系统默认组。<br /> 支持最大长度为：32<br /> 支持的最大列表长度为：32
+	 * 分组名称，同一个应用下需要保证唯一性，最长32个字符。添加分组后，消息通道会为用户的消息分配独立分组，但之前的消息还是存储于默认分组中。不能以default开头，default开头为系统默认组。
 	 **/
 	private $groupName;
 	
@@ -16,6 +16,11 @@ class TmcGroupAddRequest
 	 * 用户昵称列表，以半角逗号分隔，支持子账号，支持增量添加用户
 	 **/
 	private $nicks;
+	
+	/** 
+	 * 用户所属于的平台类型，tbUIC:淘宝用户; icbu: icbu用户
+	 **/
+	private $userPlatform;
 	
 	private $apiParas = array();
 	
@@ -39,6 +44,17 @@ class TmcGroupAddRequest
 	public function getNicks()
 	{
 		return $this->nicks;
+	}
+
+	public function setUserPlatform($userPlatform)
+	{
+		$this->userPlatform = $userPlatform;
+		$this->apiParas["user_platform"] = $userPlatform;
+	}
+
+	public function getUserPlatform()
+	{
+		return $this->userPlatform;
 	}
 
 	public function getApiMethodName()

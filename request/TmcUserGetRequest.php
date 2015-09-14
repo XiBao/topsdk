@@ -3,7 +3,7 @@
  * TOP API: taobao.tmc.user.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:57
+ * @since 1.0, 2015.09.13
  */
 class TmcUserGetRequest
 {
@@ -13,9 +13,14 @@ class TmcUserGetRequest
 	private $fields;
 	
 	/** 
-	 * 用户昵称<br /> 支持最大长度为：100<br /> 支持的最大列表长度为：100
+	 * 用户昵称
 	 **/
 	private $nick;
+	
+	/** 
+	 * 用户所属的平台类型，tbUIC:淘宝用户; icbu: icbu用户
+	 **/
+	private $userPlatform;
 	
 	private $apiParas = array();
 	
@@ -39,6 +44,17 @@ class TmcUserGetRequest
 	public function getNick()
 	{
 		return $this->nick;
+	}
+
+	public function setUserPlatform($userPlatform)
+	{
+		$this->userPlatform = $userPlatform;
+		$this->apiParas["user_platform"] = $userPlatform;
+	}
+
+	public function getUserPlatform()
+	{
+		return $this->userPlatform;
 	}
 
 	public function getApiMethodName()

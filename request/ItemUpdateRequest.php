@@ -3,12 +3,12 @@
  * TOP API: taobao.item.update request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItemUpdateRequest
 {
 	/** 
-	 * 售后服务说明模板id
+	 * 售后说明模板id
 	 **/
 	private $afterSaleId;
 	
@@ -23,12 +23,14 @@ class ItemUpdateRequest
 	private $auctionPoint;
 	
 	/** 
-	 * 代充商品类型。只有少数类目下的商品可以标记上此字段，具体哪些类目可以上传可以通过taobao.itemcat.features.get获得。在代充商品的类目下，不传表示不标记商品类型（交易搜索中就不能通过标记搜到相关的交易了）。可选类型： 
-no_mark(不做类型标记) 
-time_card(点卡软件代充) 
-fee_card(话费软件代充)
+	 * 代充商品类型。只有少数类目下的商品可以标记上此字段，具体哪些类目可以上传可以通过taobao.itemcat.features.get获得。在代充商品的类目下，不传表示不标记商品类型（交易搜索中就不能通过标记搜到相关的交易了）。可选类型： no_mark(不做类型标记) time_card(点卡软件代充) fee_card(话费软件代充)
 	 **/
 	private $autoFill;
+	
+	/** 
+	 * 自动重发。可选值:true,false;
+	 **/
+	private $autoRepost;
 	
 	/** 
 	 * 商品条形码
@@ -36,33 +38,47 @@ fee_card(话费软件代充)
 	private $barcode;
 	
 	/** 
-	 * 商品基础色，数据格式为：pid:vid:rvid1,rvid2,rvid3;pid:vid:rvid1
+	 * 基础色数据
 	 **/
 	private $changeProp;
 	
 	/** 
-	 * 天猫超市扩展字段，天猫超市专用
+	 * 天猫超市扩展字段，天猫超市专用。
 	 **/
 	private $chaoshiExtendsInfo;
 	
 	/** 
-	 * 叶子类目id<br /> 支持最小值为：0
+	 * 叶子类目id
 	 **/
 	private $cid;
 	
 	/** 
-	 * 货到付款运费模板ID
-该字段已经废弃，货到付款模板已经集成到运费模板中。
+	 * 货到付款运费模板ID该字段已经废弃，货到付款模板已经集成到运费模板中。
 	 **/
 	private $codPostageId;
 	
 	/** 
-	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制<br /> 支持最大长度为：200000<br /> 支持的最大列表长度为：200000
+	 * 商品级别设置的发货时间。设置了商品级别的发货时间，相对发货时间，则填写相对发货时间的天数（大于3）；绝对发货时间，则填写yyyy-mm-dd格式，如2013-11-11
+	 **/
+	private $deliveryTimeDeliveryTime;
+	
+	/** 
+	 * 发货时间类型：绝对发货时间或者相对发货时间
+	 **/
+	private $deliveryTimeDeliveryTimeType;
+	
+	/** 
+	 * 设置是否使用发货时间，商品级别，sku级别
+	 **/
+	private $deliveryTimeNeedDeliveryTime;
+	
+	/** 
+	 * 商品描述. 字数要大于5个字符，小于25000个字符 ，受违禁词控制
 	 **/
 	private $desc;
 	
 	/** 
-	 * 商品描述模块化，模块列表；数据结构可参考Item_Desc_Module 。详细使用说明：http://open.taobao.com/support/question_detail.htm?spm=0.0.0.0.cRcj3S&id=147498 ；
+	 * 商品描述模块化，模块列表，由List转化成jsonArray存入，后端逻辑验证通过，拼装成模块内容+锚点导航后存入desc中。数据结构具体参见Item_Desc_Module
 	 **/
 	private $descModules;
 	
@@ -80,6 +96,11 @@ fee_card(话费软件代充)
 	 * 快递费用。取值范围:0.01-999.00;精确到2位小数;单位:元。如:15.07，表示:15元7分
 	 **/
 	private $expressFee;
+	
+	/** 
+	 * 宝贝特征值，格式为：【key1:value1;key2:value2;key3:value3;】，key和value用【:】分隔，key&value之间用【;】分隔，只有在Top支持的特征值才能保存到宝贝上，目前支持的Key列表为：mysize_tp
+	 **/
+	private $features;
 	
 	/** 
 	 * 厂家联系方式
@@ -162,13 +183,22 @@ fee_card(话费软件代充)
 	private $freightPayer;
 	
 	/** 
-	 * 全球购商品采购地（地区/国家）,默认值只在全球购商品采购地（库存类型选择情况生效），地区国家值为（美国, 香港, 日本, 英国, 新西兰, 德国, 韩国, 荷兰, 澳洲, 法国, 意大利, 台湾, 澳门, 加拿大, 瑞士, 西班牙, 泰国, 新加坡, 马来西亚, 菲律宾, 其他）<br /> 支持最大长度为：30<br /> 支持的最大列表长度为：30
+	 * 全球购商品采购地（地区/国家）,默认值只在全球购商品采购地（库存类型选择情况生效），地区国家值为（美国, 香港, 日本, 英国, 新西兰, 德国, 韩国, 荷兰, 澳洲, 法国, 意大利, 台湾, 澳门, 加拿大, 瑞士, 西班牙, 泰国, 新加坡, 马来西亚, 菲律宾, 其他）
 	 **/
 	private $globalStockCountry;
 	
 	/** 
-	 * 全球购商品采购地（库存类型）
-全球购商品有两种库存类型：现货和代购 参数值为1时代表现货，值为2时代表代购。注意：使用时请与 全球购商品采购地（地区/国家）配合使用
+	 * 全球购商品发货地，发货地现在有两种类型：“国内”和“海外及港澳台”，参数值为1时代表“国内”，值为2时代表“海外及港澳台”
+	 **/
+	private $globalStockDeliveryPlace;
+	
+	/** 
+	 * 全球购商品卖家包税承诺，当值为true时，代表卖家承诺包税。
+	 **/
+	private $globalStockTaxFreePromise;
+	
+	/** 
+	 * 全球购商品采购地（库存类型）全球购商品有两种库存类型：现货和代购 参数值为1时代表现货，值为2时代表代购。注意：使用时请与 全球购商品采购地（地区/国家）配合使用
 	 **/
 	private $globalStockType;
 	
@@ -193,7 +223,12 @@ fee_card(话费软件代充)
 	private $hasWarranty;
 	
 	/** 
-	 * 商品图片。类型:JPG,GIF;最大长度:500k<br /> 支持的文件类型为：gif,jpg,jpeg,png<br /> 支持的最大列表长度为：524288
+	 * 忽略警告提示.
+	 **/
+	private $ignorewarning;
+	
+	/** 
+	 * 商品图片。类型:JPG,GIF;最大长度:3M
 	 **/
 	private $image;
 	
@@ -228,7 +263,7 @@ fee_card(话费软件代充)
 	private $isLightningConsignment;
 	
 	/** 
-	 * 是否是线下商品。 1：线上商品（默认值）； 2：线上或线下商品； 3：线下商品。
+	 * 是否是线下商品。1：线上商品（默认值）；2：线上或线下商品；3：线下商品。
 	 **/
 	private $isOffline;
 	
@@ -248,10 +283,7 @@ fee_card(话费软件代充)
 	private $isXinpin;
 	
 	/** 
-	 * 表示商品的体积，如果需要使用按体积计费的运费模板，一定要设置这个值。该值的单位为立方米（m3），如果是其他单位，请转换成成立方米。
-该值支持两种格式的设置：格式1：bulk:3,单位为立方米(m3),表示直接设置为商品的体积。格式2：length:10;breadth:10;height:10，单位为米（m）。体积和长宽高都支持小数类型。
-在传入体积或长宽高时候，不能带单位。体积的单位默认为立方米（m3），长宽高的单位默认为米(m)
-在编辑的时候，如果需要删除体积属性，请设置该值为0，如bulk:0
+	 * 表示商品的体积，如果需要使用按体积计费的运费模板，一定要设置这个值。该值的单位为立方米（m3），如果是其他单位，请转换成成立方米。该值支持两种格式的设置：格式1：bulk:3,单位为立方米(m3),表示直接设置为商品的体积。格式2：length:10;breadth:10;height:10，单位为米（m）。体积和长宽高都支持小数类型。在传入体积或长宽高时候，不能带单位。体积的单位默认为立方米（m3），长宽高的单位默认为米(m)在编辑的时候，如果需要删除体积属性，请设置该值为0，如bulk:0
 	 **/
 	private $itemSize;
 	
@@ -271,18 +303,17 @@ fee_card(话费软件代充)
 	private $listTime;
 	
 	/** 
-	 * 编辑电子凭证宝贝时候表示是否使用邮寄
-0: 代表不使用邮寄；
-1：代表使用邮寄；
-如果不设置这个值，代表不使用邮寄
+	 * 编辑电子凭证宝贝时候表示是否使用邮寄0: 代表不使用邮寄；1：代表使用邮寄；如果不设置这个值，代表不使用邮寄
 	 **/
 	private $localityLifeChooseLogis;
 	
 	/** 
-	 * 本地生活电子交易凭证业务，目前此字段只涉及到的信息为有效期;
-如果有效期为起止日期类型，此值为2012-08-06,2012-08-16
-如果有效期为【购买成功日 至】类型则格式为2012-08-16
-如果有效期为天数类型则格式为15
+	 * 电子凭证业务属性，数据字典是: 1、is_card:1 (暂时不用) 2、consume_way:4 （1 串码 ，4 身份证）3、consume_midmnick ：(核销放行账号:用户id-用户名，支持多个，用逗号分隔,例如 1234-测试账号35,1345-测试账号56）4、market:eticket (电子凭证商品标记) 5、has_pos:1 (1 表示商品配置线下门店，在detail上进行展示 ，没有或者其他值只不展示)格式是: k1:v2;k2:v2;........ 如：has_pos:1;market:eticket;consume_midmnick:901409638-OPPO;consume_way:4
+	 **/
+	private $localityLifeEticket;
+	
+	/** 
+	 * 本地生活电子交易凭证业务，目前此字段只涉及到的信息为有效期;如果有效期为起止日期类型，此值为2012-08-06,2012-08-16如果有效期为【购买成功日 至】类型则格式为2012-08-16如果有效期为天数类型则格式为15
 	 **/
 	private $localityLifeExpirydate;
 	
@@ -297,9 +328,19 @@ fee_card(话费软件代充)
 	private $localityLifeNetworkId;
 	
 	/** 
+	 * 预约门店是否支持门店自提,1:是
+	 **/
+	private $localityLifeObs;
+	
+	/** 
 	 * 电子凭证售中自动退款比例，百分比%前的数字，介于1-100之间的整数
 	 **/
 	private $localityLifeOnsaleAutoRefundRatio;
+	
+	/** 
+	 * 新版电子凭证包id
+	 **/
+	private $localityLifePackageid;
 	
 	/** 
 	 * 退款比例，百分比%前的数字,1-100的正整数值; 在参数empty_fields里设置locality_life.refund_ratio可删除退款比例
@@ -317,6 +358,11 @@ fee_card(话费软件代充)
 	private $localityLifeVerification;
 	
 	/** 
+	 * 电子凭证版本 新版电子凭证值:1
+	 **/
+	private $localityLifeVersion;
+	
+	/** 
 	 * 所在地城市。如杭州
 	 **/
 	private $locationCity;
@@ -327,19 +373,39 @@ fee_card(话费软件代充)
 	private $locationState;
 	
 	/** 
+	 * 订金
+	 **/
+	private $msPaymentPrice;
+	
+	/** 
+	 * 参考价
+	 **/
+	private $msPaymentReferencePrice;
+	
+	/** 
+	 * 尾款可抵扣金额
+	 **/
+	private $msPaymentVoucherPrice;
+	
+	/** 
 	 * 该宝贝是否支持【7天无理由退货】，卖家选择的值只是一个因素，最终以类目和选择的属性条件来确定是否支持7天。填入字符0，表示不支持；未填写或填人字符1，表示支持7天无理由退货；<br>注意：使用该API修改商品其它属性如标题title时，如需保持商品不支持7天无理由退货状态，该字段需传入0 。
 	 **/
 	private $newprepay;
 	
 	/** 
-	 * 商品数量，取值范围:0-900000000的整数。且需要等于Sku所有数量的和 拍卖商品中增加拍只能为1，荷兰拍要在[2,500)范围内。<br /> 支持最大值为：900000000<br /> 支持最小值为：0
+	 * 商品数量，取值范围:0-900000000的整数。且需要等于Sku所有数量的和 拍卖商品中增加拍只能为1，荷兰拍要在[2,500)范围内。
 	 **/
 	private $num;
 	
 	/** 
-	 * 商品数字ID，该参数必须<br /> 支持最小值为：1
+	 * 商品数字ID，该参数必须
 	 **/
 	private $numIid;
+	
+	/** 
+	 * 汽车O2O绑定线下服务标记，如不为空，表示关联服务，否则，不关联服务。
+	 **/
+	private $o2oBindService;
 	
 	/** 
 	 * 商家编码
@@ -347,18 +413,17 @@ fee_card(话费软件代充)
 	private $outerId;
 	
 	/** 
-	 * 拍卖宝贝的保证金。对于增价拍和荷兰拍来说保证金有两种模式：淘宝默认模式（首次出价金额的10%），自定义固定保证金（固定冻结金额只能输入不超过30万的正整数），并且保证金只冻结1次。对于降价拍来说保证金只有淘宝默认的（竞拍价格的10% * 竞拍数量），并且每次出价都需要冻结保证金。
-对于拍卖宝贝来说，保证金是必须的，但是默认使用淘宝默认保证金模式，只有用户需要使用自定义固定保证金的时候才需要使用到这个参数。如果该参数不传或传入0则代表使用默认。
+	 * 拍卖宝贝的保证金。对于增价拍和荷兰拍来说保证金有两种模式：淘宝默认模式（首次出价金额的10%），自定义固定保证金（固定冻结金额只能输入不超过30万的正整数），并且保证金只冻结1次。对于降价拍来说保证金只有淘宝默认的（竞拍价格的10% * 竞拍数量），并且每次出价都需要冻结保证金。对于拍卖宝贝来说，保证金是必须的，但是默认使用淘宝默认保证金模式，只有用户需要使用自定义固定保证金的时候才需要使用到这个参数。如果该参数不传或传入0则代表使用默认。
 	 **/
 	private $paimaiInfoDeposit;
 	
 	/** 
-	 * 降价拍宝贝的降价周期(分钟)。降价拍宝贝的价格每隔paimai_info.interval时间会下降一次increment。<br /> 支持最大值为：60<br /> 支持最小值为：1
+	 * 降价拍宝贝的降价周期(分钟)。降价拍宝贝的价格每隔paimai_info.interval时间会下降一次increment。
 	 **/
 	private $paimaiInfoInterval;
 	
 	/** 
-	 * 拍卖商品选择的拍卖类型，拍卖类型包括三种：增价拍(1)，荷兰拍(2)和降价拍(3)。<br /> 支持最大值为：3<br /> 支持最小值为：1
+	 * 拍卖商品选择的拍卖类型，拍卖类型包括三种：增价拍(1)，荷兰拍(2)和降价拍(3)。
 	 **/
 	private $paimaiInfoMode;
 	
@@ -368,12 +433,12 @@ fee_card(话费软件代充)
 	private $paimaiInfoReserve;
 	
 	/** 
-	 * 自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。<br /> 支持最大值为：48<br /> 支持最小值为：1
+	 * 自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
 	 **/
 	private $paimaiInfoValidHour;
 	
 	/** 
-	 * 自定义销售周期的分钟数。拍卖宝贝可以自定义销售周期，这里是指定销售周期的分钟数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。<br /> 支持最大值为：59<br /> 支持最小值为：0
+	 * 自定义销售周期的分钟数。拍卖宝贝可以自定义销售周期，这里是指定销售周期的分钟数。自定义销售周期的小时数。拍卖宝贝可以自定义销售周期，这里指定销售周期的小时数。注意，该参数只作为输入参数，不能通过taobao.item.get接口获取。
 	 **/
 	private $paimaiInfoValidMinute;
 	
@@ -403,7 +468,7 @@ fee_card(话费软件代充)
 	private $productId;
 	
 	/** 
-	 * 属性值别名。如pid:vid:别名;pid1:vid1:别名1， pid:属性id vid:值id。总长度不超过800字节<br /> 支持最大长度为：800<br /> 支持的最大列表长度为：800
+	 * 属性值别名。如pid:vid:别名;pid1:vid1:别名1， pid:属性id vid:值id。总长度不超过511字节
 	 **/
 	private $propertyAlias;
 	
@@ -411,6 +476,11 @@ fee_card(话费软件代充)
 	 * 商品属性列表。格式:pid:vid;pid:vid。属性的pid调用taobao.itemprops.get取得，属性值的vid用taobao.itempropvalues.get取得vid。 如果该类目下面没有属性，可以不用填写。如果有属性，必选属性必填，其他非必选属性可以选择不填写.属性不能超过35对。所有属性加起来包括分割符不能超过549字节，单个属性没有限制。 如果有属性是可输入的话，则用字段input_str填入属性的值。
 	 **/
 	private $props;
+	
+	/** 
+	 * 商品资质信息
+	 **/
+	private $qualification;
 	
 	/** 
 	 * 景区门票在选择订金支付时候，需要交的预订费。传入的值是1到20之间的数值，小数点后最多可以保留两位（多余的部分将做四舍五入的处理）。这个数值表示的是预订费的比例，最终的预订费为 scenic_ticket_book_cost乘一口价除以100
@@ -423,7 +493,7 @@ fee_card(话费软件代充)
 	private $scenicTicketPayWay;
 	
 	/** 
-	 * 商品卖点信息，最长150个字符。天猫和集市都可用<br /> 支持最大长度为：150<br /> 支持的最大列表长度为：150
+	 * 商品卖点信息，最长150个字符。天猫和集市都可用
 	 **/
 	private $sellPoint;
 	
@@ -438,9 +508,34 @@ fee_card(话费软件代充)
 	private $sellerCids;
 	
 	/** 
+	 * 宝贝形态:1代表电子券;0或其他代表实物
+	 **/
+	private $shape;
+	
+	/** 
 	 * sku层面的条形码，多个SKU情况，与SKU价格库存格式类似，用逗号分隔
 	 **/
 	private $skuBarcode;
+	
+	/** 
+	 * 此参数暂时不起作用
+	 **/
+	private $skuDeliveryTimes;
+	
+	/** 
+	 * 家装建材类目，商品SKU的高度，单位为cm，部分类目必选。天猫商家专用。 可选值为："0-15", "15-25", "25-50", "50-60", "60-80", "80-120", "120-160", "160-200"。 数据和SKU一一对应，用,分隔，如：15-25,25-50,25-50
+	 **/
+	private $skuHdHeight;
+	
+	/** 
+	 * 家装建材类目，商品SKU的灯头数量，正整数，大于等于3，部分类目必选。天猫商家专用。 数据和SKU一一对应，用,分隔，如：3,5,7
+	 **/
+	private $skuHdLampQuantity;
+	
+	/** 
+	 * 家装建材类目，商品SKU的长度，正整数，单位为cm，部分类目必选。天猫商家专用。 数据和SKU一一对应，用,分隔，如：20,30,30
+	 **/
+	private $skuHdLength;
 	
 	/** 
 	 * Sku的外部id串，结构如：1234,1342,… sku_properties, sku_quantities, sku_prices, sku_outer_ids在输入数据时要一一对应，如果没有sku_outer_ids也要写上这个参数，入参是","(这个是两个sku的示列，逗号数应该是sku个数减1)；该参数最大长度是512个字节
@@ -453,7 +548,7 @@ fee_card(话费软件代充)
 	private $skuPrices;
 	
 	/** 
-	 * 更新的Sku的属性串，调用taobao.itemprops.get获取类目属性，如果属性是销售属性，再用taobao.itempropvalues.get取得vid。格式:pid:vid;pid:vid,多个sku之间用逗号分隔。该字段内的销售属性(自定义的除外)也需要在props字段填写 . 规则：如果该SKU存在旧商品，则修改；否则新增Sku。如果更新时有对Sku进行操作，则Sku的properties一定要传入。如果存在自定义销售属性，则格式为pid:vid;pid2:vid2;$pText:vText，其中$pText:vText为自定义属性。限制：其中$pText的’$’前缀不能少，且pText和vText文本中不可以存在 冒号:和分号;以及逗号
+	 * 更新的sku的属性串，调用taobao.itemprops.get获取。格式:pid1:vid;pid2:vid,多个sku属性之间用逗号分隔。该字段内的属性需要在props字段同时包含。如果新增商品包含了sku，则此字段一定要传入,字段长度要控制在512个字节以内。
 	 **/
 	private $skuProperties;
 	
@@ -463,7 +558,7 @@ fee_card(话费软件代充)
 	private $skuQuantities;
 	
 	/** 
-	 * 暂时不可用
+	 * 此参数暂时不起作用
 	 **/
 	private $skuSpecIds;
 	
@@ -473,14 +568,12 @@ fee_card(话费软件代充)
 	private $stuffStatus;
 	
 	/** 
-	 * 商品是否支持拍下减库存:1支持;2取消支持(付款减库存);0(默认)不更改
-集市卖家默认拍下减库存;
-商城卖家默认付款减库存
+	 * 商品是否支持拍下减库存:1支持;2取消支持(付款减库存);0(默认)不更改 集市卖家默认拍下减库存; 商城卖家默认付款减库存
 	 **/
 	private $subStock;
 	
 	/** 
-	 * 宝贝标题. 不能超过30字符,受违禁词控制<br /> 支持最大长度为：120<br /> 支持的最大列表长度为：120
+	 * 宝贝标题. 不能超过30字符,受违禁词控制
 	 **/
 	private $title;
 	
@@ -493,6 +586,11 @@ fee_card(话费软件代充)
 	 * 商品的重量(商超卖家专用字段)
 	 **/
 	private $weight;
+	
+	/** 
+	 * 无线的宝贝描述
+	 **/
+	private $wirelessDesc;
 	
 	private $apiParas = array();
 	
@@ -538,6 +636,17 @@ fee_card(话费软件代充)
 	public function getAutoFill()
 	{
 		return $this->autoFill;
+	}
+
+	public function setAutoRepost($autoRepost)
+	{
+		$this->autoRepost = $autoRepost;
+		$this->apiParas["auto_repost"] = $autoRepost;
+	}
+
+	public function getAutoRepost()
+	{
+		return $this->autoRepost;
 	}
 
 	public function setBarcode($barcode)
@@ -595,6 +704,39 @@ fee_card(话费软件代充)
 		return $this->codPostageId;
 	}
 
+	public function setDeliveryTimeDeliveryTime($deliveryTimeDeliveryTime)
+	{
+		$this->deliveryTimeDeliveryTime = $deliveryTimeDeliveryTime;
+		$this->apiParas["delivery_time.delivery_time"] = $deliveryTimeDeliveryTime;
+	}
+
+	public function getDeliveryTimeDeliveryTime()
+	{
+		return $this->deliveryTimeDeliveryTime;
+	}
+
+	public function setDeliveryTimeDeliveryTimeType($deliveryTimeDeliveryTimeType)
+	{
+		$this->deliveryTimeDeliveryTimeType = $deliveryTimeDeliveryTimeType;
+		$this->apiParas["delivery_time.delivery_time_type"] = $deliveryTimeDeliveryTimeType;
+	}
+
+	public function getDeliveryTimeDeliveryTimeType()
+	{
+		return $this->deliveryTimeDeliveryTimeType;
+	}
+
+	public function setDeliveryTimeNeedDeliveryTime($deliveryTimeNeedDeliveryTime)
+	{
+		$this->deliveryTimeNeedDeliveryTime = $deliveryTimeNeedDeliveryTime;
+		$this->apiParas["delivery_time.need_delivery_time"] = $deliveryTimeNeedDeliveryTime;
+	}
+
+	public function getDeliveryTimeNeedDeliveryTime()
+	{
+		return $this->deliveryTimeNeedDeliveryTime;
+	}
+
 	public function setDesc($desc)
 	{
 		$this->desc = $desc;
@@ -648,6 +790,17 @@ fee_card(话费软件代充)
 	public function getExpressFee()
 	{
 		return $this->expressFee;
+	}
+
+	public function setFeatures($features)
+	{
+		$this->features = $features;
+		$this->apiParas["features"] = $features;
+	}
+
+	public function getFeatures()
+	{
+		return $this->features;
 	}
 
 	public function setFoodSecurityContact($foodSecurityContact)
@@ -837,6 +990,28 @@ fee_card(话费软件代充)
 		return $this->globalStockCountry;
 	}
 
+	public function setGlobalStockDeliveryPlace($globalStockDeliveryPlace)
+	{
+		$this->globalStockDeliveryPlace = $globalStockDeliveryPlace;
+		$this->apiParas["global_stock_delivery_place"] = $globalStockDeliveryPlace;
+	}
+
+	public function getGlobalStockDeliveryPlace()
+	{
+		return $this->globalStockDeliveryPlace;
+	}
+
+	public function setGlobalStockTaxFreePromise($globalStockTaxFreePromise)
+	{
+		$this->globalStockTaxFreePromise = $globalStockTaxFreePromise;
+		$this->apiParas["global_stock_tax_free_promise"] = $globalStockTaxFreePromise;
+	}
+
+	public function getGlobalStockTaxFreePromise()
+	{
+		return $this->globalStockTaxFreePromise;
+	}
+
 	public function setGlobalStockType($globalStockType)
 	{
 		$this->globalStockType = $globalStockType;
@@ -890,6 +1065,17 @@ fee_card(话费软件代充)
 	public function getHasWarranty()
 	{
 		return $this->hasWarranty;
+	}
+
+	public function setIgnorewarning($ignorewarning)
+	{
+		$this->ignorewarning = $ignorewarning;
+		$this->apiParas["ignorewarning"] = $ignorewarning;
+	}
+
+	public function getIgnorewarning()
+	{
+		return $this->ignorewarning;
 	}
 
 	public function setImage($image)
@@ -1068,6 +1254,17 @@ fee_card(话费软件代充)
 		return $this->localityLifeChooseLogis;
 	}
 
+	public function setLocalityLifeEticket($localityLifeEticket)
+	{
+		$this->localityLifeEticket = $localityLifeEticket;
+		$this->apiParas["locality_life.eticket"] = $localityLifeEticket;
+	}
+
+	public function getLocalityLifeEticket()
+	{
+		return $this->localityLifeEticket;
+	}
+
 	public function setLocalityLifeExpirydate($localityLifeExpirydate)
 	{
 		$this->localityLifeExpirydate = $localityLifeExpirydate;
@@ -1101,6 +1298,17 @@ fee_card(话费软件代充)
 		return $this->localityLifeNetworkId;
 	}
 
+	public function setLocalityLifeObs($localityLifeObs)
+	{
+		$this->localityLifeObs = $localityLifeObs;
+		$this->apiParas["locality_life.obs"] = $localityLifeObs;
+	}
+
+	public function getLocalityLifeObs()
+	{
+		return $this->localityLifeObs;
+	}
+
 	public function setLocalityLifeOnsaleAutoRefundRatio($localityLifeOnsaleAutoRefundRatio)
 	{
 		$this->localityLifeOnsaleAutoRefundRatio = $localityLifeOnsaleAutoRefundRatio;
@@ -1110,6 +1318,17 @@ fee_card(话费软件代充)
 	public function getLocalityLifeOnsaleAutoRefundRatio()
 	{
 		return $this->localityLifeOnsaleAutoRefundRatio;
+	}
+
+	public function setLocalityLifePackageid($localityLifePackageid)
+	{
+		$this->localityLifePackageid = $localityLifePackageid;
+		$this->apiParas["locality_life.packageid"] = $localityLifePackageid;
+	}
+
+	public function getLocalityLifePackageid()
+	{
+		return $this->localityLifePackageid;
 	}
 
 	public function setLocalityLifeRefundRatio($localityLifeRefundRatio)
@@ -1145,6 +1364,17 @@ fee_card(话费软件代充)
 		return $this->localityLifeVerification;
 	}
 
+	public function setLocalityLifeVersion($localityLifeVersion)
+	{
+		$this->localityLifeVersion = $localityLifeVersion;
+		$this->apiParas["locality_life.version"] = $localityLifeVersion;
+	}
+
+	public function getLocalityLifeVersion()
+	{
+		return $this->localityLifeVersion;
+	}
+
 	public function setLocationCity($locationCity)
 	{
 		$this->locationCity = $locationCity;
@@ -1165,6 +1395,39 @@ fee_card(话费软件代充)
 	public function getLocationState()
 	{
 		return $this->locationState;
+	}
+
+	public function setMsPaymentPrice($msPaymentPrice)
+	{
+		$this->msPaymentPrice = $msPaymentPrice;
+		$this->apiParas["ms_payment.price"] = $msPaymentPrice;
+	}
+
+	public function getMsPaymentPrice()
+	{
+		return $this->msPaymentPrice;
+	}
+
+	public function setMsPaymentReferencePrice($msPaymentReferencePrice)
+	{
+		$this->msPaymentReferencePrice = $msPaymentReferencePrice;
+		$this->apiParas["ms_payment.reference_price"] = $msPaymentReferencePrice;
+	}
+
+	public function getMsPaymentReferencePrice()
+	{
+		return $this->msPaymentReferencePrice;
+	}
+
+	public function setMsPaymentVoucherPrice($msPaymentVoucherPrice)
+	{
+		$this->msPaymentVoucherPrice = $msPaymentVoucherPrice;
+		$this->apiParas["ms_payment.voucher_price"] = $msPaymentVoucherPrice;
+	}
+
+	public function getMsPaymentVoucherPrice()
+	{
+		return $this->msPaymentVoucherPrice;
 	}
 
 	public function setNewprepay($newprepay)
@@ -1198,6 +1461,17 @@ fee_card(话费软件代充)
 	public function getNumIid()
 	{
 		return $this->numIid;
+	}
+
+	public function setO2oBindService($o2oBindService)
+	{
+		$this->o2oBindService = $o2oBindService;
+		$this->apiParas["o2o_bind_service"] = $o2oBindService;
+	}
+
+	public function getO2oBindService()
+	{
+		return $this->o2oBindService;
 	}
 
 	public function setOuterId($outerId)
@@ -1354,6 +1628,17 @@ fee_card(话费软件代充)
 		return $this->props;
 	}
 
+	public function setQualification($qualification)
+	{
+		$this->qualification = $qualification;
+		$this->apiParas["qualification"] = $qualification;
+	}
+
+	public function getQualification()
+	{
+		return $this->qualification;
+	}
+
 	public function setScenicTicketBookCost($scenicTicketBookCost)
 	{
 		$this->scenicTicketBookCost = $scenicTicketBookCost;
@@ -1409,6 +1694,17 @@ fee_card(话费软件代充)
 		return $this->sellerCids;
 	}
 
+	public function setShape($shape)
+	{
+		$this->shape = $shape;
+		$this->apiParas["shape"] = $shape;
+	}
+
+	public function getShape()
+	{
+		return $this->shape;
+	}
+
 	public function setSkuBarcode($skuBarcode)
 	{
 		$this->skuBarcode = $skuBarcode;
@@ -1418,6 +1714,50 @@ fee_card(话费软件代充)
 	public function getSkuBarcode()
 	{
 		return $this->skuBarcode;
+	}
+
+	public function setSkuDeliveryTimes($skuDeliveryTimes)
+	{
+		$this->skuDeliveryTimes = $skuDeliveryTimes;
+		$this->apiParas["sku_delivery_times"] = $skuDeliveryTimes;
+	}
+
+	public function getSkuDeliveryTimes()
+	{
+		return $this->skuDeliveryTimes;
+	}
+
+	public function setSkuHdHeight($skuHdHeight)
+	{
+		$this->skuHdHeight = $skuHdHeight;
+		$this->apiParas["sku_hd_height"] = $skuHdHeight;
+	}
+
+	public function getSkuHdHeight()
+	{
+		return $this->skuHdHeight;
+	}
+
+	public function setSkuHdLampQuantity($skuHdLampQuantity)
+	{
+		$this->skuHdLampQuantity = $skuHdLampQuantity;
+		$this->apiParas["sku_hd_lamp_quantity"] = $skuHdLampQuantity;
+	}
+
+	public function getSkuHdLampQuantity()
+	{
+		return $this->skuHdLampQuantity;
+	}
+
+	public function setSkuHdLength($skuHdLength)
+	{
+		$this->skuHdLength = $skuHdLength;
+		$this->apiParas["sku_hd_length"] = $skuHdLength;
+	}
+
+	public function getSkuHdLength()
+	{
+		return $this->skuHdLength;
 	}
 
 	public function setSkuOuterIds($skuOuterIds)
@@ -1530,6 +1870,17 @@ fee_card(话费软件代充)
 		return $this->weight;
 	}
 
+	public function setWirelessDesc($wirelessDesc)
+	{
+		$this->wirelessDesc = $wirelessDesc;
+		$this->apiParas["wireless_desc"] = $wirelessDesc;
+	}
+
+	public function getWirelessDesc()
+	{
+		return $this->wirelessDesc;
+	}
+
 	public function getApiMethodName()
 	{
 		return "taobao.item.update";
@@ -1545,6 +1896,7 @@ fee_card(话费软件代充)
 		
 		RequestCheckUtil::checkMinValue($this->cid,0,"cid");
 		RequestCheckUtil::checkMaxLength($this->desc,200000,"desc");
+		RequestCheckUtil::checkMaxLength($this->features,4000,"features");
 		RequestCheckUtil::checkMaxLength($this->globalStockCountry,30,"globalStockCountry");
 		RequestCheckUtil::checkMaxValue($this->num,900000000,"num");
 		RequestCheckUtil::checkMinValue($this->num,0,"num");

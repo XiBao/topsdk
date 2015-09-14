@@ -3,7 +3,7 @@
  * TOP API: taobao.item.img.delete request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItemImgDeleteRequest
 {
@@ -13,7 +13,12 @@ class ItemImgDeleteRequest
 	private $id;
 	
 	/** 
-	 * 商品数字ID，必选<br /> 支持最小值为：0
+	 * 标记是否要删除第6张图，因为第6张图与普通商品图片不是存储在同一个位置的无图片ID，所以要通过一个标记来判断是否为第6张图，目前第6张图业务主要用在女装业务下
+	 **/
+	private $isSixthPic;
+	
+	/** 
+	 * 商品数字ID
 	 **/
 	private $numIid;
 	
@@ -28,6 +33,17 @@ class ItemImgDeleteRequest
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	public function setIsSixthPic($isSixthPic)
+	{
+		$this->isSixthPic = $isSixthPic;
+		$this->apiParas["is_sixth_pic"] = $isSixthPic;
+	}
+
+	public function getIsSixthPic()
+	{
+		return $this->isSixthPic;
 	}
 
 	public function setNumIid($numIid)
@@ -55,8 +71,9 @@ class ItemImgDeleteRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->id,"id");
+		RequestCheckUtil::checkMinValue($this->id,1,"id");
 		RequestCheckUtil::checkNotNull($this->numIid,"numIid");
-		RequestCheckUtil::checkMinValue($this->numIid,0,"numIid");
+		RequestCheckUtil::checkMinValue($this->numIid,1,"numIid");
 	}
 	
 	public function putOtherTextParam($key, $value) {

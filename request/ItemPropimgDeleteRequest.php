@@ -3,7 +3,7 @@
  * TOP API: taobao.item.propimg.delete request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItemPropimgDeleteRequest
 {
@@ -13,7 +13,7 @@ class ItemPropimgDeleteRequest
 	private $id;
 	
 	/** 
-	 * 商品数字ID，必选<br /> 支持最小值为：0
+	 * 商品数字ID，必选
 	 **/
 	private $numIid;
 	

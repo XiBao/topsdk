@@ -3,14 +3,19 @@
  * TOP API: taobao.tmc.user.cancel request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:57
+ * @since 1.0, 2015.09.13
  */
 class TmcUserCancelRequest
 {
 	/** 
-	 * 用户昵称，支持子账号
+	 * 用户昵称
 	 **/
 	private $nick;
+	
+	/** 
+	 * 用户所属的平台类型，tbUIC:淘宝用户; icbu: icbu用户
+	 **/
+	private $userPlatform;
 	
 	private $apiParas = array();
 	
@@ -23,6 +28,17 @@ class TmcUserCancelRequest
 	public function getNick()
 	{
 		return $this->nick;
+	}
+
+	public function setUserPlatform($userPlatform)
+	{
+		$this->userPlatform = $userPlatform;
+		$this->apiParas["user_platform"] = $userPlatform;
+	}
+
+	public function getUserPlatform()
+	{
+		return $this->userPlatform;
 	}
 
 	public function getApiMethodName()

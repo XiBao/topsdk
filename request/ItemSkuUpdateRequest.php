@@ -3,10 +3,20 @@
  * TOP API: taobao.item.sku.update request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItemSkuUpdateRequest
 {
+	/** 
+	 * SKU条形码
+	 **/
+	private $barcode;
+	
+	/** 
+	 * 忽略警告提示.
+	 **/
+	private $ignorewarning;
+	
 	/** 
 	 * sku所属商品的价格。当用户更新sku，使商品价格不属于sku价格之间的时候，用于修改商品的价格，使sku能够更新成功
 	 **/
@@ -18,7 +28,7 @@ class ItemSkuUpdateRequest
 	private $lang;
 	
 	/** 
-	 * Sku所属商品数字id，可通过 taobao.item.get 获取<br /> 支持最小值为：0
+	 * Sku所属商品数字id，可通过 taobao.item.get 获取
 	 **/
 	private $numIid;
 	
@@ -39,7 +49,7 @@ class ItemSkuUpdateRequest
 	private $properties;
 	
 	/** 
-	 * Sku的库存数量。sku的总数量应该小于等于商品总数量(Item的NUM)，sku数量变化后item的总数量也会随着变化。取值范围:大于等于零的整数<br /> 支持最小值为：0
+	 * Sku的库存数量。sku的总数量应该小于等于商品总数量(Item的NUM)，sku数量变化后item的总数量也会随着变化。取值范围:大于等于零的整数
 	 **/
 	private $quantity;
 	
@@ -50,6 +60,28 @@ class ItemSkuUpdateRequest
 	
 	private $apiParas = array();
 	
+	public function setBarcode($barcode)
+	{
+		$this->barcode = $barcode;
+		$this->apiParas["barcode"] = $barcode;
+	}
+
+	public function getBarcode()
+	{
+		return $this->barcode;
+	}
+
+	public function setIgnorewarning($ignorewarning)
+	{
+		$this->ignorewarning = $ignorewarning;
+		$this->apiParas["ignorewarning"] = $ignorewarning;
+	}
+
+	public function getIgnorewarning()
+	{
+		return $this->ignorewarning;
+	}
+
 	public function setItemPrice($itemPrice)
 	{
 		$this->itemPrice = $itemPrice;

@@ -3,10 +3,15 @@
  * TOP API: taobao.sellercats.list.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class SellercatsListGetRequest
 {
+	/** 
+	 * fields参数
+	 **/
+	private $fields;
+	
 	/** 
 	 * 卖家昵称
 	 **/
@@ -14,6 +19,17 @@ class SellercatsListGetRequest
 	
 	private $apiParas = array();
 	
+	public function setFields($fields)
+	{
+		$this->fields = $fields;
+		$this->apiParas["fields"] = $fields;
+	}
+
+	public function getFields()
+	{
+		return $this->fields;
+	}
+
 	public function setNick($nick)
 	{
 		$this->nick = $nick;

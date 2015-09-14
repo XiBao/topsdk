@@ -3,14 +3,14 @@
  * TOP API: taobao.product.add request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ProductAddRequest
 {
 	/** 
 	 * 非关键属性结构:pid:vid;pid:vid.<br>
 非关键属性<font color=red>不包含</font>关键属性、销售属性、用户自定义属性、商品属性;
-<br>调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font><br /> 支持最大长度为：512<br /> 支持的最大列表长度为：512
+<br>调用taobao.itemprops.get获取pid,调用taobao.itempropvalues.get获取vid.<br><font color=red>注:支持最大长度为512字节</font>
 	 **/
 	private $binds;
 	
@@ -31,12 +31,12 @@ class ProductAddRequest
 	private $desc;
 	
 	/** 
-	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.<br /> 支持最大长度为：25000<br /> 支持的最大列表长度为：25000
+	 * 存放产品扩展信息，由List(ProductExtraInfo)转化成jsonArray存入.
 	 **/
 	private $extraInfo;
 	
 	/** 
-	 * 产品主图片.最大1M,目前仅支持GIF,JPG.<br /> 支持的文件类型为：gif,jpg,png,jpeg<br /> 支持的最大列表长度为：1048576
+	 * 产品主图片.最大1M,目前仅支持GIF,JPG.
 	 **/
 	private $image;
 	
@@ -112,6 +112,11 @@ class ProductAddRequest
 	 * 在天猫，无关键属性发布产品，必须指定模板ID,模板ID通过tmall.product.template.get获取
 	 **/
 	private $templateId;
+	
+	/** 
+	 * 加入垂直市场，目前只支持以鞋城卖家身份加入名鞋馆(暂时此字段还不起作用，不对外开放)
+	 **/
+	private $verticalMarket;
 	
 	private $apiParas = array();
 	
@@ -333,6 +338,17 @@ class ProductAddRequest
 	public function getTemplateId()
 	{
 		return $this->templateId;
+	}
+
+	public function setVerticalMarket($verticalMarket)
+	{
+		$this->verticalMarket = $verticalMarket;
+		$this->apiParas["vertical_market"] = $verticalMarket;
+	}
+
+	public function getVerticalMarket()
+	{
+		return $this->verticalMarket;
 	}
 
 	public function getApiMethodName()

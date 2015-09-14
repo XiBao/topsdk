@@ -3,7 +3,7 @@
  * TOP API: taobao.itemprops.get request
  * 
  * @author auto create
- * @since 1.0, 2014-08-28 16:45:55
+ * @since 1.0, 2015.09.13
  */
 class ItempropsGetRequest
 {
@@ -21,6 +21,11 @@ class ItempropsGetRequest
 	 * 叶子类目ID，如果只传cid，则只返回一级属性,通过taobao.itemcats.get获得叶子类目ID
 	 **/
 	private $cid;
+	
+	/** 
+	 * 增量时间戳。格式:yyyy-MM-dd HH:mm:ss假如传2005-01-01 00:00:00，则取所有的属性和子属性ID(如果传了pid会忽略datetime)
+	 **/
+	private $datetime;
 	
 	/** 
 	 * 需要返回的字段列表，见：ItemProp，默认返回：pid, name, must, multi, prop_values
@@ -68,7 +73,7 @@ class ItempropsGetRequest
 	private $pid;
 	
 	/** 
-	 * 获取类目的类型：1代表集市、2代表天猫<br /> 支持最大值为：2<br /> 支持最小值为：1
+	 * 获取类目的类型：1代表集市、2代表天猫
 	 **/
 	private $type;
 	
@@ -105,6 +110,17 @@ class ItempropsGetRequest
 	public function getCid()
 	{
 		return $this->cid;
+	}
+
+	public function setDatetime($datetime)
+	{
+		$this->datetime = $datetime;
+		$this->apiParas["datetime"] = $datetime;
+	}
+
+	public function getDatetime()
+	{
+		return $this->datetime;
 	}
 
 	public function setFields($fields)
@@ -230,6 +246,7 @@ class ItempropsGetRequest
 	public function check()
 	{
 		
+		RequestCheckUtil::checkMaxListSize($this->attrKeys,50,"attrKeys");
 		RequestCheckUtil::checkNotNull($this->cid,"cid");
 		RequestCheckUtil::checkMaxValue($this->type,2,"type");
 		RequestCheckUtil::checkMinValue($this->type,1,"type");
