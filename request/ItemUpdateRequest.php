@@ -3,7 +3,7 @@
  * TOP API: taobao.item.update request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.10.27
  */
 class ItemUpdateRequest
 {
@@ -561,6 +561,11 @@ class ItemUpdateRequest
 	 * 此参数暂时不起作用
 	 **/
 	private $skuSpecIds;
+	
+	/** 
+	 * 手机类目spu 确认信息字段
+	 **/
+	private $spuConfirm;
 	
 	/** 
 	 * 商品新旧程度。可选值:new（全新）,unused（闲置）,second（二手）。
@@ -1813,6 +1818,17 @@ class ItemUpdateRequest
 	public function getSkuSpecIds()
 	{
 		return $this->skuSpecIds;
+	}
+
+	public function setSpuConfirm($spuConfirm)
+	{
+		$this->spuConfirm = $spuConfirm;
+		$this->apiParas["spu_confirm"] = $spuConfirm;
+	}
+
+	public function getSpuConfirm()
+	{
+		return $this->spuConfirm;
 	}
 
 	public function setStuffStatus($stuffStatus)

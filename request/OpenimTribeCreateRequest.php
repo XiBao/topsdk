@@ -3,12 +3,12 @@
  * TOP API: taobao.openim.tribe.create request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.10.22
  */
 class OpenimTribeCreateRequest
 {
 	/** 
-	 * 用户信息
+	 * 创建群时候拉入群的成员tribe_type = 1（即为讨论组类型)时  该参数为必选tribe_type = 0 (即为普通群类型)时，改参数无效，可不填
 	 **/
 	private $members;
 	
@@ -23,7 +23,7 @@ class OpenimTribeCreateRequest
 	private $tribeName;
 	
 	/** 
-	 * 群类型
+	 * 群类型有两种tribe_type = 0  普通群  普通群有管理员角色，对成员加入有权限控制tribe_type = 1  讨论组  讨论组没有管理员，不能解散
 	 **/
 	private $tribeType;
 	

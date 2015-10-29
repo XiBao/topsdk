@@ -1,33 +1,33 @@
 <?php
 /**
- * TOP API: taobao.baichuan.user.loginbytoken request
+ * TOP API: taobao.openim.immsg.push request
  * 
  * @author auto create
- * @since 1.0, 2015.06.10
+ * @since 1.0, 2015.09.23
  */
-class BaichuanUserLoginbytokenRequest
+class OpenimImmsgPushRequest
 {
 	/** 
-	 * name
+	 * openim消息结构体
 	 **/
-	private $name;
+	private $immsg;
 	
 	private $apiParas = array();
 	
-	public function setName($name)
+	public function setImmsg($immsg)
 	{
-		$this->name = $name;
-		$this->apiParas["name"] = $name;
+		$this->immsg = $immsg;
+		$this->apiParas["immsg"] = $immsg;
 	}
 
-	public function getName()
+	public function getImmsg()
 	{
-		return $this->name;
+		return $this->immsg;
 	}
 
 	public function getApiMethodName()
 	{
-		return "taobao.baichuan.user.loginbytoken";
+		return "taobao.openim.immsg.push";
 	}
 	
 	public function getApiParas()

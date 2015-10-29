@@ -3,7 +3,7 @@
  * TOP API: taobao.cloudpush.push request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.09.15
  */
 class CloudpushPushRequest
 {
@@ -93,7 +93,7 @@ class CloudpushPushRequest
 	private $target;
 	
 	/** 
-	 * 根据Target来设定，如Target=device, 则对应的值为 设备id1,设备id2. 多个值使用逗号分隔.
+	 * 根据Target来设定，如Target=device, 则对应的值为 设备id1,设备id2. 多个值使用逗号分隔.(帐号与设备有一次最多100个的限制)
 	 **/
 	private $targetValue;
 	
@@ -106,6 +106,11 @@ class CloudpushPushRequest
 	 * 推送的标题内容.
 	 **/
 	private $title;
+	
+	/** 
+	 * 0:表示消息(默认为0),1:表示通知
+	 **/
+	private $type;
 	
 	private $apiParas = array();
 	
@@ -327,6 +332,17 @@ class CloudpushPushRequest
 	public function getTitle()
 	{
 		return $this->title;
+	}
+
+	public function setType($type)
+	{
+		$this->type = $type;
+		$this->apiParas["type"] = $type;
+	}
+
+	public function getType()
+	{
+		return $this->type;
 	}
 
 	public function getApiMethodName()

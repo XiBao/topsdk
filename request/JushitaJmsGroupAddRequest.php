@@ -3,7 +3,7 @@
  * TOP API: taobao.jushita.jms.group.add request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.09.08
  */
 class JushitaJmsGroupAddRequest
 {

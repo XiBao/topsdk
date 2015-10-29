@@ -3,7 +3,7 @@
  * TOP API: taobao.item.propimg.upload request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.09.22
  */
 class ItemPropimgUploadRequest
 {
@@ -13,7 +13,7 @@ class ItemPropimgUploadRequest
 	private $id;
 	
 	/** 
-	 * 属性图片内容。类型:JPG,GIF;最大长度:500K;图片大小不超过:1M
+	 * 属性图片内容。类型:JPG,GIF;图片大小不超过:3M
 	 **/
 	private $image;
 	

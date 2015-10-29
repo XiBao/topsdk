@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.10.27
  */
 class ItemAddRequest
 {
@@ -561,6 +561,11 @@ class ItemAddRequest
 	 * 此参数暂时不起作用
 	 **/
 	private $skuSpecIds;
+	
+	/** 
+	 * 手机类目spu 优化，信息确认字段
+	 **/
+	private $spuConfirm;
 	
 	/** 
 	 * 新旧程度。可选值：new(新)，second(二手)。B商家不能发布二手商品。如果是二手商品，特定类目下属性里面必填新旧成色属性
@@ -1823,6 +1828,17 @@ class ItemAddRequest
 	public function getSkuSpecIds()
 	{
 		return $this->skuSpecIds;
+	}
+
+	public function setSpuConfirm($spuConfirm)
+	{
+		$this->spuConfirm = $spuConfirm;
+		$this->apiParas["spu_confirm"] = $spuConfirm;
+	}
+
+	public function getSpuConfirm()
+	{
+		return $this->spuConfirm;
 	}
 
 	public function setStuffStatus($stuffStatus)

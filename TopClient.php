@@ -45,14 +45,12 @@ class TopClient
 		return strtoupper(md5($stringToBeSigned));
 	}
 
-	protected function curl($url, $postFields = null, $setCT = false)
+	protected function curl($url, $postFields = null)
 	{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 
-        if ($setCT) {
-		    curl_setopt($ch,CURLOPT_HTTPHEADER,["content-type: application/x-www-form-urlencoded; charset=UTF-8"]);
-        }
+		curl_setopt($ch,CURLOPT_HTTPHEADER,["content-type: application/x-www-form-urlencoded; charset=UTF-8"]);
 
 		curl_setopt($ch, CURLOPT_FAILONERROR, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -144,7 +142,7 @@ class TopClient
 		Kohana::$log->add(Log::ERROR, json_encode($logData));
 	}
 
-	public function execute($request, $session = null, $setCT = false)
+	public function execute($request, $session = null)
 	{
 	    $result = new TopError;
 		if($this->checkRequest) {
@@ -186,7 +184,7 @@ class TopClient
 		//发起HTTP请求
 		try
 		{
-			$resp = $this->curl($requestUrl, $apiParams, $setCT);
+			$resp = $this->curl($requestUrl, $apiParams);
 		}
 		catch (Exception $e)
 		{

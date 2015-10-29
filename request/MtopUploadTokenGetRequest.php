@@ -3,7 +3,7 @@
  * TOP API: taobao.mtop.upload.token.get request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.05.25
  */
 class MtopUploadTokenGetRequest
 {
