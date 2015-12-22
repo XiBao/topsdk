@@ -3,7 +3,7 @@
  * TOP API: taobao.tae.item.detail.get request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.08.04
  */
 class TaeItemDetailGetRequest
 {
@@ -13,7 +13,7 @@ class TaeItemDetailGetRequest
 	private $buyerIp;
 	
 	/** 
-	 * 区块信息
+	 * 区块信息，field 支持 itemInfo,priceInfo,skuInfo,stockInfo,rateInfo,descInfo,sellerInfo,mobileDescInfo,deliveryInfo,storeInfo,itemBuyInfo,couponInfo
 	 **/
 	private $fields;
 	

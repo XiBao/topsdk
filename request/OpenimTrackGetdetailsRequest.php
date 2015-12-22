@@ -3,7 +3,7 @@
  * TOP API: taobao.openim.track.getdetails request
  * 
  * @author auto create
- * @since 1.0, 2015.10.26
+ * @since 1.0, 2015.11.03
  */
 class OpenimTrackGetdetailsRequest
 {
@@ -11,6 +11,11 @@ class OpenimTrackGetdetailsRequest
 	 * 查询结束时间(UTC时间，以毫秒为单位)
 	 **/
 	private $endtime;
+	
+	/** 
+	 * 用户所属app的prefix
+	 **/
+	private $prefix;
 	
 	/** 
 	 * 查询开始时间(UTC时间，以毫秒为单位)
@@ -33,6 +38,17 @@ class OpenimTrackGetdetailsRequest
 	public function getEndtime()
 	{
 		return $this->endtime;
+	}
+
+	public function setPrefix($prefix)
+	{
+		$this->prefix = $prefix;
+		$this->apiParas["prefix"] = $prefix;
+	}
+
+	public function getPrefix()
+	{
+		return $this->prefix;
 	}
 
 	public function setStarttime($starttime)

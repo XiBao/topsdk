@@ -3,7 +3,7 @@
  * TOP API: taobao.open.account.update request
  * 
  * @author auto create
- * @since 1.0, 2015.08.17
+ * @since 1.0, 2015.11.16
  */
 class OpenAccountUpdateRequest
 {

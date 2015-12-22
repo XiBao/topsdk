@@ -3,7 +3,7 @@
  * TOP API: taobao.product.update request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2013.07.05
  */
 class ProductUpdateRequest
 {

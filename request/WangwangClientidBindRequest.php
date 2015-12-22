@@ -3,7 +3,7 @@
  * TOP API: taobao.wangwang.clientid.bind request
  * 
  * @author auto create
- * @since 1.0, 2015.09.13
+ * @since 1.0, 2015.06.05
  */
 class WangwangClientidBindRequest
 {

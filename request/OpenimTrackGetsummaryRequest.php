@@ -3,10 +3,15 @@
  * TOP API: taobao.openim.track.getsummary request
  * 
  * @author auto create
- * @since 1.0, 2015.10.26
+ * @since 1.0, 2015.11.03
  */
 class OpenimTrackGetsummaryRequest
 {
+	/** 
+	 * 用户所属app的prefix
+	 **/
+	private $prefix;
+	
 	/** 
 	 * 用户id
 	 **/
@@ -14,6 +19,17 @@ class OpenimTrackGetsummaryRequest
 	
 	private $apiParas = array();
 	
+	public function setPrefix($prefix)
+	{
+		$this->prefix = $prefix;
+		$this->apiParas["prefix"] = $prefix;
+	}
+
+	public function getPrefix()
+	{
+		return $this->prefix;
+	}
+
 	public function setUid($uid)
 	{
 		$this->uid = $uid;

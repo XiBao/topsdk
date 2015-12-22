@@ -3,7 +3,7 @@
  * TOP API: taobao.cloudpush.push request
  * 
  * @author auto create
- * @since 1.0, 2015.09.15
+ * @since 1.0, 2015.11.16
  */
 class CloudpushPushRequest
 {
@@ -73,7 +73,7 @@ class CloudpushPushRequest
 	private $iosMusic;
 	
 	/** 
-	 * 当APP不在线时候，是否通过通知提醒
+	 * 当APP不在线时候，是否通过通知提醒.  针对不同设备，处理逻辑不同。 该参数只针对iOS设备生效， (remind=true  & 发送消息的话(type=0)). 当你的目标设备不在线(既长连接通道不通, 我们会将这条消息的标题，通过苹果的apns通道再送达一次。发apns是发送生产环境的apns，需要在云推送配置的app的iOS生产证书和密码需要正确，否则也发送不了。 (remind=false & 并且是发送消息的话(type=0))，那么设备不在线，则不会再走苹果apns发送了。
 	 **/
 	private $remind;
 	

@@ -3,7 +3,7 @@
  * TOP API: taobao.kfc.keyword.search request
  * 
  * @author auto create
- * @since 1.0, 2014.02.24
+ * @since 1.0, 2015.11.25
  */
 class KfcKeywordSearchRequest
 {

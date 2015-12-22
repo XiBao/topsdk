@@ -3,7 +3,7 @@
  * TOP API: taobao.item.sku.get request
  * 
  * @author auto create
- * @since 1.0, 2014.11.04
+ * @since 1.0, 2015.11.04
  */
 class ItemSkuGetRequest
 {

@@ -3,7 +3,7 @@
  * TOP API: taobao.item.add request
  * 
  * @author auto create
- * @since 1.0, 2015.10.27
+ * @since 1.0, 2015.11.23
  */
 class ItemAddRequest
 {
