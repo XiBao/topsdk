@@ -1,5 +1,7 @@
 <?php
 
+require 'JSON.php';
+
 class TopError {
     public $code;
     public $msg;
@@ -203,7 +205,7 @@ class TopClient
 			//$json = str_replace(array("\n","\r", "\t"),"",$resp); 
     		//$json = preg_replace('/([{,]+)(\s*)([^"]+?)\s*:/','$1"$3":',$json);
     		$jsonService = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-			$respObject = $jsonService.decode($json);
+			$respObject = $jsonService->decode($resp);
 			if (null !== $respObject)
 			{
 				$respWellFormed = true;
