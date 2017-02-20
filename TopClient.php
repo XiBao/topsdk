@@ -51,7 +51,7 @@ class TopClient
 		$stringToBeSigned = $this->secretKey;
 		foreach ($params as $k => $v)
 		{
-			if(is_string($v) && "@" != substr($v, 0, 1))
+			if(is_string($v) && "@" != substr($v, 0, 1) || is_numeric($v))
 			{
 				$stringToBeSigned .= "$k$v";
 			}
@@ -87,10 +87,10 @@ class TopClient
 			$postMultipart = false;
 			foreach ($postFields as $k => $v)
 			{
-				if(!is_string($v))
+				if(!is_string($v) && !is_numeric($v))
 					continue ;
 
-				if("@" != substr($v, 0, 1))//判断是不是文件上传
+				if("@" != substr($v, 0, 1) && is_string($v) || is_numeric($v))//判断是不是文件上传
 				{
 					$postBodyString .= "$k=" . urlencode($v) . "&"; 
 				}
